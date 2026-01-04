@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact AXI - Marketing &amp; AI Automation Agency</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.glass-nav {
+background: rgba(15, 15, 15, 0.8);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Spotlight Effect Logic */
+.spotlight-card {
+--mouse-x: 0px;
+--mouse-y: 0px;
+position: relative;
+background: rgba(255, 255, 255, 0.1);
+}
+.spotlight-card::before {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.15), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 0;
+pointer-events: none;
+}
+.spotlight-card:hover::before { opacity: 1; }
+.spotlight-inner {
+position: relative;
+background: #0f0f0f;
+border-radius: inherit;
+z-index: 1;
+height: 100%;
+width: 100%;
+border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.spotlight-inner::after {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.05), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 2;
+pointer-events: none;
+}
+.spotlight-card:hover .spotlight-inner::after { opacity: 1; }
+::-webkit-scrollbar { width: 0px; background: transparent; }
+/* Form Elements Animation */
+.input-group:focus-within label {
+color: #60a5fa;
+}
+.input-group:focus-within input, .input-group:focus-within textarea, .input-group:focus-within select {
+border-color: rgba(96, 165, 250, 0.5);
+box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
+}
+</style>
+<meta name="disabled-font-classes" content="font-roboto">
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200 text-white bg-[#020202] pb-10 relative">
+
+    <!-- Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-sky-900/10 blur-[120px]"></div>
+        <div class="aura-background-component fixed top-0 w-full h-screen -z-10" data-alpha-mask="80" style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)"><div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+        </div></div>
+    </div>
+
+    <!-- Vertical Lines Container -->
+    <div class="fixed inset-0 z-0 pointer-events-none flex justify-center w-full max-w-7xl mx-auto px-6">
+        <div class="w-full h-full border-x border-dashed border-white/5 flex justify-center relative">
+            <div class="h-full w-px bg-dashed bg-white/5 absolute left-1/4"></div>
+            <div class="h-full w-px bg-white/5"></div>
+            <div class="h-full w-px bg-dashed bg-white/5 absolute right-1/4"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed top-6 left-0 right-0 flex justify-center z-50 px-4 pointer-events-none">
+        <nav class="glass-nav flex pointer-events-auto w-full max-w-5xl rounded-full pt-3 pr-3 pb-3 pl-6 shadow-2xl items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                
+                <span class="text-xl font-bold text-white tracking-tight font-geist mx-1">AXI AGENCY</span>
+            </div>
+
+            <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-400 gap-x-8 gap-y-8 items-center">
+                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist">Home</a><a href="services.html" class="transition-colors hover:text-blue-400 text-white font-geist">Services</a>
+                <a href="cases.html" class="transition-colors hover:text-blue-400 text-white font-geist">Case Studies</a>
+                
+                <a href="contact-us.html" class="transition-colors text-blue-500 font-geist">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button class="hover:bg-white/10 transition-all text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)] cursor-pointer" onclick="window.location.href='contact-us.html'" role="button">
+                    Book a Call
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="relative z-10 pt-40 pb-16 px-6 text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 font-geist animate-fade-in-up">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+            Contact Us
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 font-geist">
+            Let's Talk About <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-600">Your Business</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light font-geist mb-4">
+            Tell us about your goals and we’ll help you choose the right solution.
+        </p>
+        <p class="text-sm text-gray-500 font-geist">
+            Whether you need marketing, AI automation, or digital development, our team is ready to help.
+        </p>
+    </div>
+
+    <!-- CONTACT GRID -->
+    <div class="spotlight-card group mx-4 sm:mx-6 max-w-6xl xl:ml-auto xl:mr-auto rounded-[32px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative mb-12" style="--mouse-x: 288px; --mouse-y: 436.5px;">
+        <div class="spotlight-inner rounded-[32px] overflow-hidden shadow-2xl bg-[#0f0f0f]">
+            <div class="grid lg:grid-cols-2">
+                
+                <!-- LEFT SIDE: Direct Contact -->
+                <div class="lg:p-12 lg:border-b-0 lg:border-r flex flex-col overflow-hidden border-white/5 border-b pt-8 pr-8 pb-8 pl-8 relative justify-between">
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-bold text-white mb-4 font-geist">Get in Touch</h2>
+                        <p class="text-gray-400 mb-10 font-geist leading-relaxed">
+                            Choose the most convenient way to contact AXI. We usually respond within one business day.
+                        </p>
+
+                        <div class="space-y-8">
+                            <!-- Phones -->
+                            <div class="group/item">
+                                <div class="flex items-center gap-3 text-sm text-blue-400 font-semibold uppercase tracking-wider mb-2 font-geist">
+                                    <span class="p-1.5 rounded bg-blue-500/10"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+                                    Phone / Calls
+                                </div>
+                                <div class="space-y-1 pl-1">
+                                    <a href="tel:+998950610088" class="block text-xl text-gray-200 hover:text-white transition-colors font-geist font-medium">+998 95 061 00 88</a>
+                                    <a href="tel:+998957804488" class="block text-xl text-gray-200 hover:text-white transition-colors font-geist font-medium">+998 95 780 44 88</a>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="group/item">
+                                <div class="flex items-center gap-3 text-sm text-blue-400 font-semibold uppercase tracking-wider mb-2 font-geist">
+                                     <span class="p-1.5 rounded bg-blue-500/10"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></span>
+                                    Email
+                                </div>
+                                <a href="mailto:axi.enterprise.official@gmail.com" class="block text-lg text-gray-200 hover:text-white transition-colors font-geist break-all pl-1">axi.enterprise.official@gmail.com</a>
+                            </div>
+                            
+                            <!-- Instant Messaging -->
+                            <div class="pt-4">
+                                <div class="flex gap-4">
+                                    <a href="https://t.me/axi_agency" target="_blank" class="flex-1 flex items-center justify-center gap-3 hover:border-[#229ED9]/50 hover:bg-[#229ED9]/10 hover:text-[#229ED9] transition-all duration-300 group text-gray-300 bg-[#181818] border-white/10 border rounded-2xl pt-4 pr-6 pb-4 pl-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform w-[24px] h-[24px]" stroke-width="2" data-icon-replaced="true" style="width: 24px; height: 24px; color: rgb(34, 158, 217);"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12a12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472c-.18 1.898-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.065-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.48.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.245-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635z" class=""></path></svg>
+                                        <span class="font-medium font-geist">Telegram</span>
+                                    </a><a href="https://wa.me/message/VIG2VPAB2P2IK1" target="_blank" class="flex-1 flex items-center justify-center gap-3 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 hover:text-[#25D366] transition-all duration-300 group text-gray-300 bg-[#181818] border-white/10 border rounded-2xl pt-4 pr-6 pb-4 pl-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.02zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07c0 1.22.89 2.39 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.61.19 1.16.16 1.6.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28" class=""></path></svg>
+                                        <span class="font-medium font-geist">WhatsApp</span>
+                                    </a>
+                                    
+                                </div>
+                                <p class="text-xs text-gray-500 mt-4 text-center font-geist">
+                                    Available for quick questions, consultations, and project discussions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decor background -->
+                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+                </div>
+
+                <!-- RIGHT SIDE: Contact Form -->
+                <div class="p-8 lg:p-12 relative">
+                    <h3 class="text-xl font-bold text-white mb-8 font-geist flex items-center gap-2">
+                        Start a Conversation
+                        <span class="h-px flex-1 bg-white/10 ml-4"></span>
+                    </h3>
+                    
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="input-group">
+                                <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist">Full Name</label>
+                                <input type="text" id="name" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all placeholder-gray-600 font-geist" placeholder="John Doe">
+                            </div>
+                            <div class="input-group">
+                                <label for="company" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist">Company (Optional)</label>
+                                <input type="text" id="company" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all placeholder-gray-600 font-geist" placeholder="Company Ltd.">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                             <div class="input-group">
+                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist">Email Address</label>
+                                <input type="email" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="john@example.com" id="email">
+                            </div>
+                            <div class="input-group">
+                                <label for="phone" class="block uppercase transition-colors text-xs font-bold text-gray-500 tracking-wider font-geist mb-2">Phone / Telegram / WhatsApp</label>
+                                <input type="tel" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="+1 (555) 000-0000" id="phone">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="service" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist">Service of Interest</label>
+                            <div class="relative">
+                                <select id="service" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all appearance-none cursor-pointer font-geist">
+                                    <option value="" disabled="" selected="">Select a service...</option>
+                                    <option value="smm">SMM &amp; Marketing</option>
+                                    <option value="ai">AI Automations</option>
+                                    <option value="video">Video Production</option>
+                                    <option value="web">Web &amp; App Development</option>
+                                    <option value="other">Other / General Inquiry</option>
+                                </select>
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist">Message</label>
+                            <textarea id="message" rows="4" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all placeholder-gray-600 font-geist resize-none" placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full group relative overflow-hidden rounded-xl bg-blue-600 py-4 font-bold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:bg-blue-500 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]">
+                            <div class="relative z-10 flex items-center justify-center gap-2 font-geist">
+                                <span>Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </div>
+                            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-blue-600 to-sky-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                        </button>
+                        
+                        <p class="text-center text-xs text-gray-600 font-geist">
+                            We’ll review your request and contact you shortly.
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK CTA STRIP -->
+    <div class="max-w-4xl mx-auto px-6 mb-16">
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-sm">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="">
+                    <h4 class="text-white font-bold font-geist">Prefer instant communication?</h4>
+                    <p class="text-sm text-gray-500 font-geist">Connect with us directly right now.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <a href="https://wa.me/message/VIG2VPAB2P2IK1" class="flex-1 md:flex-none hover:bg-[#25D366]/20 transition-colors text-sm font-semibold text-[#25D366] font-geist text-center bg-[#25D366]/10 rounded-lg pt-2 pr-4 pb-2 pl-4">WhatsApp</a>
+                <a href="https://t.me/axi_agency" class="flex-1 md:flex-none text-center py-2 px-4 rounded-lg bg-[#229ED9]/10 text-[#229ED9] text-sm font-semibold hover:bg-[#229ED9]/20 transition-colors font-geist">Telegram</a>
+                <a href="tel:+998950610088" class="flex-1 md:flex-none hover:bg-white/10 hover:text-white transition-colors text-sm font-semibold text-gray-300 font-geist text-center bg-white/5 rounded-lg pt-2 pr-4 pb-2 pl-4">Call Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRUST NOTE -->
+    <div class="text-center pb-20">
+        <div class="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-white/5 bg-white/[0.02]">
+            <div class="flex -space-x-3">
+                <div class="border-[#111] flex text-[10px] font-bold text-white bg-gray-700 w-8 h-8 border-2 rounded-full items-center justify-center">A</div>
+                <div class="w-8 h-8 rounded-full border-2 border-[#111] bg-gray-600 flex items-center justify-center text-[10px] text-white font-bold">X</div>
+                <div class="border-[#111] flex text-[10px] font-bold text-white bg-gray-500 w-8 h-8 border-2 rounded-full items-center justify-center">I</div>
+            </div>
+            <div class="text-sm text-gray-400 font-geist">
+                Trusted by <span class="text-white font-semibold">40+ companies</span> across multiple industries.
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                 <span class="text-lg font-bold tracking-tight text-white font-geist">AXI</span>
+                 <p class="text-xs text-gray-600 font-geist ml-4">
+                    © 2024 AXI Agency. All rights reserved.
+                </p>
+            </div>
+           
+            <div class="flex gap-6">
+                 <a href="https://www.instagram.com/axiagency/" class="hover:text-white text-xs text-blue-500 transition-colors font-geist">Instagram</a>
+                 <a href="https://t.me/axiagency" class="hover:text-white text-xs text-blue-500 transition-colors font-geist">Telegram</a>
+                 <a href="https://wa.me/message/VIG2VPAB2P2IK1" class="hover:text-white transition-colors text-xs text-blue-500 font-geist">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', e => {
+            const cards = document.querySelectorAll('.spotlight-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+</body></html>

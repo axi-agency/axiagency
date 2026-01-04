@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXI - Marketing &amp; AI Automation Agency</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.glass-nav {
+background: rgba(15, 15, 15, 0.8);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Ticker Animation */
+@keyframes ticker {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.ticker-track {
+display: flex;
+width: max-content;
+animation: ticker 40s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+/* Spotlight Effect Logic */
+.spotlight-card {
+--mouse-x: 0px;
+--mouse-y: 0px;
+position: relative;
+/* Increased opacity for the border wrapper to be more visible */
+background: rgba(255, 255, 255, 0.1);
+}
+.spotlight-card::before {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.15), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 0;
+pointer-events: none;
+}
+.spotlight-card:hover::before { opacity: 1; }
+.spotlight-inner {
+position: relative;
+/* Made card background lighter (#0f0f0f) to separate from body (#050505) */
+background: #0f0f0f;
+border-radius: inherit;
+z-index: 1;
+height: 100%;
+width: 100%;
+/* Added a subtle inner border for definition */
+border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.spotlight-inner::after {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.05), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 2;
+pointer-events: none;
+}
+.spotlight-card:hover .spotlight-inner::after { opacity: 1; }
+::-webkit-scrollbar { width: 0px; background: transparent; }
+/* Custom Pulse for Blue Lines */
+@keyframes blue-pulse {
+0%, 100% { opacity: 0.5; }
+50% { opacity: 1; box-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+}
+</style>
+<meta name="disabled-font-classes" content="font-roboto">
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><style id="border-gradient-shared-style">
+[style*="--border-gradient"]::before {
+content: "";
+position: absolute;
+inset: 0;
+padding: 1px;
+border-radius: var(--border-radius-before, inherit);
+-webkit-mask: linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+background: var(--border-gradient);
+pointer-events: none;
+}</style></head>
+<body class="antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200 text-white bg-[#020202] pb-10 relative">
+
+
+
+
+
+
+
+<!-- Background (component) added by Aura -->
+<div class="aura-background-component fixed top-0 w-full h-screen -z-10" data-alpha-mask="80" style="; mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)"><div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+  <div data-us-project="NMlvqnkICwYYJ6lYb064" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+  <script type="text/javascript">
+    !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+  </script>
+</div></div>
+
+    <!-- Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-sky-900/10 blur-[120px]"></div>
+    </div>
+
+    <!-- Vertical Lines Container -->
+    <div class="fixed inset-0 z-0 pointer-events-none flex justify-center w-full max-w-7xl mx-auto px-6">
+        <div class="w-full h-full border-x border-dashed border-white/5 flex justify-center relative">
+            <div class="h-full w-px bg-dashed bg-white/5 absolute left-1/4"></div>
+            <div class="h-full w-px bg-white/5"></div>
+            <div class="h-full w-px bg-dashed bg-white/5 absolute right-1/4"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed top-6 left-0 right-0 flex justify-center z-50 px-4 pointer-events-none">
+        <nav class="glass-nav flex w-full max-w-5xl pointer-events-auto rounded-full pt-3 pr-3 pb-3 pl-6 shadow-2xl items-center justify-between">
+            <div class="flex gap-2 gap-x-2 gap-y-2 items-center">
+                
+                <span class="text-xl font-bold text-white tracking-tight font-geist mr-1 ml-1" onclick="window.location.href='index.html'" role="button">AXI AGENCY</span>
+            </div>
+
+            <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-400 gap-x-8 gap-y-8 items-center">
+                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist">Home</a><a href="services.html" class="transition-colors hover:text-blue-400 text-white font-geist">Services</a>
+                <a href="cases.html" class="transition-colors hover:text-blue-400 text-white font-geist">Case Studies</a>
+                
+                <a href="contact-us.html" class="transition-colors hover:text-blue-400 text-white font-geist">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button class="hover:bg-white/10 transition-all text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]" onclick="window.location.href='contact-us.html'" role="button">
+                    Book a Call
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="spotlight-card group mx-4 sm:mx-6 lg:mt-32 xl:ml-auto xl:mr-auto max-w-7xl z-10 rounded-[40px] mt-32 pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 808px; --mouse-y: 4267.5px;">
+        <div class="spotlight-inner overflow-hidden flex flex-col min-h-[600px] z-10 rounded-[40px] justify-center shadow-2xl">
+            
+            <div class="absolute inset-0 z-0 pointer-events-none opacity-30" style="background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+            <main class="z-10 container lg:px-12 grid lg:grid-cols-2 gap-16 mr-auto ml-auto pt-20 pr-6 pb-20 pl-6 relative gap-x-16 gap-y-16 items-center">
+                
+                <div class="max-w-2xl relative">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 font-geist">
+                        <span class="relative flex h-2 w-2 mr-1">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        Marketing &amp; AI Agency
+                    </div>
+                    <h1 class="lg:text-7xl leading-[1.05] text-5xl mb-8 tracking-tighter text-white font-geist">
+                        Scale with 
+                        <span class="text-gray-500 font-geist">Intelligent</span> Marketing &amp; 
+                        <span class="bg-gradient-to-r from-blue-400 to-sky-600 bg-clip-text text-transparent font-geist">AI Automation</span>
+                    </h1>
+                    
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg font-light font-geist">
+                        We combine creativity with intelligent automation to streamline operations, improve communication, and drive measurable growth.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 gap-x-4 gap-y-4 cursor-pointer" onclick="window.location.href='services.html'" role="button">
+                        <button class="group flex overflow-hidden uppercase transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.5)] focus:outline-none text-sm font-bold text-white tracking-widest font-geist rounded-full py-4 px-10 relative items-center justify-center">
+                            <div class="absolute inset-0 -z-20 rounded-full overflow-hidden p-[1px]">
+                                <div class="absolute top-[-100%] right-[-100%] bottom-[-100%] left-[-100%]" style="animation: spin 3s linear infinite"></div>
+                                <div class="overflow-hidden shiny-border-effect rounded-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer" onclick="window.location.href='contact-us.html'" role="button">
+  <style>
+    @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+    @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+    @property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+    @property --gradient-shine { syntax: "<color>"; initial-value: #38bdf8; inherits: false; }
+
+    .shiny-border-effect {
+      --gradient-angle: 0deg;
+      --gradient-angle-offset: 0deg;
+      --gradient-percent: 20%;
+      --gradient-shine: #38bdf8; /* Sky-400 */
+      
+      /* Background matches theme #151515, Border uses brand blues */
+      background: 
+        linear-gradient(#151515, #151515) padding-box, 
+        conic-gradient(
+          from calc(var(--gradient-angle) - var(--gradient-angle-offset)), 
+          transparent 0%, 
+          #2563eb 5%, 
+          var(--gradient-shine) 15%, 
+          #2563eb 30%, 
+          transparent 40%, 
+          transparent 100%
+        ) border-box;
+      
+      border: 1px solid transparent;
+      box-shadow: 0 0 20px rgba(14,165,233,0.4);
+      animation: border-spin 3s linear infinite;
+    }
+
+    /* Subtle texture pattern */
+    .shiny-border-effect::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 1px, transparent 0);
+      background-size: 8px 8px;
+      mask-image: radial-gradient(circle, black 40%, transparent 80%);
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Inner rotating shimmer */
+    .shiny-border-effect::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%; aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, #2563eb, transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 30%, black);
+      opacity: 0.3;
+      animation: shimmer-spin 5s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes border-spin {
+      to { --gradient-angle: 360deg; }
+    }
+
+    @keyframes shimmer-spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+</div>
+                            </div>
+                            <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+                            <span class="relative z-10 text-white/90 transition-colors group-hover:text-white font-geist">Get Started</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7" class=""></path></svg>
+                        </button>
+
+                        <button class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 font-geist font-medium text-white transition-all duration-300 hover:bg-blue-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] focus:outline-none" type="button" aria-label="View Services">
+    <span class="font-geist z-10 mr-2 relative">View Services</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="transition-transform duration-300 group-hover:translate-x-1"><path fill="currentColor" d="M16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"></path></svg>
+</button>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center gap-4">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-[#151515] bg-gray-800 flex items-center justify-center text-xs">A</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#151515] bg-gray-700 flex items-center justify-center text-xs">X</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#151515] bg-gray-600 flex items-center justify-center text-xs">I</div>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            <p class="text-white font-medium font-geist">Trusted by 40+ Companies</p>
+                            <div class="flex items-center gap-1 text-blue-500">
+                                <span class="text-xs">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abstract Visual Right -->
+                <div class="relative w-full flex items-center justify-center lg:justify-end">
+                   <div class="relative w-full max-w-[400px] aspect-square rounded-full border border-blue-500/20 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-blue-500/5 rounded-full blur-3xl"></div>
+                        <div class="w-[70%] h-[70%] rounded-full border border-blue-400/30 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]">
+                            <div class="w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-blue-600 to-sky-400 opacity-20 blur-xl"></div>
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/80">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" class=""><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2m0 18a8 8 0 1 1 8-8a8.009 8.009 0 0 1-8 8" class=""></path><path fill="currentColor" d="M12 6a6 6 0 1 0 6 6a6.007 6.007 0 0 0-6-6m0 10a4 4 0 1 1 4-4a4.005 4.005 0 0 1-4 4" class=""></path></svg>
+                        </div>
+                   </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- STATS SECTION (Replacing "What you will master") -->
+    <div class="spotlight-card group mx-4 sm:mx-6 xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] mt-4 pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 808px; --mouse-y: 3172.453125px;">
+        <div class="spotlight-inner sm:p-12 flex flex-col rounded-[40px] pt-12 pb-12 shadow-2xl items-center justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                
+                <div class="flex flex-col items-center gap-2 p-4">
+                    <span class="text-5xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 font-geist count-up" data-target="40">1</span>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Projects Delivered</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-4">
+                    <span class="text-5xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 font-geist count-up" data-target="3">1</span>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Years Operating</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-4">
+                    <div class="flex items-baseline justify-center">
+                        <span class="text-5xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 font-geist">$</span>
+                        <span class="md:text-6xl bg-clip-text count-up text-5xl font-bold text-transparent tracking-tighter font-geist bg-gradient-to-b from-white to-gray-500" data-target="500">4</span>
+                        <span class="text-4xl font-bold text-gray-500 font-geist">k+</span>
+                    </div>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Revenue Generated</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <div class="sm:mx-6 spotlight-card group xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] mt-4 pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 808px; --mouse-y: 2916.453125px;">
+        <div class="spotlight-inner p-8 sm:p-16 rounded-[40px] shadow-2xl">
+            <div class="mb-12 text-center sm:text-left">
+                <h2 class="text-3xl sm:text-5xl tracking-tighter text-white mb-4 font-geist">What we do best</h2>
+                <p class="text-gray-400 text-lg font-light font-geist max-w-xl">Comprehensive digital solutions driven by data and AI.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- SMM Card -->
+                <div class="group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.15)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="" data-lucide="badge-check" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10m4.685 4.093c.123.116.128.307.012.43a3.502 3.502 0 0 1-4.756-.05a.304.304 0 0 0-.442 0a.304.304 0 0 0 0 .438a4.11 4.11 0 0 0 5.617.062c.115-.123.11-.314-.012-.437a.305.305 0 0 0-.42-.043"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4 font-geist">SMM / Marketing</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Content Strategy</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Community Management</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Analytics &amp; Reporting</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Paid Social Campaigns</li>
+                    </ul>
+                </div>
+
+                <!-- AI Automation Card -->
+                <div class="group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 hover:border-sky-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(14,165,233,0.15)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" class="w-[64px] h-[64px]" stroke-width="2" data-icon-replaced="true" style="width: 64px; height: 64px; color: rgb(255, 255, 255)"><path fill="currentColor" d="M12 2a10 10 0 0 0-7.75 16.33l-1.63 2.05a1 1 0 0 0 .78 1.62h17.18a1 1 0 0 0 .78-1.62l-1.63-2.05A10 10 0 0 0 12 2m-2 7a2 2 0 1 1 2 2a2 2 0 0 1-2-2m4 0a2 2 0 1 1 2 2a2 2 0 0 1-2-2m-2 9a6 6 0 0 1-4.9-2.61a.89.89 0 0 1 1.48-1.07a4.2 4.2 0 0 0 6.84 0a.89.89 0 0 1 1.48 1.07A6 6 0 0 1 12 18" class=""></path></svg>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18A2.5 2.5 0 0 0 10 15.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4 font-geist">AI Automations</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-2"></span>AI Sales Managers (Chat)</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-2"></span>AI Call Center (Voice)</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-2"></span>AI Chatbots</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-2"></span>Automation Workflows</li>
+                    </ul>
+                </div>
+
+                <!-- Video Production Card -->
+                <div class="group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 hover:border-indigo-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(99,102,241,0.15)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" class=""><path fill="currentColor" d="M18 7c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-3.333L22 17V7l-4 3.333z" class=""></path></svg>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 16.5l6-4.5l-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4 font-geist">Video Production</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>Reels &amp; Shorts</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>Performance Ads</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>Brand Films</li>
+                    </ul>
+                </div>
+
+                <!-- Web Dev Card -->
+                <div class="group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 hover:border-teal-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(20,184,166,0.15)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2h8v16H8zm4 17a1 1 0 1 1 0-2a1 1 0 0 1 0 2"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4 font-geist">Web &amp; App Development</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span>Modern Websites</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span>Mobile Apps</li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span>UX/UI Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTOMATION FLOW SECTION -->
+    <div class="sm:mx-6 spotlight-card group xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] mt-4 pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 808px; --mouse-y: 2060.453125px;">
+        <div class="spotlight-inner sm:p-12 lg:p-16 overflow-hidden rounded-[40px] pt-8 pr-8 pb-8 pl-8 relative shadow-2xl">
+            
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
+
+            <div class="grid lg:grid-cols-2 lg:gap-24 z-10 relative gap-x-12 gap-y-12 items-center">
+                
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter text-white mb-6 leading-[1.1] font-geist">
+                        Automate Your Business, 
+                        <span class="text-gray-500 font-geist">One Workflow at a Time</span>
+                    </h2>
+                    
+                    <p class="text-gray-400 text-lg sm:text-xl font-light mb-8 leading-relaxed font-geist">
+                        Connect chats, calls, forms, and customer interactions into one seamless automated system. Our AI handles repetitive tasks, routes inquiries, qualifiers leads, and syncs everything into your CRM.
+                    </p>
+
+                    <div class="p-4 rounded-xl bg-blue-900/10 border border-blue-500/10 mb-8">
+                         <p class="text-blue-200 text-sm font-medium font-geist">
+                            From sales to support, every interaction becomes structured, trackable, and ready for action.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 relative w-full flex flex-col items-center select-none pointer-events-none">
+                    
+                    <div class="relative z-10 flex justify-between w-full max-w-[400px] mb-8 gap-2">
+                        <!-- Chat Icon -->
+                        <div class="w-12 h-12 rounded-xl bg-[#222] border border-white/10 flex items-center justify-center text-gray-500 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.025l-.875 3.389a1 1 0 0 0 1.226 1.225l3.585-.92A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2m0 16a1 1 0 1 1 0-2a1 1 0 0 1 0 2m1.25-5.385A2.75 2.75 0 0 1 12 15a.75.75 0 0 1 0-1.5a1.25 1.25 0 0 0 1.136-1.796a.75.75 0 0 1 1.054-.93a2.75 2.75 0 0 1-.94 1.841"></path></svg>
+                        </div>
+                        <!-- Phone Icon (Active) -->
+                        <div class="w-12 h-12 rounded-xl bg-[#222] border border-blue-500/50 flex items-center justify-center text-white shadow-[0_0_20px_rgba(56,189,248,0.2)] scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.95 21q-3.125 0-6.175-1.362t-5.55-3.863t-3.862-5.55T3 4.05q0-.45.3-.75t.75-.3h3.2q.4 0 .7.25t.35.65l.7 3.3q.05.3-.05.6t-.35.5L6.05 9.8q1.425 2.475 3.2 4.25t4.25 3.2l1.5-1.85q.2-.25.5-.35t.6-.05l3.3.7q.4.05.65.35t.25.7v3.2q0 .45-.3.75t-.75.3"></path></svg>
+                        </div>
+                        <!-- Form Icon -->
+                        <div class="w-12 h-12 rounded-xl bg-[#222] border border-white/10 flex items-center justify-center text-gray-500 shadow-lg">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2zm0 0H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2zm6 11h6v-2h-6zm0-4h6v-2h-6z"></path></svg>
+                        </div>
+                         <!-- Ads Icon -->
+                         <div class="w-12 h-12 rounded-xl bg-[#222] border border-white/10 flex items-center justify-center text-gray-500 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.2 9.8L12.9 2.5a3.63 3.63 0 0 0-5.8 2.7v.5L3.3 9.5a2.59 2.59 0 0 0-.6 3.6l1.3 1.9c.7.9 2 1.1 3 .6l.1-.1l.5.4V16a2.6 2.6 0 0 0 2.6 2.6h2.2l-3.3 2.2a1 1 0 0 0 1.1 1.7l5.3-3.6h.4a3.6 3.6 0 0 0 3.6-3.6v-3.7l1.7-1.7a.48.48 0 0 0 0-.8M11.6 4.7l4.5 4l-4.5 4Z"></path></svg>
+                       </div>
+                    </div>
+
+                    <!-- Flow Diagram -->
+                    <div class="relative w-full max-w-[400px] flex flex-col items-center">
+                        <div class="absolute inset-0 z-0 pointer-events-none">
+                            <svg class="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M155 0 V40 C155 60 200 60 200 80 V100" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4 4" class="opacity-30"></path>
+                                <path d="M155 0 V40 C155 60 200 60 200 80 V100" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="10 100" class="animate-[dash_2s_linear_infinite]" style="filter: drop-shadow(0 0 2px #0ea5e9);"></path>
+                                <path d="M200 180 V220" stroke="#0ea5e9" stroke-opacity="0.3" stroke-width="2"></path>
+                                <style>@keyframes dash { to { stroke-dashoffset: -110; } }</style>
+                            </svg>
+                        </div>
+
+                        <!-- Trigger Node -->
+                        <div class="relative z-10 mt-[80px] w-72 bg-[#1E1E1E] rounded-2xl p-4 border border-blue-500/50 shadow-[0_0_30px_-10px_rgba(14,165,233,0.3)]">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-blue-500 flex items-center justify-center text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-white uppercase tracking-wider font-geist">Trigger</div>
+                                        <div class="text-sm text-gray-300 font-geist">New Interaction Detected</div>
+                                    </div>
+                                </div>
+                                <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)] animate-pulse"></div>
+                            </div>
+                            
+                            <div class="bg-[#111] rounded-lg p-3 font-mono text-[11px] text-gray-400 leading-relaxed border border-white/5 relative">
+                                <p class="font-geist">type: <span class="text-green-400">"call_received"</span></p>
+                                <p class="font-geist">status: <span class="text-blue-400">"AI answered"</span></p>
+                                <p class="font-geist">confidence: <span class="text-purple-400">92%</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Connection -->
+                        <div class="w-1 h-8 bg-gradient-to-b from-blue-500/50 to-white/10 w-px my-0"></div>
+
+                        <!-- Action Node -->
+                        <div class="relative z-10 w-72 bg-[#1E1E1E] rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded bg-[#2a2a2a] border border-white/10 flex items-center justify-center text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M2.01 21L23 12L2.01 3L2 10l15 2l-15 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider font-geist">Action</div>
+                                    <div class="text-sm text-gray-200 font-geist">Send to CRM</div>
+                                </div>
+                                <div class="ml-auto opacity-50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="bg-[#111] rounded-lg p-3 font-mono text-[11px] text-gray-400 leading-relaxed border border-white/5 relative">
+                                <p class="font-geist">name: <span class="text-white">"Jasur"</span></p>
+                                <p class="font-geist">service: <span class="text-white">"AI Call Center"</span></p>
+                                <p class="font-geist">status: <span class="text-green-400">"Qualified"</span></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US SECTION -->
+    <div class="spotlight-card group mx-4 sm:mx-6 xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] mt-4 pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 808px; --mouse-y: 1075.203125px;">
+        <div class="spotlight-inner sm:p-20 flex flex-col text-center pt-10 pr-10 pb-10 pl-10 shadow-2xl items-center">
+            <span class="text-blue-500 font-medium tracking-widest text-sm uppercase mb-6 font-geist">Who We Are</span>
+            <h2 class="text-3xl sm:text-4xl text-white font-medium mb-8 max-w-3xl font-geist leading-tight">
+                AXI is a marketing and AI automation agency focused on helping companies scale through smarter systems.
+            </h2>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-2xl font-light font-geist">
+                We combine creativity with intelligent automation to streamline operations, improve communication, and drive measurable growth. Our approach is simple: build systems that save time, increase revenue, and operate reliably in the background while businesses focus on what matters.
+            </p>
+        </div>
+    </div>
+
+    <!-- CASE STUDIES TICKER -->
+    <div class="border-y border-white/5 bg-[#050505] mt-20 mb-20">
+         <div class="overflow-hidden w-full pt-10 pb-10 relative shiny-ticker-border" style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+    <style>
+        @property --ticker-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        .shiny-ticker-border {
+            --ticker-angle: 0deg;
+            background: linear-gradient(#050505, #050505) padding-box, conic-gradient(from var(--ticker-angle), transparent 0%, #2563eb 5%, #38bdf8 15%, #2563eb 30%, transparent 40%, transparent 100%) border-box;
+            border: 1px solid transparent;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+            animation: ticker-spin 6s linear infinite;
+        }
+        @keyframes ticker-spin {
+            to {
+                --ticker-angle: 360deg;
+            }
+        }
+    </style>
+    <div class="ticker-track flex gap-16 items-center">
+        <div class="flex gap-16 shrink-0 items-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 text-xl font-semibold tracking-tight font-geist text-white">
+            <span class="flex items-center gap-2"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z"></path></svg> URBAN TRAVEL</span>
+            <span class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='cases.html'" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="" data-lucide="beef" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><circle cx="12.5" cy="8.5" r="2.5"></circle><path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z"></path><path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"></path></svg> BUTCHER UZ</span>
+            <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="" data-lucide="glass-water" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><path d="M5.116 4.104A1 1 0 0 1 6.11 3h11.78a1 1 0 0 1 .994 1.105L17.19 20.21A2 2 0 0 1 15.2 22H8.8a2 2 0 0 1-2-1.79z"></path><path d="M6 12a5 5 0 0 1 6 0 5 5 0 0 0 6 0"></path></svg> OQ TOSH</span>
+            <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="" data-lucide="briefcase-medical" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><path d="M12 11v4"></path><path d="M14 13h-4"></path><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path><path d="M18 6v14"></path><path d="M6 6v14"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg> WORLD ONLINE CLINIC</span>
+            <span class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='cases.html'" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[24px] h-[24px]" data-lucide="beef" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 24px; height: 24px;"><circle cx="12.5" cy="8.5" r="2.5"></circle><path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z"></path><path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"></path></svg> LA HIM </span>
+        </div>
+        <div class="flex gap-16 shrink-0 items-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 text-xl font-semibold tracking-tight font-geist text-white">
+            <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="" data-lucide="plane" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg> URBAN TRAVEL</span>
+            <span class="flex items-center gap-2"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"></circle></svg> BUTCHER UZ</span>
+            <span class="flex items-center gap-2"><svg width="24" height="24" viewBox="0 0 24 24" class=""><rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" class=""></rect></svg> OQ TOSH</span>
+            <span class="flex items-center gap-2"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"></path></svg> WORLD CLINIC</span>
+            <span class="flex items-center gap-2"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5H5z"></path></svg> GOOD GRADE</span>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <!-- CASE STUDY CARDS -->
+    <div class="max-w-7xl mr-auto mb-20 ml-auto pr-6 pl-6">
+        <h2 class="text-3xl font-bold text-white mb-8 font-geist">Recent Wins</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="hover:border-blue-500/20 transition-all duration-300 group hover:-translate-y-1 bg-[#121212] border-white/10 border rounded-3xl pt-8 pr-8 pb-8 pl-8" onclick="window.location.href='cases.html'" role="button">
+                <h3 class="text-xl font-bold text-white font-geist mb-2">Dynamic Group</h3>
+                <p class="text-sm text-blue-400 font-geist mb-4">Brand Awareness &amp; Positioning</p>
+                <p class="leading-relaxed text-sm text-gray-400 font-geist">Built a structured social media presence, increased brand visibility, and reached over 500,000 people while growing the audience by more than <span class="font-medium text-white">3,000 followers</span> in the first month.</p>
+            </div>
+
+            <div class="hover:border-blue-500/20 transition-all duration-300 group hover:-translate-y-1 bg-[#121212] border-white/10 border rounded-3xl pt-8 pr-8 pb-8 pl-8" onclick="window.location.href='cases.html'" role="button">
+                <h3 class="text-xl font-bold text-white mb-2 font-geist">Butcher Uz</h3>
+                <p class="text-sm text-blue-400 font-geist mb-4">Revenue Scale</p>
+                <p class="text-gray-400 text-sm leading-relaxed font-geist">
+                    Through SMM strategy and content, generated over <span class="text-white font-medium">$100,000 in revenue</span> and helped sell more than 1,000 steaks.
+                </p>
+            </div>
+
+            <div class="hover:border-blue-500/20 transition-all duration-300 group hover:-translate-y-1 cursor-pointer bg-[#121212] border-white/10 border rounded-3xl pt-8 pr-8 pb-8 pl-8" onclick="window.location.href='cases.html'" role="button">
+                <h3 class="text-xl font-bold text-white mb-2 font-geist">Oq Tosh Minerale</h3>
+                <p class="text-blue-400 text-sm mb-4 font-geist">Brand Activation</p>
+                <p class="text-gray-400 text-sm leading-relaxed font-geist">
+                    Achieved 2,000+ subscribers and over <span class="text-white font-medium">500,000 reach</span> in the first month of SMM launch.
+                </p>
+            </div>
+
+             <div class="hover:border-blue-500/20 transition-all duration-300 group hover:-translate-y-1 cursor-pointer bg-[#121212] border-white/10 border rounded-3xl pt-8 pr-8 pb-8 pl-8" onclick="window.location.href='cases.html'" role="button">
+                <h3 class="text-xl font-bold text-white font-geist mb-2">Lahim by HMA</h3>
+                <p class="text-sm text-blue-400 font-geist mb-4">Brand Awareness &amp; Revenue Growth</p>
+                <p class="leading-relaxed text-sm text-gray-400 font-geist">Achieved over 1,000,000 organic views, grew the audience by 2,000+ followers, and generated over $200,000 in sales through social media within two months.</p>
+            </div>
+
+            <div class="md:col-span-2 hover:border-blue-500/20 transition-all duration-300 group hover:-translate-y-1 flex flex-col bg-[#121212] border-white/10 border rounded-3xl pt-8 pr-8 pb-8 pl-8 justify-center" onclick="window.location.href='cases.html'" role="button">
+                <h3 class="text-xl font-bold text-white font-geist mb-23">World Online Clinic</h3>
+                <p class="text-sm text-blue-400 font-geist mb-4">Market Entry &amp; Revenue Growth</p>
+                <p class="leading-relaxed text-sm text-gray-400 font-geist">Helped establish the clinic’s presence in Uzbekistan and neighboring countries, structured their sales process, and supported scaling to over $200,000 in sales through social media and operational improvements.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="max-w-7xl mx-auto px-6 mb-32">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center font-geist">What Partners Say</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Review 1 -->
+            <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg></div>
+                <p class="text-gray-300 font-geist mb-4">What impressed us the most was their honesty and responsibility. Everything was done on time and exactly as promised. Guys from AXI were always clear, transparent, and took full responsibility for their work. It felt like working with people you can actually trust, not just a service provider.</p>
+                <p class="uppercase text-xs font-bold text-gray-500 font-geist" style="">CEO, Urban Travel</p>
+            </div>
+             <!-- Review 2 -->
+             <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg></div>
+                <p class="text-gray-300 font-geist mb-4">What we liked most was the responsibility. No delays, no excuses. If something was agreed, it was done properly. By the help of their proper growth strategies we were able to sell over a 1,000 steaks within a year of our cooperation.</p>
+                <p class="uppercase text-xs font-bold text-gray-500 font-geist"> Director, Butcher Uz</p>
+            </div>
+             <!-- Review 3 -->
+             <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" class=""></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg></div>
+                <p class="text-gray-300 font-geist mb-4">They handled everything calmly and professionally. It felt reliable and structured from day one.</p>
+                <p class="uppercase text-xs font-bold text-gray-500 font-geist">Project manager, La Him</p>
+            </div>
+             <!-- Review 4 -->
+             <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" class=""></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg></div>
+                <p class="text-gray-300 font-geist mb-4">Communication was simple and direct. They understood what we needed and didn’t overcomplicate the process.</p>
+                <p class="text-xs text-gray-500 font-bold uppercase font-geist">Manager, Oq Tosh</p>
+            </div>
+             <!-- Review 5 -->
+             <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" class=""></path></svg></div>
+                <p class="text-gray-300 font-geist mb-4">For us, it was important to improve how we communicate with patients online. AXI helped us not only with SMM, but also with automation that actually makes sense. The AI manager responds like a real person, works 24/7, and filters inquiries properly. As a result, the quality of leads improved noticeably, and our team spends less time on routine questions. This cooperation brought real operational value, not just visuals.</p>
+                <p class="uppercase text-xs font-bold text-gray-500 font-geist">Founder, World Online Clinic</p>
+            </div>
+             <!-- Review 6 -->
+             <div class="p-6 rounded-2xl bg-[#0F0F0F] border border-white/10 text-sm">
+                <div class="flex gap-1 text-blue-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" class=""></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold" class=""><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="solar:star-bold"><path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z"></path></svg></div>
+                <p class="text-gray-300 mb-4 font-geist">"Finally an agency that actually builds systems instead of just posting pictures."</p>
+                <p class="uppercase text-xs font-bold text-gray-500 font-geist">Partner, Tech Startups</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="spotlight-card group xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 832px; --mouse-y: -1428.296875px;">
+        <div class="spotlight-inner overflow-hidden flex flex-col rounded-[40px] relative shadow-2xl">
+
+        <div class="relative z-10 px-8 py-24 sm:py-32 flex flex-col items-center text-center max-w-4xl mx-auto">
+            <h2 class="text-4xl sm:text-6xl tracking-tighter text-white mb-8 leading-[1.05] font-geist">
+                "Automation is the new leverage."
+            </h2>
+            <button class="group/btn relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 font-geist font-medium text-white transition-all duration-300 hover:bg-blue-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)]">
+                  <span class="z-10 font-geist mr-2 relative cursor-pointer" onclick="window.location.href='contact-us.html'" role="button">Contact Us</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class=""><path fill="currentColor" d="M16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z" class=""></path></svg>
+            </button>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 bg-black/20 border-white/5 border-t mt-16 pt-8 pr-8 pb-8 pl-8 gap-x-6 gap-y-6 items-center justify-between">
+            <div class="flex items-center gap-2">
+                 <span class="text-xl font-bold tracking-tight text-white font-geist">AXI</span>
+                 <p class="text-xs text-gray-600 font-geist ml-4">
+                    © 2024 AXI Agency. All rights reserved.
+                </p>
+            </div>
+           
+            <div class="flex gap-6">
+                 <a href="https://www.instagram.com/axiagency/" class="hover:text-white text-xs text-blue-500">Instagram</a>
+                 <a href="https://t.me/axiagency" class="hover:text-white text-xs text-blue-500">Telegram</a>
+                 <a href="https://t.me/axiagency" class="hover:text-white text-xs text-blue-500">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script>
+    document.addEventListener('mousemove', e => {
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Simple Counter Animation
+    const counters = document.querySelectorAll('.count-up');
+    const options = {
+        threshold: 0.5
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = +entry.target.getAttribute('data-target');
+                const duration = 2000; 
+                const increment = target / (duration / 16); 
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        entry.target.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        entry.target.innerText = target;
+                    }
+                };
+                updateCounter();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+</script>
+
+</body></html>

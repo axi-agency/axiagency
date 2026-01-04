@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXI - Services</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.glass-nav {
+background: rgba(15, 15, 15, 0.8);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Spotlight Effect Logic */
+.spotlight-card {
+--mouse-x: 0px;
+--mouse-y: 0px;
+position: relative;
+background: rgba(255, 255, 255, 0.1);
+}
+.spotlight-card::before {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.15), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 0;
+pointer-events: none;
+}
+.spotlight-card:hover::before { opacity: 1; }
+.spotlight-inner {
+position: relative;
+background: #0f0f0f;
+border-radius: inherit;
+z-index: 1;
+height: 100%;
+width: 100%;
+border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.spotlight-inner::after {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: inherit;
+background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.05), transparent 40%);
+opacity: 0;
+transition: opacity 0.5s ease;
+z-index: 2;
+pointer-events: none;
+}
+.spotlight-card:hover .spotlight-inner::after { opacity: 1; }
+/* Scroll Animations */
+.fade-up {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+/* Custom List Styling */
+ul.steps-list { counter-reset: step-counter; }
+ul.steps-list li { position: relative; padding-left: 2rem; margin-bottom: 0.75rem; }
+ul.steps-list li::before {
+counter-increment: step-counter;
+content: counter(step-counter);
+position: absolute;
+left: 0; top: 0.1rem;
+width: 1.25rem; height: 1.25rem;
+background: rgba(56,189,248,0.1);
+color: #38bdf8;
+border: 1px solid rgba(56,189,248,0.2);
+border-radius: 50%;
+font-size: 0.7rem;
+font-weight: 600;
+display: flex; align-items: center; justify-content: center;
+}
+::-webkit-scrollbar { width: 0px; background: transparent; }
+</style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200 text-white bg-[#020202] pb-10 relative">
+
+    <!-- Background (component) added by Aura -->
+    <div class="aura-background-component fixed top-0 w-full h-screen -z-10" data-alpha-mask="80" style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)"><div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+      <div data-us-project="NMlvqnkICwYYJ6lYb064" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+      <script type="text/javascript">
+        !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+      </script>
+    </div></div>
+
+    <!-- Background Gradients -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-sky-900/10 blur-[120px]"></div>
+    </div>
+
+    <!-- Vertical Lines Container -->
+    <div class="fixed inset-0 z-0 pointer-events-none flex justify-center w-full max-w-7xl mx-auto px-6">
+        <div class="w-full h-full border-x border-dashed border-white/5 flex justify-center relative">
+            <div class="h-full w-px bg-dashed bg-white/5 absolute left-1/4"></div>
+            <div class="h-full w-px bg-white/5"></div>
+            <div class="h-full w-px bg-dashed bg-white/5 absolute right-1/4"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed top-6 left-0 right-0 flex justify-center z-50 px-4 pointer-events-none">
+        <nav class="glass-nav flex pointer-events-auto w-full max-w-5xl rounded-full pt-3 pr-3 pb-3 pl-6 shadow-2xl items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                
+                <span class="text-xl font-bold text-white tracking-tight font-geist mx-1">AXI AGENCY</span>
+            </div>
+
+            <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-400 gap-x-8 gap-y-8 items-center">
+                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist">Home</a><a href="services.html" class="transition-colors text-blue-500 font-geist">Services</a>
+                <a href="cases.html" class="transition-colors hover:text-blue-400 text-white font-geist">Case Studies</a>
+                
+                <a href="contact-us.html" class="transition-colors hover:text-blue-400 text-white font-geist">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button class="hover:bg-white/10 transition-all cursor-pointer text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]" onclick="window.location.href='contact-us.html'" role="button">
+                    Book a Call
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <div class="sm:px-6 lg:px-8 pt-40 pr-4 pb-20 pl-4 relative">
+        <div class="text-center max-w-7xl z-10 mr-auto ml-auto relative">
+            <div class="fade-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 font-geist visible">
+                <span class="relative flex h-2 w-2 mr-1">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                Our Expertise
+            </div>
+            <h1 class="fade-up delay-100 md:text-7xl text-5xl font-bold text-white tracking-tighter font-geist mb-6 visible">
+                Our Services
+            </h1>
+            <p class="fade-up delay-200 text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-8 font-geist leading-relaxed visible">
+                End-to-end marketing, automation, and digital solutions designed to scale businesses.
+            </p>
+            <p class="fade-up delay-300 text-gray-400 max-w-3xl mx-auto font-geist visible">
+                AXI provides strategic marketing, intelligent automation, and high-quality digital production. Each service is built to improve efficiency, visibility, and measurable business growth.
+            </p>
+        </div>
+    </div>
+
+    <!-- SERVICE 1: SMM & MARKETING -->
+    <div class="px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="spotlight-card group max-w-7xl mx-auto rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 944px; --mouse-y: 3128.5px;">
+            <div class="spotlight-inner overflow-hidden md:p-12 lg:p-16 rounded-[40px] pt-8 pr-8 pb-8 pl-8 shadow-2xl">
+                
+                <!-- Content Top -->
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 mb-16 items-start">
+                    <div class="fade-up">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 border border-blue-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:share-2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.59 13.51l6.83 3.98m-.01-10.98l-6.82 3.98"></path></g></svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-geist tracking-tight">SMM &amp; Marketing</h2>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed font-geist">
+                            We manage and grow social media accounts through strategy, content production, targeting, and analytics. Our approach focuses on building trust, increasing engagement, and generating consistent inbound demand.
+                        </p>
+                        
+                        <div class="bg-[#151515] rounded-2xl p-6 border border-white/5">
+                            <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 font-geist">How It Works</h3>
+                            <ul class="steps-list text-gray-400 space-y-3 font-geist text-sm">
+                                <li class="">Market and competitor analysis</li>
+                                <li class="">Content strategy and planning</li>
+                                <li class="">Content production</li>
+                                <li class="">Publishing and scheduling</li>
+                                <li class="">Community management</li>
+                                <li class="">Analytics and optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Visual Side -->
+                    <div class="relative h-full min-h-[400px] flex items-center justify-center fade-up delay-100">
+                        <div class="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full"></div>
+                        <!-- Abstract Social Grid Visual -->
+                        <div class="aspect-square w-full max-w-md relative">
+                            <div class="-translate-x-1/2 -translate-y-1/2 flex z-20 bg-[#0f0f0f]/90 backdrop-blur-xl w-32 h-32 border-blue-500/20 border rounded-2xl absolute top-1/2 left-1/2 shadow-[0_0_60px_rgba(59,130,246,0.15)] items-center justify-center overflow-visible group">
+    
+    <!-- Connecting Lines & Data Particles (extending to surrounding icons) -->
+    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 opacity-60" viewBox="-250 -250 500 500">
+        <defs>
+            <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(59,130,246,0)"></stop>
+                <stop offset="50%" stop-color="rgba(59,130,246,0.3)"></stop>
+                <stop offset="100%" stop-color="rgba(59,130,246,0.1)"></stop>
+            </linearGradient>
+            <filter id="glow-particle">
+                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"></feGaussianBlur>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"></feMergeNode>
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+            </filter>
+        </defs>
+
+        <!-- Line 1: From Top-Left (Instagram) -->
+        <path id="path-1" d="M -152 -152 L -30 -30" stroke="url(#line-grad)" stroke-width="1" fill="none" class="opacity-30"></path>
+        <circle r="1.5" fill="#60a5fa" filter="url(#glow-particle)">
+            <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                <mpath href="#path-1"></mpath>
+            </animateMotion>
+            <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"></animate>
+        </circle>
+        
+        <!-- Line 2: From Bottom-Right (Facebook) -->
+        <path id="path-2" d="M 152 112 L 30 20" stroke="url(#line-grad)" stroke-width="1" fill="none" class="opacity-30"></path>
+        <circle r="1.5" fill="#60a5fa" filter="url(#glow-particle)">
+            <animateMotion dur="5s" repeatCount="indefinite" begin="1s" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                <mpath href="#path-2"></mpath>
+            </animateMotion>
+            <animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite" begin="1s"></animate>
+        </circle>
+
+        <!-- Line 3: From Top-Right (Telegram/Send) -->
+        <path id="path-3" d="M 196 -116 L 40 -20" stroke="url(#line-grad)" stroke-width="1" fill="none" class="opacity-30"></path>
+        <circle r="1.5" fill="#38bdf8" filter="url(#glow-particle)">
+            <animateMotion dur="4.5s" repeatCount="indefinite" begin="0.5s" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                <mpath href="#path-3"></mpath>
+            </animateMotion>
+            <animate attributeName="opacity" values="0;1;0" dur="4.5s" repeatCount="indefinite" begin="0.5s"></animate>
+        </circle>
+    </svg>
+
+    <!-- Central Hub UI -->
+    <div class="relative z-10 w-full h-full flex flex-col items-center justify-center">
+        <!-- Inner decorative ring -->
+        <div class="absolute inset-1 rounded-[14px] border border-white/5"></div>
+        <div class="absolute inset-[10px] rounded-[10px] border border-blue-500/10 border-dashed animate-[spin_60s_linear_infinite]"></div>
+
+        <!-- Central Icon -->
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-600/5 flex items-center justify-center border border-blue-500/30 text-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.15)] mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>
+        </div>
+        
+        <!-- Label -->
+        <div class="flex flex-col items-center gap-0.5">
+            <span class="text-[9px] font-semibold text-blue-200 uppercase tracking-widest font-geist">Strategy</span>
+            <div class="flex items-center gap-1">
+                <div class="w-1 h-1 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-[8px] text-gray-500 font-mono">LIVE</span>
+            </div>
+        </div>
+    </div>
+</div>
+                            <!-- Floating Elements -->
+                            <div class="absolute top-10 left-10 w-16 h-16 bg-[#222] rounded-xl border border-white/10 flex items-center justify-center animate-[pulse_4s_infinite] z-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:instagram"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37m1.5-4.87h.01"></path></g></svg>
+                            </div>
+                            <div class="absolute bottom-20 right-10 w-16 h-16 bg-[#222] rounded-xl border border-white/10 flex items-center justify-center animate-[pulse_5s_infinite] z-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:facebook" class=""><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </div>
+                            <div class="absolute top-20 right-0 w-14 h-14 bg-[#222] rounded-xl border border-white/10 flex items-center justify-center animate-[pulse_3s_infinite] z-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:send"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"></path></svg>
+                            </div>
+                             <div class="absolute bottom-10 left-20 w-auto px-4 py-2 bg-[#222] rounded-full border border-white/10 flex items-center gap-2 z-10">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                <span class="text-xs text-white font-geist">Growth +124%</span>
+                            </div>
+                            <!-- Connecting Lines (SVG) -->
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+                                <path d="M120 100 L 180 180" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+                                <path d="M280 200 L 320 280" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+                                <path d="M240 180 L 300 120" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="fade-up delay-200">
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center font-geist">Pricing Plans</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Starter -->
+                        <div class="group/price p-6 rounded-3xl bg-[#121212] border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col">
+                            <div class="mb-4">
+                                <h4 class="text-xl font-bold text-white font-geist">Starter</h4>
+                                <div class="text-sm text-gray-500 font-geist mt-2">Structured presence</div>
+                            </div>
+                            <div class="text-3xl font-bold text-white mb-6 font-geist">$800 <span class="text-sm font-normal text-gray-500">/mo</span></div>
+                            <ul class="space-y-3 mb-8 flex-1">
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Market &amp; Competitor Analysis</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Content Plan &amp; Strategy</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>8 Videos + 8 Graphic Posts</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Paid Targeting Setup</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>IG, FB, Telegram Management</li>
+                            </ul>
+                            <button class="hover:bg-white/5 transition-colors cursor-pointer text-sm font-medium text-white font-geist w-full border-white/10 border rounded-xl pt-3 pb-3" onclick="window.location.href='contact-us.html'" role="button">Contact Us</button>
+                        </div>
+
+                        <!-- Growth (Highlighted) -->
+                        <div class="relative group/price p-6 rounded-3xl bg-[#151515] border border-blue-500/30 shadow-[0_0_30px_-10px_rgba(59,130,246,0.15)] transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full font-geist">Most Popular</div>
+                            <div class="mb-4 mt-2">
+                                <h4 class="text-xl font-bold text-white font-geist">Growth</h4>
+                                <div class="text-sm text-blue-400 font-geist mt-2">Scale &amp; Accelerate</div>
+                            </div>
+                            <div class="text-3xl font-bold text-white mb-6 font-geist">$1,600 <span class="text-sm font-normal text-gray-500">/mo</span></div>
+                            <ul class="space-y-3 mb-8 flex-1">
+                                <li class="flex items-start gap-3 text-sm text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check-circle-2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12l2 2l4-4"></path></g></svg>Everything in Starter</li>
+                                <li class="flex items-start gap-3 text-sm text-white font-medium"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check-circle-2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12l2 2l4-4"></path></g></svg>16 Videos + 16 Graphic Posts</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check-circle-2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12l2 2l4-4"></path></g></svg>Full Social Management</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check-circle-2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12l2 2l4-4"></path></g></svg>Stories &amp; Visual Branding</li>
+                            </ul>
+                            <button class="hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all duration-300 cursor-pointer text-sm font-medium text-white font-geist bg-blue-600 w-full rounded-xl pt-3 pb-3" onclick="window.location.href='contact-us.html'" role="button">Contact Us</button>
+                        </div>
+
+                        <!-- Custom -->
+                        <div class="group/price p-6 rounded-3xl bg-[#121212] border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col">
+                            <div class="mb-4">
+                                <h4 class="text-xl font-bold text-white font-geist">Custom</h4>
+                                <div class="text-sm text-gray-500 font-geist mt-2">Large brands &amp; complex needs</div>
+                            </div>
+                            <div class="text-3xl font-bold text-white mb-6 font-geist">Custom</div>
+                            <ul class="space-y-3 mb-8 flex-1">
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Custom Content Volume</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Multi-platform Strategy</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Advanced Analytics</li>
+                                <li class="flex items-start gap-3 text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:check"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"></path></svg>Influencer Campaigns</li>
+                            </ul>
+                            <button class="hover:bg-white/5 transition-colors text-sm font-medium text-white font-geist w-full border-white/10 border rounded-xl pt-3 pb-3 cursor-pointer" onclick="window.location.href='contact-us.html'" role="button">Get a Quote</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICE 2: AI AUTOMATIONS -->
+    <div class="px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="spotlight-card group max-w-7xl mx-auto rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 944px; --mouse-y: 1813.5px;">
+            <div class="spotlight-inner rounded-[40px] shadow-2xl overflow-hidden p-8 md:p-12 lg:p-16">
+                
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                    
+                    <!-- Content -->
+                    <div class="order-2 lg:order-1 fade-up">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 mb-6 border border-sky-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:bot"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2m16 0h2m-7-1v2m-6-2v2"></path></g></svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-geist tracking-tight">AI Automations</h2>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed font-geist">
+                            We build intelligent systems that automate communication, sales, and internal workflows. Our AI solutions operate 24/7, improve lead quality, and reduce manual workload.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-[#151515] rounded-2xl p-6 border border-white/5">
+                                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 font-geist">How It Works</h3>
+                                <ul class="steps-list text-gray-400 space-y-2 font-geist text-sm">
+                                    <li class="">Process analysis</li>
+                                    <li class="">AI conversation design</li>
+                                    <li class="">CRM integration</li>
+                                    <li class="">Testing &amp; deployment</li>
+                                    <li class="">Monitoring</li>
+                                </ul>
+                            </div>
+                            <div class="bg-[#151515] rounded-2xl p-6 border border-white/5">
+                                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 font-geist">Key Solutions</h3>
+                                <ul class="space-y-3 font-geist text-sm text-gray-400">
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>AI Sales Managers (Chat)</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>AI Call Centers (Voice)</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>Smart Chatbots</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>Workflow Automation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-white/10 pt-6">
+                            <div class="">
+                                <span class="block text-sm text-gray-500 font-geist uppercase tracking-widest mb-1">Pricing</span>
+                                <span class="text-white font-medium font-geist">Custom based on complexity</span>
+                            </div>
+                            <button class="group/btn inline-flex overflow-hidden transition-all duration-300 hover:bg-sky-600 hover:border-sky-500 hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] font-medium text-white font-geist bg-white/5 h-12 border-white/10 border rounded-full pr-8 pl-8 relative items-center justify-center" onclick="window.location.href='contact-us.html'" role="button">
+                                <span class="relative z-10">Request Consultation</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual -->
+                    <div class="order-1 lg:order-2 relative h-full min-h-[400px] flex items-center justify-center fade-up delay-100">
+                        <!-- Abstract AI Node Network -->
+                        <div class="relative w-full max-w-[400px] aspect-square flex items-center justify-center">
+                            <div class="absolute inset-0 bg-sky-500/5 rounded-full blur-3xl"></div>
+                            
+                            <!-- Central Node -->
+                            <div class="w-20 h-20 bg-[#1a1a1a] rounded-full border border-sky-500/50 flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.3)] z-20 relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:cpu"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 20v2m0-20v2m5 16v2m0-20v2M2 12h2m-2 5h2M2 7h2m16 5h2m-2 5h2M20 7h2M7 20v2M7 2v2"></path><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="8" height="8" x="8" y="8" rx="1"></rect></g></svg>
+                                <div class="absolute inset-0 border border-sky-400 rounded-full animate-ping opacity-20"></div>
+                            </div>
+
+                            <!-- Orbiting Nodes -->
+                            <div class="absolute w-[280px] h-[280px] border border-dashed border-white/10 rounded-full animate-[spin_20s_linear_infinite]">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#151515] border border-white/20 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:message-square"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+                                </div>
+                                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#151515] border border-white/20 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:phone"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"></path></svg>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute w-[180px] h-[180px] border border-dashed border-sky-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+                                <div class="absolute top-1/2 -right-3 -translate-y-1/2 w-8 h-8 bg-[#151515] border border-sky-500/30 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:zap"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICE 3: WEB, UI/UX & APP -->
+    <div class="px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="spotlight-card group max-w-7xl mx-auto rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 944px; --mouse-y: 1002.75px;">
+            <div class="spotlight-inner rounded-[40px] shadow-2xl overflow-hidden p-8 md:p-12 lg:p-16">
+                
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                    
+                    <!-- Content -->
+                    <div class="fade-up">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6 border border-indigo-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24" data-icon="lucide:code-2"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 16l4-4l-4-4M6 8l-4 4l4 4m8.5-12l-5 16"></path></svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-geist tracking-tight">Web &amp; App Development</h2>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed font-geist">
+                            We design and build modern websites and applications focused on usability, performance, and conversion.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                             <div class="bg-[#151515] rounded-2xl p-6 border border-white/5">
+                                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 font-geist">How It Works</h3>
+                                <ul class="steps-list text-gray-400 space-y-2 font-geist text-sm">
+                                    <li class="">User flow analysis</li>
+                                    <li class="">UI/UX Design</li>
+                                    <li class="">Development</li>
+                                    <li class="">Testing &amp; Launch</li>
+                                </ul>
+                            </div>
+                            <div class="bg-[#151515] rounded-2xl p-6 border border-white/5">
+                                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 font-geist">What We Build</h3>
+                                <ul class="space-y-3 font-geist text-sm text-gray-400">
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Corporate Websites</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Landing Pages</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>E-commerce</li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Mobile Apps</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                         <div class="flex flex-col sm:flex-row sm:items-center gap-6 border-white/10 border-t pt-6 gap-x-6 gap-y-6 items-start justify-between cursor-pointer" onclick="window.location.href='contact-us.html'" role="button">
+                            <div>
+                                <span class="block text-sm text-gray-500 font-geist uppercase tracking-widest mb-1">Pricing</span>
+                                <span class="text-white font-medium font-geist">Project-based</span>
+                            </div>
+                            <button class="group/btn inline-flex overflow-hidden transition-all duration-300 hover:bg-indigo-600 hover:border-indigo-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] font-medium text-white font-geist bg-white/5 h-12 border-white/10 border rounded-full pr-8 pl-8 relative items-center justify-center" onclick="window.location.href='contact-us.html'" role="button">
+                                <span class="relative z-10">Get a Quote</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual -->
+                    <div class="relative h-full min-h-[400px] flex items-center justify-center fade-up delay-100">
+                         <div class="bg-indigo-500/5 rounded-full absolute top-0 right-0 bottom-0 left-0 blur-3xl"></div>
+                        <!-- Abstract Window Frames -->
+                        <div class="relative w-full max-w-md">
+                            <!-- Background Window -->
+                            <div class="absolute top-0 right-0 w-3/4 h-48 bg-[#1a1a1a] rounded-lg border border-white/10 opacity-50 transform translate-x-4 -translate-y-4"></div>
+                            
+                            <!-- Main Window -->
+                            <div class="relative w-full bg-[#151515] rounded-xl border border-white/10 shadow-2xl overflow-hidden">
+                                <!-- Browser Bar -->
+                                <div class="h-8 border-b border-white/5 bg-[#1a1a1a] flex items-center px-4 gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                                </div>
+                                <!-- Content Area -->
+                                <div class="p-6 space-y-4">
+                                    <div class="flex gap-4">
+                                        <div class="w-1/3 h-24 bg-white/5 border border-white/10 rounded-lg flex flex-col p-2 gap-1.5">
+  <!-- Active Nav Item -->
+  <div class="flex items-center gap-2 px-2 py-1.5 bg-indigo-500/20 border border-indigo-500/20 rounded-md">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+    <div class="h-1 w-10 bg-indigo-400/40 rounded-full"></div>
+  </div>
+  <!-- Inactive Nav Item 1 -->
+  <div class="flex items-center gap-2 px-2 py-1.5 hover:bg-white/5 rounded-md transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+    <div class="h-1 w-8 bg-gray-600/30 rounded-full"></div>
+  </div>
+  <!-- Inactive Nav Item 2 -->
+  <div class="flex items-center gap-2 px-2 py-1.5 hover:bg-white/5 rounded-md transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.39a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    <div class="h-1 w-6 bg-gray-600/30 rounded-full"></div>
+  </div>
+</div>
+                                        <div class="w-2/3 space-y-3">
+                                            <div class="h-4 bg-white/10 rounded w-3/4"></div>
+                                            <div class="h-4 bg-white/5 rounded w-1/2"></div>
+                                            <div class="h-20 bg-white/5 rounded w-full mt-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 pt-4 border-t border-white/5">
+                                        <div class="w-1/2 h-4 bg-white/5 rounded"></div>
+                                        <div class="w-1/2 h-4 bg-white/5 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Mobile Floating Element -->
+                             <div class="absolute -bottom-6 -right-2 w-24 h-40 bg-[#121212] rounded-2xl border border-white/20 shadow-xl flex flex-col items-center pt-3">
+                                <div class="w-8 h-1 bg-white/20 rounded-full mb-2"></div>
+                                <div class="w-16 h-24 bg-indigo-500/10 rounded border border-indigo-500/20"></div>
+                             </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL CTA SECTION -->
+    <div class="max-w-4xl mx-auto px-6 text-center mb-32 fade-up">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 font-geist tracking-tight">Not Sure Which Service You Need?</h2>
+        <p class="text-xl text-gray-400 mb-10 font-light font-geist">Tell us about your business and we’ll recommend the right solution.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:scale-105 transition-all duration-300 cursor-pointer font-medium text-white font-geist bg-blue-600 rounded-full pt-4 pr-8 pb-4 pl-8" onclick="window.location.href='contact-us.html'" role="button">Book a Call</button>
+            <button class="hover:bg-white/10 hover:border-white/40 transition-all duration-300 font-medium text-white font-geist bg-transparent border-white/20 border rounded-full pt-4 pr-8 pb-4 pl-8" onclick="window.location.href='contact-us.html'" role="button">Contact Us</button>
+        </div>
+    </div>
+
+    <!-- FOOTER (Consistent with Home) -->
+    <div class="spotlight-card group max-w-7xl mx-auto rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative mb-10" style="--mouse-x: 976px; --mouse-y: -84.75px;">
+        <div class="spotlight-inner overflow-hidden flex flex-col rounded-[40px] relative shadow-2xl bg-black/40">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6 p-8">
+                <div class="flex items-center gap-2">
+                     <span class="text-xl font-bold tracking-tight text-white font-geist">AXI</span>
+                     <p class="text-xs text-gray-600 font-geist ml-4">
+                        © 2024 AXI Agency. All rights reserved.
+                    </p>
+                </div>
+                <div class="flex gap-6">
+                     <a href="https://www.instagram.com/axiagency/" class="hover:text-white transition-colors text-xs text-blue-500">Instagram</a>
+                     <a href="https://t.me/axiagency" class="hover:text-white transition-colors text-xs text-blue-500">Telegram</a>
+                     <a href="https://wa.me/message/VIG2VPAB2P2IK1" class="hover:text-white transition-colors text-xs text-blue-500">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Spotlight Effect
+    document.addEventListener('mousemove', e => {
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Scroll Animation Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body></html>
