@@ -75,13 +75,18 @@ opacity: 0; /* Start hidden */
                 <span class="text-xl font-bold text-white tracking-tight font-geist mx-1">AXI AGENCY</span>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-sm text-gray-400 font-medium">
-                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist">Home</a>
-                <a href="services.html" class="transition-colors hover:text-blue-400 text-white font-geist">Services</a>
-                <a href="cases.html" class="transition-colors text-blue-500 font-geist">Case Studies</a>
-                <a href="/contact" class="transition-colors hover:text-blue-400 text-white font-geist">Contact</a>
+                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_home">Home</a>
+                <a href="services.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_services">Services</a>
+                <a href="cases.html" class="transition-colors text-blue-500 font-geist" data-i18n="nav_cases" data-i18n="cases_h2">Case Studies</a>
+                <a href="/contact" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_contact">Contact</a>
             </div>
             <div class="flex items-center gap-3">
-                <button class="hover:bg-white/10 transition-all text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]">
+                <div class="flex items-center gap-0.5 bg-white/5 border border-white/10 rounded-full p-0.5 text-xs font-geist" id="lang-switcher">
+                  <button onclick="setLang('ru')" id="lang-ru" class="lang-btn px-2.5 py-1 rounded-full transition-all text-gray-400 hover:text-white">RU</button>
+                  <button onclick="setLang('uz')" id="lang-uz" class="lang-btn px-2.5 py-1 rounded-full transition-all text-gray-400 hover:text-white">UZ</button>
+                  <button onclick="setLang('en')" id="lang-en" class="lang-btn px-2.5 py-1 rounded-full transition-all text-gray-400 hover:text-white">EN</button>
+                </div>
+                <button class="hover:bg-white/10 transition-all text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]" data-i18n="nav_book">
                     Book a Call
                 </button>
             </div>
@@ -93,7 +98,7 @@ opacity: 0; /* Start hidden */
         <div class="text-center mb-20 animate-card" style="animation-delay: 0ms">
             <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6 font-geist">Case Studies</h2>
             <p class="text-xl font-light text-gray-400 font-geist max-w-2xl mr-auto ml-auto">
-                A selection of our projects across SMM, AI systems, and digital development.
+                <span data-i18n="cases_p">A selection of our projects across SMM, AI systems, and digital development.</span>
             </p>
         </div>
 
@@ -381,12 +386,12 @@ opacity: 0; /* Start hidden */
                 
                 <div class="flex flex-col pt-4 pr-4 pb-4 pl-4 gap-x-2 gap-y-2 items-center">
                     <span class="text-5xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 font-geist count-up" data-target="40">1</span>
-                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Projects Completed</span>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist"><span data-i18n="stat_projects_completed">Projects Completed</span></span>
                 </div>
 
                 <div class="flex flex-col items-center gap-2 p-4">
                     <span class="md:text-6xl bg-clip-text count-up text-5xl font-bold text-transparent tracking-tighter font-geist bg-gradient-to-b from-white to-gray-500" data-target="3">1</span>
-                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Years Operating</span>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist"><span data-i18n="stat_years">Years Operating</span></span>
                 </div>
 
                 <div class="flex flex-col items-center gap-2 p-4">
@@ -395,7 +400,7 @@ opacity: 0; /* Start hidden */
                         <span class="md:text-6xl bg-clip-text count-up text-5xl font-bold text-transparent tracking-tighter font-geist bg-gradient-to-b from-white to-gray-500" data-target="500">4</span>
                         <span class="text-4xl font-bold text-gray-500 font-geist">k+</span>
                     </div>
-                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist">Revenue Generated</span>
+                    <span class="text-sm font-medium text-blue-400 uppercase tracking-widest font-geist"><span data-i18n="stat_revenue">Revenue Generated</span></span>
                 </div>
 
             </div>
@@ -449,11 +454,11 @@ opacity: 0; /* Start hidden */
     <div class="spotlight-card group xl:ml-auto xl:mr-auto max-w-7xl rounded-[40px] pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative" style="--mouse-x: 818px; --mouse-y: -254px;">
         <div class="spotlight-inner overflow-hidden flex flex-col rounded-[40px] relative shadow-2xl">
         <div class="relative z-10 px-8 py-24 sm:py-32 flex flex-col items-center text-center max-w-4xl mx-auto">
-            <h2 class="text-4xl sm:text-6xl tracking-tighter text-white mb-8 leading-[1.05] font-geist">
+            <h2 class="text-4xl sm:text-6xl tracking-tighter text-white mb-8 leading-[1.05] font-geist" data-i18n="footer_h2">
                 "Automation is the new leverage."
             </h2>
             <button class="group/btn inline-flex overflow-hidden transition-all duration-300 hover:bg-blue-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] font-medium text-white font-geist bg-blue-600 h-12 rounded-full pr-8 pl-8 relative items-center justify-center" onclick="window.location.href='contact-us.html'" role="button">
-                  <span class="font-geist z-10 mr-2 relative" onclick="window.location.href='contact-us.html'" role="button">Contact Us</span>
+                  <span class="font-geist z-10 mr-2 relative" onclick="window.location.href='contact-us.html'" role="button" data-i18n="footer_btn">Contact Us</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class=""></svg></button></div></div></div>
 
 <script>
@@ -499,4 +504,5 @@ opacity: 0; /* Start hidden */
         observer.observe(counter);
     });
 </script>
+<script src="js/i18n.js"></script>
 </body></html>
