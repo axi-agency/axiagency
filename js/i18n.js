@@ -243,8 +243,13 @@ const translations = {
   }
 };
 
+var _currentLang = 'en';
+
 function applyLang(lang) {
   if (!translations[lang]) lang = 'en';
+  _currentLang = lang;
+
+  // Translate all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     var key = el.getAttribute('data-i18n');
     var text = translations[lang][key];
@@ -252,21 +257,66 @@ function applyLang(lang) {
       el.innerHTML = text;
     }
   });
-  document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.classList.remove('bg-white/20', 'text-white');
-    btn.style.color = '';
-    btn.style.backgroundColor = '';
+
+  // Update the toggle button label
+  var label = document.getElementById('lang-label');
+  if (label) label.textContent = lang.toUpperCase();
+
+  // Show only the non-current options in the dropdown
+  ['ru', 'uz', 'en'].forEach(function(l) {
+    var btn = document.getElementById('lang-' + l);
+    if (btn) btn.style.display = (l === lang) ? 'none' : 'block';
   });
-  var activeBtn = document.getElementById('lang-' + lang);
-  if (activeBtn) {
-    activeBtn.classList.add('bg-white/20', 'text-white');
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  var dropdown = document.getElementById('lang-dropdown');
+  var chevron = document.getElementById('lang-chevron');
+  if (!dropdown) return;
+
+  if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+    // Show: update visibility of options first, then animate in
+    ['ru', 'uz', 'en'].forEach(function(l) {
+      var btn = document.getElementById('lang-' + l);
+      if (btn) btn.style.display = (l === _currentLang) ? 'none' : 'block';
+    });
+    dropdown.style.display = 'block';
+    // Force reflow before animating
+    dropdown.getBoundingClientRect();
+    dropdown.style.opacity = '1';
+    dropdown.style.transform = 'translateY(0)';
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+  } else {
+    closeLangMenu();
   }
+}
+
+function closeLangMenu() {
+  var dropdown = document.getElementById('lang-dropdown');
+  var chevron = document.getElementById('lang-chevron');
+  if (!dropdown || dropdown.style.display === 'none') return;
+  dropdown.style.opacity = '0';
+  dropdown.style.transform = 'translateY(-6px)';
+  if (chevron) chevron.style.transform = 'rotate(0deg)';
+  setTimeout(function() {
+    if (dropdown.style.opacity === '0') dropdown.style.display = 'none';
+  }, 200);
 }
 
 function setLang(lang) {
   localStorage.setItem('axi_lang', lang);
   applyLang(lang);
+  closeLangMenu();
 }
+
+// Close on outside click
+document.addEventListener('click', function(e) {
+  var switcher = document.getElementById('lang-switcher');
+  if (switcher && !switcher.contains(e.target)) {
+    closeLangMenu();
+  }
+});
 
 (function() {
   var saved = localStorage.getItem('axi_lang');
