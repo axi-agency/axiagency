@@ -8,7 +8,7 @@ const translations = {
     nav_book: "Book a Call",
 
     // Hero (index)
-    hero_badge: "Marketing &amp; AI Agency",
+    hero_badge: "AI Agency &amp; Marketing",
     hero_h1_before: "Scale with\u00a0",
     hero_h1_mid: "Intelligent",
     hero_h1_mid2: "\u00a0Marketing &amp;\u00a0",
@@ -35,10 +35,9 @@ const translations = {
 
     // Service cards
     ai_card_title: "AI Automations",
-    ai_li1: "AI Sales Managers (Chat)",
-    ai_li2: "AI Call Center (Voice)",
-    ai_li3: "AI Chatbots",
-    ai_li4: "Automation Workflows",
+    ai_li1: "AI Sales Managers (Chat Agents for any platforms)",
+    ai_li2: "AI Call Center (Voice Agents)",
+    ai_li3: "Automation Workflows (Automate any routine processes with the help of AI)",
     smm_card_title: "SMM / Marketing",
     smm_li1: "Content Strategy",
     smm_li2: "Community Management",
@@ -81,8 +80,8 @@ const translations = {
     rev4_author: "Manager, Oq Tosh",
     rev5_text: "For us, it was important to improve how we communicate with patients online. AXI helped us not only with SMM, but also with automation that actually makes sense. The AI manager responds like a real person, works 24/7, and filters inquiries properly. As a result, the quality of leads improved noticeably, and our team spends less time on routine questions. This cooperation brought real operational value, not just visuals.",
     rev5_author: "Founder, World Online Clinic",
-    rev6_text: "\u201cFinally an agency that actually builds systems instead of just posting pictures.\u201d",
-    rev6_author: "Partner, Tech Startups",
+    rev6_text: "We needed more than content — we needed real infrastructure. AXI built us a custom CRM, integrated AI agents that monitor our warehouse operations around the clock, and set up automated weekly reports that run without anyone touching them. Everything became trackable overnight. Within a few months the business scaled almost 3x. I didn't expect that level of systems thinking from an agency, but that's exactly what they delivered.",
+    rev6_author: "CEO, Dynamic Group",
 
     // Footer
     footer_h2: "\u201cAutomation is the new leverage.\u201d",
@@ -140,7 +139,7 @@ const translations = {
     nav_book: "\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f",
 
     // Hero (index)
-    hero_badge: "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u0438 AI \u0410\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e",
+    hero_badge: "AI \u0410\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0438 \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
     hero_h1_before: "\u0420\u043e\u0441\u0442 \u0447\u0435\u0440\u0435\u0437\u00a0",
     hero_h1_mid: "\u0443\u043c\u043d\u044b\u0439",
     hero_h1_mid2: "\u00a0\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u0438\u00a0",
@@ -167,10 +166,9 @@ const translations = {
 
     // Service cards
     ai_card_title: "AI \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438",
-    ai_li1: "AI-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u044b \u043f\u0440\u043e\u0434\u0430\u0436 (\u0447\u0430\u0442)",
-    ai_li2: "AI-\u043a\u043e\u043b\u043b-\u0446\u0435\u043d\u0442\u0440 (\u0433\u043e\u043b\u043e\u0441)",
-    ai_li3: "AI-\u0447\u0430\u0442\u0431\u043e\u0442\u044b",
-    ai_li4: "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432",
+    ai_li1: "AI-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u044b \u043f\u0440\u043e\u0434\u0430\u0436 (\u0447\u0430\u0442-\u0430\u0433\u0435\u043d\u0442\u044b \u0434\u043b\u044f \u043b\u044e\u0431\u044b\u0445 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c)",
+    ai_li2: "AI-\u043a\u043e\u043b\u043b-\u0446\u0435\u043d\u0442\u0440 (\u0433\u043e\u043b\u043e\u0441\u043e\u0432\u044b\u0435 \u0430\u0433\u0435\u043d\u0442\u044b)",
+    ai_li3: "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432 (\u043b\u044e\u0431\u044b\u0435 \u0440\u0443\u0442\u0438\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u0447\u0438 \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e AI)",
     smm_card_title: "SMM / \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
     smm_li1: "\u041a\u043e\u043d\u0442\u0435\u043d\u0442-\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f",
     smm_li2: "\u041c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430",
@@ -213,8 +211,8 @@ const translations = {
     rev4_author: "Manager, Oq Tosh",
     rev5_text: "\u0414\u043b\u044f \u043d\u0430\u0441 \u0431\u044b\u043b\u043e \u0432\u0430\u0436\u043d\u043e \u0443\u043b\u0443\u0447\u0448\u0438\u0442\u044c \u043e\u043d\u043b\u0430\u0439\u043d-\u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044e \u0441 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430\u043c\u0438. AXI \u043f\u043e\u043c\u043e\u0433 \u043d\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u0441 SMM, \u043d\u043e \u0438 \u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0435\u0439, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442. AI-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043e\u0442\u0432\u0435\u0447\u0430\u0435\u0442 \u043a\u0430\u043a \u0436\u0438\u0432\u043e\u0439 \u0447\u0435\u043b\u043e\u0432\u0435\u043a, \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 24/7 \u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0444\u0438\u043b\u044c\u0442\u0440\u0443\u0435\u0442 \u0437\u0430\u043f\u0440\u043e\u0441\u044b. \u041a\u0430\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0438\u0434\u043e\u0432 \u0443\u043b\u0443\u0447\u0448\u0438\u043b\u043e\u0441\u044c, \u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0442\u0440\u0430\u0442\u0438\u0442 \u043c\u0435\u043d\u044c\u0448\u0435 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u043d\u0430 \u0440\u0443\u0442\u0438\u043d\u0443.",
     rev5_author: "Founder, World Online Clinic",
-    rev6_text: "\u00ab\u041d\u0430\u043a\u043e\u043d\u0435\u0446-\u0442\u043e \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u0441\u0442\u0440\u043e\u0438\u0442 \u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u0430 \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u0443\u0431\u043b\u0438\u043a\u0443\u0435\u0442 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438.\u00bb",
-    rev6_author: "Partner, Tech Startups",
+    rev6_text: "\u041d\u0430\u043c \u043d\u0443\u0436\u043d\u0430 \u0431\u044b\u043b\u0430 \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430. AXI \u0441\u043e\u0437\u0434\u0430\u043b\u0438 \u043d\u0430\u043c CRM \u043f\u043e\u0434 \u043a\u043b\u044e\u0447, \u0432\u043d\u0435\u0434\u0440\u0438\u043b\u0438 AI-\u0430\u0433\u0435\u043d\u0442\u043e\u0432, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043a\u0440\u0443\u0433\u043b\u043e\u0441\u0443\u0442\u043e\u0447\u043d\u043e \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u044f\u0442 \u0441\u043a\u043b\u0430\u0434\u0441\u043a\u0443\u044e \u043b\u043e\u0433\u0438\u0441\u0442\u0438\u043a\u0443, \u0438 \u043d\u0430\u0441\u0442\u0440\u043e\u0438\u043b\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0435\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u044b\u0435 \u043e\u0442\u0447\u0451\u0442\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0444\u043e\u0440\u043c\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u0431\u0435\u0437 \u0443\u0447\u0430\u0441\u0442\u0438\u044f \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430. \u0412\u0441\u0451 \u0441\u0442\u0430\u043b\u043e \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u043c. \u0417\u0430 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0441\u044f\u0446\u0435\u0432 \u0431\u0438\u0437\u043d\u0435\u0441 \u0432\u044b\u0440\u043e\u0441 \u043f\u043e\u0447\u0442\u0438 \u0432 3 \u0440\u0430\u0437\u0430. \u041d\u0435 \u043e\u0436\u0438\u0434\u0430\u043b \u0442\u0430\u043a\u043e\u0433\u043e \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0433\u043e \u043f\u043e\u0434\u0445\u043e\u0434\u0430 \u043e\u0442 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u0430, \u043d\u043e \u0438\u043c\u0435\u043d\u043d\u043e \u044d\u0442\u043e \u0438 \u0431\u044b\u043b\u043e \u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043e.",
+    rev6_author: "CEO, Dynamic Group",
 
     // Footer
     footer_h2: "\u00ab\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u2014 \u044d\u0442\u043e \u043d\u043e\u0432\u044b\u0439 \u0440\u044b\u0447\u0430\u0433.\u00bb",
@@ -272,7 +270,7 @@ const translations = {
     nav_book: "Qo\u02bcng\u02bciroq",
 
     // Hero (index)
-    hero_badge: "Marketing va AI Agentlik",
+    hero_badge: "AI Agentlik va Marketing",
     hero_h1_before: "O\u02bcsing\u00a0",
     hero_h1_mid: "aqlli",
     hero_h1_mid2: "\u00a0marketing va\u00a0",
@@ -299,10 +297,9 @@ const translations = {
 
     // Service cards
     ai_card_title: "AI Avtomatizatsiyalar",
-    ai_li1: "AI savdo menejerlari (chat)",
-    ai_li2: "AI koll-markaz (ovoz)",
-    ai_li3: "AI chatbotlar",
-    ai_li4: "Jarayonlarni avtomatlashtirish",
+    ai_li1: "AI savdo menejerlari (har qanday platformalar uchun chat agentlar)",
+    ai_li2: "AI koll-markaz (ovozli agentlar)",
+    ai_li3: "Jarayonlarni avtomatlashtirish (AI yordamida istalgan takroriy vazifalarni avtomatlashtirish)",
     smm_card_title: "SMM / Marketing",
     smm_li1: "Kontent strategiyasi",
     smm_li2: "Jamiyat menejmentи",
@@ -345,8 +342,8 @@ const translations = {
     rev4_author: "Menejer, Oq Tosh",
     rev5_text: "Biz uchun bemorlar bilan onlayn muloqotni yaxshilash muhim edi. AXI nafaqat SMM, balki amalda ishlaydigan avtomatizatsiya bilan ham yordam berdi. AI menejer jonli odamdek javob beradi, 24/7 ishlaydi va so\u02bcrovlarni to\u02bcg\u02bcri saralaydi. Natijada lead sifati sezilariydek yaxshilandi, jamoa esa takroriy savollarga kamroq vaqt sarflaydi. Bu hamkorlik haqiqiy operatsion qiymat keltirdi.",
     rev5_author: "Asoschisi, World Online Clinic",
-    rev6_text: "\u201cNihoyat, shunchaki rasm joylash emas, balki tizim quradigan agentlik.\u201d",
-    rev6_author: "Hamkor, Tech Startups",
+    rev6_text: "Bizga shunchaki kontent emas, haqiqiy infratuzilma kerak edi. AXI bizga maxsus CRM qurib berdi, ombor logistikasini yaxlit nazorat qiluvchi AI agentlar joriy etdi va hech kim qo\u02bcl tekmagan holda avtomatik ravishda tuziluvchi haftalik hisobotlarni sozladi. Hamma narsa kuzatilishi mumkin bo\u02bclib qoldi. Bir necha oyda biznes deyarli 3 baravar o\u02bcsdi. Agentlikdan bunday tizimli yondashuvni kutmagandim, lekin aynan shuni qilishdi.",
+    rev6_author: "CEO, Dynamic Group",
 
     // Footer
     footer_h2: "\u201cAvtomatizatsiya \u2014 bu yangi imkoniyat.\u201d",
