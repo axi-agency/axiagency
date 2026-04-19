@@ -108,6 +108,27 @@ const translations = {
     // Cases page
     cases_h2: "Case Studies",
     cases_p: "A selection of our projects across SMM, AI systems, and digital development.",
+    cases_smm_section: "SMM & Marketing",
+    cases_ai_section: "AI Automations",
+    cases_web_section: "Web, UI/UX & App Development",
+    view_project: "View Project",
+    coming_soon_btn: "Coming Soon",
+    cs_more_projects: "More Projects",
+    cs_call_systems: "Call Systems",
+    cs_smm_desc: "Additional SMM case studies are in development.",
+    cs_ai_desc: "AI automation case studies including call systems and CRM workflows are in development.",
+
+    // Case card descriptions
+    dg_smm_desc: "Built brand presence from zero to 500k+ monthly reach in under two months. Strategic content tied to their construction portfolio positioned them as a recognized name in Uzbekistan's engineering sector.",
+    lahim_desc: "Grew a food import brand from scratch to 1M+ organic views with content that converted directly into sales. Over $200,000 in revenue attributed to social media in the first two months of launch.",
+    oqtosh_desc: "Launched the brand's social media from scratch. Reached 500,000+ people and gained 2,000+ subscribers within the first month — before the product was widely available in stores.",
+    woc_smm_desc: "Ongoing multi-region SMM across Uzbekistan and neighboring countries. Educational content built audience trust while consistent posting converted followers into inbound patient inquiries the clinic didn't have before.",
+    infinity_desc: "Content strategy for a premium interior design brand in Tashkent. Elevated the visual identity, built brand recognition in a competitive niche, and generated a steady stream of inbound leads.",
+    butcher_desc: "SMM strategy that moved over 1,000 premium steaks and built a loyal audience around the brand. AXI also built a Telegram shop that became a standalone revenue channel — adding over $60,000 in sales within the first year.",
+    gxp_desc: "Authority-building SMM for a pharmaceutical compliance consultancy. Consistent educational content grew the account to 1,000+ followers and generates regular consultation requests in a niche B2B market.",
+    controlcom_desc: "B2B content strategy for a retail technology company. Repositioned the brand with product-led posts, improved engagement, and generated qualified leads in a segment with almost no active digital competition.",
+    woc_ai_desc: "Built a multilingual AI sales manager that handles patient inquiries 24/7, qualifies leads, and syncs automatically with CRM. Response time dropped from hours to seconds — the team now works only with pre-qualified requests, with lead volume up 40%.",
+    aura_desc: "Deployed an AI chat agent that qualifies every buyer before passing them to staff. The boutique went from managing endless low-intent DMs to focusing exclusively on ready-to-buy customers. Team efficiency up 50%.",
 
     // Contact page
     contact_badge: "Contact Us",
@@ -237,8 +258,29 @@ const translations = {
     cta_p: "\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0432\u0430\u0448\u0435\u043c \u0431\u0438\u0437\u043d\u0435\u0441\u0435 \u2014 \u043c\u044b \u043f\u043e\u0434\u0431\u0435\u0440\u0451\u043c \u043d\u0443\u0436\u043d\u043e\u0435 \u0440\u0435\u0448\u0435\u043d\u0438\u0435.",
 
     // Cases page
-    cases_h2: "\u041a\u0435\u0439\u0441\u044b",
-    cases_p: "\u041f\u043e\u0434\u0431\u043e\u0440\u043a\u0430 \u043d\u0430\u0448\u0438\u0445 \u043f\u0440\u043e\u0435\u043a\u0442\u043e\u0432 \u0432 \u043e\u0431\u043b\u0430\u0441\u0442\u0438 SMM, AI-\u0441\u0438\u0441\u0442\u0435\u043c \u0438 \u0446\u0438\u0444\u0440\u043e\u0432\u043e\u0439 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0438.",
+    cases_h2: "Кейсы",
+    cases_p: "Подборка наших проектов в области SMM, AI-систем и цифровой разработки.",
+    cases_smm_section: "SMM и Маркетинг",
+    cases_ai_section: "AI Автоматизации",
+    cases_web_section: "Сайты, UI/UX и Приложения",
+    view_project: "Смотреть",
+    coming_soon_btn: "Скоро",
+    cs_more_projects: "Больше проектов",
+    cs_call_systems: "Системы звонков",
+    cs_smm_desc: "Дополнительные SMM-кейсы в разработке.",
+    cs_ai_desc: "AI-кейсы, включая системы звонков и CRM-интеграции, в разработке.",
+
+    // Case card descriptions
+    dg_smm_desc: "Выстроили присутствие бренда с нуля до 500k+ ежемесячного охвата менее чем за два месяца. Контент, привязанный к строительному портфолио, сделал их узнаваемым именем в инженерном секторе Узбекистана.",
+    lahim_desc: "Вывели фудовый бренд с нуля до 1M+ органических просмотров — контент, который напрямую конвертировался в продажи. Более $200,000 выручки, атрибутированной к соцсетям, за первые два месяца.",
+    oqtosh_desc: "Запустили социальные сети с нуля. За первый месяц — 500,000+ охват и 2,000+ подписчиков, ещё до того как продукт появился в большинстве магазинов.",
+    woc_smm_desc: "Текущее ведение страниц в нескольких регионах — Узбекистан и соседние страны. Образовательный контент выстроил доверие, а регулярный постинг превратил подписчиков во входящие обращения пациентов.",
+    infinity_desc: "Контент-стратегия для премиального бренда интерьерного дизайна в Ташкенте. Подняли визуальную идентичность, построили узнаваемость в конкурентной нише и сформировали стабильный входящий поток лидов.",
+    butcher_desc: "SMM-стратегия, которая продала более 1,000 стейков и выстроила лояльную аудиторию. AXI также создали Telegram-магазин, ставший отдельным каналом продаж — более $60,000 в первый год.",
+    gxp_desc: "SMM для формирования авторитета в нише фармацевтического комплаенса. Образовательный контент вырастил аудиторию до 1,000+ подписчиков и приносит стабильные консультационные запросы в B2B.",
+    controlcom_desc: "B2B-контент для компании в ритейл-технологиях. Репозиционировали бренд через продуктовые посты, улучшили вовлечённость и получили качественные лиды там, где у конкурентов почти нет цифрового присутствия.",
+    woc_ai_desc: "Разработали многоязычного AI-менеджера по продажам для обработки обращений пациентов 24/7, квалификации лидов и синхронизации с CRM. Время ответа — мгновенное. Команда работает только с квалифицированными запросами. Лиды +40%.",
+    aura_desc: "Внедрили AI-чат для премиального бутика, который квалифицирует каждого покупателя перед передачей менеджеру. Команда перестала тратить время на нецелевые обращения и сосредоточилась на клиентах, готовых к покупке. Эффективность +50%.",
 
     // Contact page
     contact_badge: "\u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043d\u0430\u043c",
@@ -369,7 +411,28 @@ const translations = {
 
     // Cases page
     cases_h2: "Loyihalar",
-    cases_p: "SMM, AI tizimlari va raqamli ishlanmalar bo\u02bcyicha loyihalarimiz.",
+    cases_p: "SMM, AI tizimlari va raqamli ishlanmalar bo'yicha loyihalarimiz.",
+    cases_smm_section: "SMM va Marketing",
+    cases_ai_section: "AI Avtomatizatsiyalar",
+    cases_web_section: "Web, UI/UX va Ilovalar",
+    view_project: "Ko'rish",
+    coming_soon_btn: "Tez kunda",
+    cs_more_projects: "Ko'proq loyihalar",
+    cs_call_systems: "Call tizimlar",
+    cs_smm_desc: "Qo'shimcha SMM keyslari ishlab chiqilmoqda.",
+    cs_ai_desc: "Call tizimlar va CRM integratsiyalari bo'yicha AI keyslari ishlab chiqilmoqda.",
+
+    // Case card descriptions
+    dg_smm_desc: "Brendni noldan oyiga 500k+ qamrovga olib chiqdik — ikki oydan kamroq vaqtda. Qurilish portfeliga bog'liq kontent strategiyasi ularni O'zbekistonning muhandislik sohasida taniqli brend qilib qo'ydi.",
+    lahim_desc: "Oziq-ovqat import brendini noldan 1M+ organik ko'rishgacha o'stirildi — savdoga bevosita o'tgan kontent orqali. Birinchi ikki oy ichida ijtimoiy tarmoqlardan $200,000+ daromad.",
+    oqtosh_desc: "Brendning sahifalarini noldan ishga tushirildi. Birinchi oyda — 500,000+ qamrov va 2,000+ obunachilar, mahsulot ko'pchilik dokonlarda paydo bo'lishidan oldin.",
+    woc_smm_desc: "O'zbekiston va qo'shni mamlakatlar bo'ylab ko'p mintaqali doimiy SMM. Ta'limiy kontent ishonch yaratdi, muntazam postlar esa bemorlarning kiruvchi murojaatlariga aylandi.",
+    infinity_desc: "Toshkentdagi premium interior dizayn brendi uchun kontent strategiyasi. Vizual obraz ko'tarildi, raqobatbardosh nishada brend taniqlilik shakllandi va barqaror kiruvchi lead oqimi yaratildi.",
+    butcher_desc: "SMM strategiyasi 1,000+ premium steak sotdi va brendga sodiq auditoriya shakllantirdi. AXI shuningdek Telegram do'kon yaratdi — u alohida savdo kanaliga aylandi va birinchi yilda $60,000+ daromad keltirdi.",
+    gxp_desc: "Farmatsevtika muvofiqligiga ixtisoslashgan konsalting uchun vakolatni shakllantiruvchi SMM. Izchil ta'limiy kontent auditoriyani 1,000+ obunachiga yetkazdi va B2B bozorida doimiy konsultatsiya so'rovlarini ta'minlaydi.",
+    controlcom_desc: "Savdo texnologiyalari kompaniyasi uchun B2B kontent strategiyasi. Mahsulotga yo'naltirilgan postlar orqali brend qayta pozitsiyalandi, ishtirok yaxshilandi va raqiblar digital jihatdan deyarli faol bo'lmagan segmentda sifatli leadlar olindi.",
+    woc_ai_desc: "Bemorlar so'rovlarini 24/7 qayta ishlash, leadlarni sifatlash va CRM bilan avtomatik sinxronizatsiya qiluvchi ko'p tilli AI savdo menejeri yaratildi. Javob vaqti — bir soniya. Jamoa faqat sifatlangan so'rovlar bilan ishlaydi. Leadlar +40%.",
+    aura_desc: "Premium butik uchun AI chat agenti joriy etildi — har bir xaridorni menejerlarga o'tkazishdan oldin sifatlaydi. Jamoa maqsadsiz xabarlar o'rniga faqat sotib olishga tayyor mijozlar bilan ishlaydi. Samaradorlik +50%.",
 
     // Contact page
     contact_badge: "Biz bilan bog\u02bclanish",
