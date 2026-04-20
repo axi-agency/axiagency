@@ -9,7 +9,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI Agency &amp; Marketing",
-    hero_h1: "We turn your business into a system that generates revenue on autopilot",
+    hero_h1: "We turn your business into a system that generates <span class=\"bg-gradient-to-r from-blue-400 to-sky-600 bg-clip-text text-transparent\">revenue on autopilot</span>",
     hero_h1_before: "Scale with\u00a0",
     hero_h1_mid: "Intelligent",
     hero_h1_mid2: "\u00a0Marketing &amp;\u00a0",
@@ -262,7 +262,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI \u0410\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0438 \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
-    hero_h1: "\u041c\u044b \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u043c \u0431\u0438\u0437\u043d\u0435\u0441 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u0434\u0435\u043d\u044c\u0433\u0438 \u043d\u0430 \u0430\u0432\u0442\u043e\u043f\u0438\u043b\u043e\u0442\u0435",
+    hero_h1: "\u041c\u044b \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u043c \u0431\u0438\u0437\u043d\u0435\u0441 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 <span class=\"bg-gradient-to-r from-blue-400 to-sky-600 bg-clip-text text-transparent\">\u0434\u0435\u043d\u044c\u0433\u0438 \u043d\u0430 \u0430\u0432\u0442\u043e\u043f\u0438\u043b\u043e\u0442\u0435</span>",
     hero_h1_before: "\u0420\u043e\u0441\u0442 \u0447\u0435\u0440\u0435\u0437\u00a0",
     hero_h1_mid: "\u0443\u043c\u043d\u044b\u0439",
     hero_h1_mid2: "\u00a0\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u0438\u00a0",
@@ -515,7 +515,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI Agentlik va Marketing",
-    hero_h1: "Biz sizning biznesingizni avtomatik tarzda daromad keltiradigan tizimga aylantiramiz",
+    hero_h1: "Biz sizning biznesingizni avtomatik tarzda <span class=\"bg-gradient-to-r from-blue-400 to-sky-600 bg-clip-text text-transparent\">daromad keltiradigan tizimga</span> aylantiramiz",
     hero_h1_before: "O\u02bcsing\u00a0",
     hero_h1_mid: "aqlli",
     hero_h1_mid2: "\u00a0marketing va\u00a0",
