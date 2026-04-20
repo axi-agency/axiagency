@@ -9,6 +9,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI Agency &amp; Marketing",
+    hero_h1: "We turn your business into a system that generates revenue on autopilot",
     hero_h1_before: "Scale with\u00a0",
     hero_h1_mid: "Intelligent",
     hero_h1_mid2: "\u00a0Marketing &amp;\u00a0",
@@ -237,6 +238,10 @@ const translations = {
     web_item2: "Landing Pages",
     web_item3: "E-commerce",
     web_item4: "Mobile Apps",
+    web_how_title: "How It Works",
+    web_what_title: "What We Build",
+    smm_how_title: "How It Works",
+    smm_pricing_title: "Pricing Plans",
 
     // Services - Buttons and pricing labels
     btn_contact: "Contact Us",
@@ -257,6 +262,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI \u0410\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0438 \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
+    hero_h1: "\u041c\u044b \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u043c \u0431\u0438\u0437\u043d\u0435\u0441 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u0434\u0435\u043d\u044c\u0433\u0438 \u043d\u0430 \u0430\u0432\u0442\u043e\u043f\u0438\u043b\u043e\u0442\u0435",
     hero_h1_before: "\u0420\u043e\u0441\u0442 \u0447\u0435\u0440\u0435\u0437\u00a0",
     hero_h1_mid: "\u0443\u043c\u043d\u044b\u0439",
     hero_h1_mid2: "\u00a0\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433 \u0438\u00a0",
@@ -485,6 +491,10 @@ const translations = {
     web_item2: "Лендинги",
     web_item3: "Интернет-магазины",
     web_item4: "Мобильные приложения",
+    web_how_title: "Как это работает",
+    web_what_title: "Что мы разрабатываем",
+    smm_how_title: "Как это работает",
+    smm_pricing_title: "Тарифные планы",
 
     // Services - Buttons and pricing labels
     btn_contact: "Связаться",
@@ -505,6 +515,7 @@ const translations = {
 
     // Hero (index)
     hero_badge: "AI Agentlik va Marketing",
+    hero_h1: "Biz sizning biznesingizni avtomatik tarzda daromad keltiradigan tizimga aylantiramiz",
     hero_h1_before: "O\u02bcsing\u00a0",
     hero_h1_mid: "aqlli",
     hero_h1_mid2: "\u00a0marketing va\u00a0",
@@ -733,6 +744,10 @@ const translations = {
     web_item2: "Landing sahifalar",
     web_item3: "E-commerce",
     web_item4: "Mobil ilovalar",
+    web_how_title: "Qanday ishlaydi",
+    web_what_title: "Nima quramiz",
+    smm_how_title: "Qanday ishlaydi",
+    smm_pricing_title: "Narx rejalari",
 
     // Services - Buttons and pricing labels
     btn_contact: "Bog\u02bclanish",
