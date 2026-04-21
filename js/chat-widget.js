@@ -88,7 +88,7 @@
     /* ── Panel ── */
     '#axi-chat-panel{',
     '  position:fixed;bottom:100px;right:24px;z-index:9998;',
-    '  width:400px;height:640px;',
+    '  width:400px;height:min(640px,calc(100vh - 120px));',
     '  background:#0c0c0c;',
     '  border:1px solid rgba(255,255,255,0.08);',
     '  border-radius:24px;',
@@ -244,7 +244,7 @@
 
     /* ── Mobile ── */
     '@media(max-width:440px){',
-    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;height:82vh;}',
+    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;height:min(82vh,calc(100vh - 110px));}',
     '  #axi-chat-toggle{bottom:16px;right:16px;width:64px;height:64px;}',
     '  #axi-chat-toggle svg{width:28px;height:28px;}',
     '  #axi-chat-header{padding:18px 14px 16px;}',
