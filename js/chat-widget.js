@@ -11,28 +11,28 @@
   var lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
   var labels = {
     uz: {
-      header: 'AXI Agent',
-      subheader: 'Odatda darhol javob beradi',
+      header: 'AXI AGENCY',
+      subheader: 'Online',
       placeholder: 'Xabar yozing...',
-      welcome: 'Assalomu alaykum! Men AXI agentiman. Biznesingiz haqida gapirib bering — qanday yordam bera olishimni ko\'rib chiqamiz.',
+      welcome: 'AXI AGENCY-ga xush kelibsiz! \uD83C\uDF1F Bugun sizga qanday yordam bera olamiz?',
       send: 'Yuborish',
       error: 'Ulanishda xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.',
       timeout: 'Javob juda uzoq kutilmoqda. Qayta urinib ko\'ring.',
     },
     ru: {
-      header: 'AXI Agent',
-      subheader: 'Обычно отвечает мгновенно',
+      header: 'AXI AGENCY',
+      subheader: 'Online',
       placeholder: 'Напишите сообщение...',
-      welcome: 'Добрый день! Я агент AXI. Расскажите о своём бизнесе — посмотрим, чем можем помочь.',
+      welcome: '\u041F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u043C \u0432\u0430\u0441 \u0432 \u00ABАXI AGENCY\u00BB! \uD83C\uDF1F \u041A\u0430\u043A \u043C\u044B \u043C\u043E\u0436\u0435\u043C \u0432\u0430\u043C \u043F\u043E\u043C\u043E\u0447\u044C \u0441\u0435\u0433\u043E\u0434\u043D\u044F?',
       send: 'Отправить',
       error: 'Ошибка соединения. Попробуйте ещё раз.',
       timeout: 'Ответ занял слишком много времени. Попробуйте ещё раз.',
     },
     en: {
-      header: 'AXI Agent',
-      subheader: 'Typically replies instantly',
+      header: 'AXI AGENCY',
+      subheader: 'Online',
       placeholder: 'Type a message...',
-      welcome: "Hi! I'm AXI's AI agent. Tell me about your business and let's see how we can help.",
+      welcome: 'Welcome to AXI AGENCY! \uD83C\uDF1F How can we help you today?',
       send: 'Send',
       error: 'Connection error. Please try again.',
       timeout: 'Response is taking too long. Please try again.',
@@ -165,7 +165,7 @@
 
     '.axi-bubble{',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.6;',
-    '  padding:13px 16px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
+    '  padding:14px 20px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
     '}',
     '.axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
@@ -224,13 +224,10 @@
     '  padding:8px 16px;text-align:center;flex-shrink:0;',
     '  border-top:1px solid rgba(255,255,255,0.04);',
     '}',
-    '#axi-chat-footer a{',
+    '#axi-chat-footer span{',
     '  font-family:Inter,sans-serif;font-size:10px;font-weight:500;',
-    '  color:rgba(107,114,128,0.6);text-decoration:none;letter-spacing:0.02em;',
-    '  transition:color 0.15s;',
+    '  color:rgba(255,255,255,0.55);letter-spacing:0.02em;',
     '}',
-    '#axi-chat-footer a:hover{color:rgba(96,165,250,0.8);}',
-    '#axi-chat-footer span{color:rgba(56,189,248,0.7);}',
 
     /* ── Reset button ── */
     '#axi-chat-reset{',
@@ -254,7 +251,7 @@
     '  #axi-chat-messages{padding:16px 12px;gap:14px;}',
     '  .axi-mini-avatar{width:30px;height:30px;font-size:8px;}',
     '  .axi-msg{max-width:88%;}',
-    '  .axi-bubble{font-size:15px;padding:13px 16px;line-height:1.6;}',
+    '  .axi-bubble{font-size:15px;padding:14px 20px;line-height:1.6;}',
     '  .axi-time{font-size:11px;}',
     '  #axi-chat-input-area{padding:12px 10px;gap:10px;}',
     '  #axi-chat-textarea{font-size:16px;padding:13px 15px;min-height:50px;}',
@@ -448,12 +445,8 @@
 
     // Header — avatar + name + status + close
     var avatarImg = el('img', { src: 'images/axi-logo.png', alt: 'AXI' });
-    var avatar = el('div', { className: 'axi-avatar' }, [
-      avatarImg,
-      el('div', { className: 'axi-avatar-dot' }),
-    ]);
-    var titleEl = el('div', { className: 'axi-header-title' });
-    titleEl.innerHTML = '<span class="axi-header-brand">AXI</span> Agent';
+    var avatar = el('div', { className: 'axi-avatar' }, [avatarImg]);
+    var titleEl = el('div', { className: 'axi-header-title', textContent: 'AXI AGENCY' });
     var headerText = el('div', { className: 'axi-header-text' }, [
       titleEl,
       el('div', { className: 'axi-header-sub', textContent: t.subheader }),
@@ -489,7 +482,7 @@
 
     // Branded footer
     var footer = el('div', { id: 'axi-chat-footer' });
-    footer.innerHTML = '<a href="https://axiagency.com" target="_blank">Powered by <span>AXI Agency</span></a>';
+    footer.innerHTML = '<span>Powered by AXI Agency</span>';
 
     panel.appendChild(header);
     panel.appendChild(messages);
