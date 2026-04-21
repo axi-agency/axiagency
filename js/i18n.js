@@ -163,6 +163,12 @@ const translations = {
     form_email: "Email Address",
     form_phone: "Phone / Telegram / WhatsApp",
     form_service: "Service of Interest",
+    service_opt_select: "Select a service...",
+    service_opt_ai: "AI Automations",
+    service_opt_web: "Web & App Development",
+    service_opt_smm: "SMM",
+    service_opt_other: "Other",
+    msg_placeholder: "Tell us about your project...",
     form_message: "Message",
     form_submit: "Send Message",
     form_note: "We\u2019ll review your request and contact you shortly.",
@@ -416,6 +422,12 @@ const translations = {
     form_email: "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0447\u0442\u0430",
     form_phone: "\u0422\u0435\u043b\u0435\u0444\u043e\u043d / Telegram / WhatsApp",
     form_service: "\u0418\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u044e\u0449\u0430\u044f \u0443\u0441\u043b\u0443\u0433\u0430",
+    service_opt_select: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u043b\u0443\u0433\u0443...",
+    service_opt_ai: "\u0418\u0418 \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438",
+    service_opt_web: "\u0412\u0435\u0431 \u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430",
+    service_opt_smm: "SMM",
+    service_opt_other: "\u0414\u0440\u0443\u0433\u043e\u0435",
+    msg_placeholder: "\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0432\u0430\u0448\u0435\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0435...",
     form_message: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
     form_submit: "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c",
     form_note: "\u041c\u044b \u0440\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0438\u043c \u0432\u0430\u0448 \u0437\u0430\u043f\u0440\u043e\u0441 \u0438 \u0441\u0432\u044f\u0436\u0435\u043c\u0441\u044f \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.",
@@ -669,6 +681,12 @@ const translations = {
     form_email: "Elektron pochta",
     form_phone: "Telefon / Telegram / WhatsApp",
     form_service: "Qiziqarli xizmat",
+    service_opt_select: "Xizmatni tanlang...",
+    service_opt_ai: "AI Avtomatlashtirish",
+    service_opt_web: "Veb va mobil dasturlash",
+    service_opt_smm: "SMM",
+    service_opt_other: "Boshqa",
+    msg_placeholder: "Loyihangiz haqida ayting...",
     form_message: "Xabar",
     form_submit: "Yuborish",
     form_note: "So\u02bcrovingizni ko\u02bcrib chiqib, tez orada bog\u02bclanamiz.",
@@ -772,6 +790,13 @@ function applyLang(lang) {
     if (text !== undefined) {
       el.innerHTML = text;
     }
+  });
+
+  // Translate placeholder attributes
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    var text = translations[lang][key];
+    if (text !== undefined) el.placeholder = text;
   });
 
   // Update the toggle button label

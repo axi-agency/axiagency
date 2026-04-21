@@ -219,8 +219,8 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                                 <input type="email" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="john@example.com" id="email">
                             </div>
                             <div class="input-group">
-                                <label for="phone" class="block uppercase transition-colors text-xs font-bold text-gray-500 tracking-wider font-geist mb-2" data-i18n="form_phone">Phone / Telegram / WhatsApp</label>
-                                <input type="tel" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="+1 (555) 000-0000" id="phone">
+                                <label for="phone" class="block uppercase transition-colors text-xs font-bold text-gray-500 tracking-normal whitespace-nowrap font-geist mb-2" data-i18n="form_phone">Phone / Telegram / WhatsApp</label>
+                                <input type="tel" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="+998 (90) 123-45-67" id="phone">
                             </div>
                         </div>
 
@@ -228,12 +228,11 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                             <label for="service" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist" data-i18n="form_service">Service of Interest</label>
                             <div class="relative">
                                 <select id="service" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all appearance-none cursor-pointer font-geist">
-                                    <option value="" disabled="" selected="">Select a service...</option>
-                                    <option value="smm">SMM &amp; Marketing</option>
-                                    <option value="ai">AI Automations</option>
-                                    <option value="video">Video Production</option>
-                                    <option value="web">Web &amp; App Development</option>
-                                    <option value="other">Other / General Inquiry</option>
+                                    <option value="" disabled="" selected="" data-i18n="service_opt_select">Select a service...</option>
+                                    <option value="ai" data-i18n="service_opt_ai">AI Automations</option>
+                                    <option value="web" data-i18n="service_opt_web">Web &amp; App Development</option>
+                                    <option value="smm" data-i18n="service_opt_smm">SMM</option>
+                                    <option value="other" data-i18n="service_opt_other">Other</option>
                                 </select>
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
@@ -243,7 +242,7 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
 
                         <div class="input-group">
                             <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist" data-i18n="form_message">Message</label>
-                            <textarea id="message" rows="4" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all placeholder-gray-600 font-geist resize-none" placeholder="Tell us about your project..."></textarea>
+                            <textarea id="message" rows="4" class="w-full bg-[#151515] text-white border border-white/10 rounded-xl px-4 py-3 outline-none transition-all placeholder-gray-600 font-geist resize-none" placeholder="Tell us about your project..." data-i18n-placeholder="msg_placeholder"></textarea>
                         </div>
 
                         <button type="submit" class="w-full group relative overflow-hidden rounded-xl bg-blue-600 py-4 font-bold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:bg-blue-500 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]">
