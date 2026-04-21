@@ -166,7 +166,7 @@
     '.axi-bubble{',
     '  display:inline-block;',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.45;',
-    '  padding:12px 18px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
+    '  padding:14px 22px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
     '}',
     '.axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
@@ -250,6 +250,8 @@
     '    transform-origin:center;',
     '  }',
     '  #axi-chat-panel.axi-open{transform:none;}',
+    /* hide the floating toggle while chat is open — it overlaps the send button */
+    '  #axi-chat-root.axi-chat-active #axi-chat-toggle{display:none;}',
     '  #axi-chat-toggle{bottom:16px;right:16px;width:60px;height:60px;}',
     '  #axi-chat-toggle svg{width:26px;height:26px;}',
     '  #axi-chat-header{padding:14px 14px 12px;padding-top:calc(14px + env(safe-area-inset-top));}',
@@ -258,8 +260,8 @@
     '  .axi-header-sub{font-size:12px;}',
     '  #axi-chat-messages{padding:14px 12px 18px;gap:12px;}',
     '  .axi-mini-avatar{width:28px;height:28px;font-size:8px;}',
-    '  .axi-msg{max-width:80%;}',
-    '  .axi-bubble{font-size:15px;padding:13px 20px;line-height:1.45;}',
+    '  .axi-msg{max-width:84%;}',
+    '  .axi-bubble{font-size:15px;padding:14px 22px;line-height:1.45;}',
     '  .axi-time{font-size:11px;}',
     '  #axi-chat-input-area{padding:10px 10px calc(10px + env(safe-area-inset-bottom));gap:10px;}',
     '  #axi-chat-textarea{font-size:16px;padding:12px 15px;min-height:46px;}',
@@ -421,18 +423,29 @@
   }
 
   // ─── Panel toggle ─────────────────────────────────────────────────────────────
+  var isMobile = function () { return window.matchMedia('(max-width:440px)').matches; };
+
   function openPanel() {
     isOpen = true;
     elements.panel.classList.add('axi-open');
+    elements.root.classList.add('axi-chat-active');
     elements.toggle.innerHTML = iconClose;
-    elements.textarea.focus();
+    if (isMobile()) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+    // Don't auto-focus on mobile — keyboard popping up immediately hides the welcome message.
+    if (!isMobile()) elements.textarea.focus();
     scrollToBottom();
   }
 
   function closePanel() {
     isOpen = false;
     elements.panel.classList.remove('axi-open');
+    elements.root.classList.remove('axi-chat-active');
     elements.toggle.innerHTML = iconChat;
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   // ─── Build DOM ───────────────────────────────────────────────────────────────
@@ -482,6 +495,10 @@
       }
     });
     textarea.addEventListener('input', autoResizeTextarea);
+    // Mobile: after keyboard opens, re-scroll to bottom so latest messages are visible
+    textarea.addEventListener('focus', function () {
+      if (isMobile()) setTimeout(scrollToBottom, 300);
+    });
 
     var sendBtn = el('button', { id: 'axi-chat-send', 'aria-label': t.send, innerHTML: iconSend });
     sendBtn.addEventListener('click', function () { sendMessage(textarea.value); });
