@@ -159,7 +159,7 @@
     '  align-self:flex-end;margin-bottom:18px;',
     '}',
 
-    '.axi-msg{display:flex;flex-direction:column;max-width:86%;min-width:0;}',
+    '.axi-msg{display:flex;flex-direction:column;max-width:86%;min-width:0;width:fit-content;}',
     '.axi-msg.axi-user{align-items:flex-end;}',
     '.axi-msg.axi-bot{align-items:flex-start;}',
 
