@@ -214,13 +214,13 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                             <div class="input-group">
-                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist" data-i18n="form_email">Email Address</label>
-                                <input type="email" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="john@example.com" id="email">
-                            </div>
                             <div class="input-group">
                                 <label for="phone" class="block uppercase transition-colors text-xs font-bold text-gray-500 tracking-normal whitespace-nowrap font-geist mb-2" data-i18n="form_phone">Phone / Telegram / WhatsApp</label>
                                 <input type="tel" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="+998 (90) 123-45-67" id="phone">
+                            </div>
+                            <div class="input-group">
+                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist" data-i18n="form_email">Email Address</label>
+                                <input type="email" class="outline-none transition-all placeholder-gray-600 text-white font-geist bg-[#151515] w-full border-white/10 border rounded-xl pt-3 pr-4 pb-3 pl-4" placeholder="john@example.com" id="email">
                             </div>
                         </div>
 
@@ -341,7 +341,7 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                 var name = document.getElementById('name').value.trim();
                 var email = document.getElementById('email').value.trim();
 
-                if (!name || !email) {
+                if (!name) {
                     return;
                 }
 
