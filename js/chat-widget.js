@@ -88,7 +88,7 @@
     /* ── Panel ── */
     '#axi-chat-panel{',
     '  position:fixed;bottom:100px;right:24px;z-index:9998;',
-    '  width:400px;max-height:640px;',
+    '  width:400px;height:640px;',
     '  background:#0c0c0c;',
     '  border:1px solid rgba(255,255,255,0.08);',
     '  border-radius:24px;',
@@ -109,13 +109,12 @@
 
     /* Avatar */
     '.axi-avatar{',
-    '  width:42px;height:42px;border-radius:50%;flex-shrink:0;',
-    '  background:linear-gradient(135deg,#2563eb,#0ea5e9);',
-    '  display:flex;align-items:center;justify-content:center;',
-    '  font-family:Inter,sans-serif;font-size:11px;font-weight:800;color:#fff;letter-spacing:0.5px;',
+    '  width:42px;height:42px;border-radius:12px;flex-shrink:0;',
+    '  background:#000;overflow:hidden;',
     '  box-shadow:0 0 20px rgba(56,189,248,0.35);',
     '  position:relative;flex-shrink:0;',
     '}',
+    '.axi-avatar img{width:100%;height:100%;object-fit:cover;display:block;}',
     '.axi-avatar-dot{',
     '  position:absolute;bottom:1px;right:1px;',
     '  width:11px;height:11px;border-radius:50%;',
@@ -139,7 +138,7 @@
 
     /* ── Messages ── */
     '#axi-chat-messages{',
-    '  flex:1;overflow-y:auto;padding:18px 16px;',
+    '  flex:1;min-height:0;overflow-y:auto;padding:18px 16px;',
     '  display:flex;flex-direction:column;gap:12px;',
     '  scroll-behavior:smooth;',
     '}',
@@ -160,13 +159,13 @@
     '  align-self:flex-end;margin-bottom:18px;',
     '}',
 
-    '.axi-msg{display:flex;flex-direction:column;max-width:86%;}',
+    '.axi-msg{display:flex;flex-direction:column;max-width:86%;min-width:0;}',
     '.axi-msg.axi-user{align-items:flex-end;}',
     '.axi-msg.axi-bot{align-items:flex-start;}',
 
     '.axi-bubble{',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.6;',
-    '  padding:13px 16px;word-break:break-word;white-space:pre-wrap;',
+    '  padding:13px 16px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
     '}',
     '.axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
@@ -245,7 +244,7 @@
 
     /* ── Mobile ── */
     '@media(max-width:440px){',
-    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;max-height:82vh;}',
+    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;height:82vh;}',
     '  #axi-chat-toggle{bottom:16px;right:16px;width:64px;height:64px;}',
     '  #axi-chat-toggle svg{width:28px;height:28px;}',
     '  #axi-chat-header{padding:18px 14px 16px;}',
@@ -448,8 +447,9 @@
     var panel = el('div', { id: 'axi-chat-panel', role: 'dialog', 'aria-label': 'AXI Chat' });
 
     // Header — avatar + name + status + close
+    var avatarImg = el('img', { src: 'images/axi-logo.png', alt: 'AXI' });
     var avatar = el('div', { className: 'axi-avatar' }, [
-      el('span', { textContent: 'AXI' }),
+      avatarImg,
       el('div', { className: 'axi-avatar-dot' }),
     ]);
     var titleEl = el('div', { className: 'axi-header-title' });
