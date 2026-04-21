@@ -201,7 +201,7 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                         <span class="h-px flex-1 bg-white/10 ml-4"></span>
                     </h3>
                     
-                    <form action="#" class="space-y-6">
+                    <form id="contact-form" action="#" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="input-group">
                                 <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 transition-colors font-geist" data-i18n="form_name">Full Name</label>
@@ -326,6 +326,70 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
+
+        (function () {
+            var WEBHOOK = 'https://axiagency.app.n8n.cloud/webhook/contact-form';
+
+            var form = document.getElementById('contact-form');
+            var btn = form.querySelector('button[type="submit"]');
+            var btnLabel = btn.querySelector('[data-i18n="form_submit"]');
+            var note = form.querySelector('[data-i18n="form_note"]');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value.trim();
+                var email = document.getElementById('email').value.trim();
+
+                if (!name || !email) {
+                    return;
+                }
+
+                btn.disabled = true;
+                btnLabel.textContent = '...';
+
+                var payload = {
+                    name: name,
+                    company: document.getElementById('company').value.trim(),
+                    email: email,
+                    phone: document.getElementById('phone').value.trim(),
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value.trim()
+                };
+
+                fetch(WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(function (res) {
+                    if (!res.ok) throw new Error('Request failed');
+                    form.reset();
+                    btn.disabled = false;
+                    btnLabel.setAttribute('data-i18n', 'form_sent');
+                    btnLabel.textContent = '✓ Sent';
+                    btn.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+                    btn.classList.add('bg-green-600');
+                    if (note) {
+                        note.setAttribute('data-i18n', 'form_sent_note');
+                        note.textContent = "We'll be in touch shortly.";
+                    }
+                })
+                .catch(function () {
+                    btn.disabled = false;
+                    btnLabel.textContent = 'Try again';
+                    setTimeout(function () {
+                        btnLabel.setAttribute('data-i18n', 'form_submit');
+                        if (typeof _currentLang !== 'undefined') {
+                            var t = (window.translations || {})[_currentLang] || {};
+                            btnLabel.textContent = t.form_submit || 'Send Message';
+                        } else {
+                            btnLabel.textContent = 'Send Message';
+                        }
+                    }, 3000);
+                });
+            });
+        })();
     </script>
 
 <script src="js/i18n.js"></script>
