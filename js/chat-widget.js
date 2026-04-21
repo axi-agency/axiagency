@@ -51,133 +51,192 @@
   }
 
   function loadHistory() {
-    try {
-      return JSON.parse(sessionStorage.getItem(HISTORY_KEY) || '[]');
-    } catch (e) {
-      return [];
-    }
+    try { return JSON.parse(sessionStorage.getItem(HISTORY_KEY) || '[]'); }
+    catch (e) { return []; }
   }
 
   function saveHistory(history) {
-    try {
-      sessionStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-    } catch (e) {}
+    try { sessionStorage.setItem(HISTORY_KEY, JSON.stringify(history)); }
+    catch (e) {}
   }
 
   // ─── CSS ─────────────────────────────────────────────────────────────────────
   var css = [
     '#axi-chat-root *{box-sizing:border-box;margin:0;padding:0;}',
+
+    /* ── Toggle button ── */
     '#axi-chat-toggle{',
     '  position:fixed;bottom:24px;right:24px;z-index:9999;',
-    '  width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;',
-    '  background:#2563eb;color:#fff;',
-    '  box-shadow:0 0 20px rgba(56,189,248,0.35),0 4px 16px rgba(0,0,0,0.5);',
+    '  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;',
+    '  background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;',
+    '  box-shadow:0 0 28px rgba(56,189,248,0.45),0 6px 24px rgba(0,0,0,0.55);',
     '  display:flex;align-items:center;justify-content:center;',
-    '  transition:transform 0.2s ease,box-shadow 0.2s ease;',
-    '  outline:none;',
+    '  transition:transform 0.2s ease,box-shadow 0.2s ease;outline:none;',
+    '  position:fixed;',
     '}',
-    '#axi-chat-toggle:hover{transform:scale(1.08);box-shadow:0 0 28px rgba(56,189,248,0.55),0 6px 20px rgba(0,0,0,0.5);}',
-    '#axi-chat-toggle svg{width:24px;height:24px;pointer-events:none;}',
+    '#axi-chat-toggle:hover{transform:scale(1.07);box-shadow:0 0 36px rgba(56,189,248,0.6),0 8px 28px rgba(0,0,0,0.55);}',
+    '#axi-chat-toggle svg{width:26px;height:26px;pointer-events:none;transition:transform 0.25s ease;}',
+
+    /* Pulse ring */
+    '#axi-chat-toggle::before{',
+    '  content:"";position:absolute;inset:0;border-radius:50%;',
+    '  border:2px solid rgba(56,189,248,0.5);',
+    '  animation:axi-ring 2.4s ease-out infinite;',
+    '}',
+    '@keyframes axi-ring{0%{transform:scale(1);opacity:0.7;}100%{transform:scale(1.7);opacity:0;}}',
+
+    /* ── Panel ── */
     '#axi-chat-panel{',
-    '  position:fixed;bottom:92px;right:24px;z-index:9998;',
-    '  width:360px;',
-    '  background:#0f0f0f;',
+    '  position:fixed;bottom:100px;right:24px;z-index:9998;',
+    '  width:400px;max-height:640px;',
+    '  background:#0c0c0c;',
     '  border:1px solid rgba(255,255,255,0.08);',
-    '  border-radius:20px;',
-    '  box-shadow:0 24px 64px rgba(0,0,0,0.7),0 0 40px rgba(56,189,248,0.06);',
-    '  display:flex;flex-direction:column;',
-    '  overflow:hidden;',
-    '  max-height:520px;',
-    '  opacity:0;transform:translateY(14px);pointer-events:none;',
-    '  transition:opacity 0.25s cubic-bezier(0.16,1,0.3,1),transform 0.25s cubic-bezier(0.16,1,0.3,1);',
+    '  border-radius:24px;',
+    '  box-shadow:0 32px 80px rgba(0,0,0,0.85),0 0 0 1px rgba(56,189,248,0.04),0 0 60px rgba(37,99,235,0.07);',
+    '  display:flex;flex-direction:column;overflow:hidden;',
+    '  opacity:0;transform:translateY(20px) scale(0.96);pointer-events:none;transform-origin:bottom right;',
+    '  transition:opacity 0.3s cubic-bezier(0.16,1,0.3,1),transform 0.3s cubic-bezier(0.16,1,0.3,1);',
     '}',
-    '#axi-chat-panel.axi-open{opacity:1;transform:translateY(0);pointer-events:all;}',
+    '#axi-chat-panel.axi-open{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}',
+
+    /* ── Header ── */
     '#axi-chat-header{',
-    '  padding:14px 16px;',
-    '  border-bottom:1px solid rgba(255,255,255,0.06);',
-    '  display:flex;align-items:center;gap:10px;',
-    '  flex-shrink:0;',
+    '  padding:16px 16px 14px;flex-shrink:0;',
+    '  background:linear-gradient(160deg,rgba(37,99,235,0.18) 0%,rgba(14,165,233,0.06) 100%);',
+    '  border-bottom:1px solid rgba(255,255,255,0.07);',
+    '  display:flex;align-items:center;gap:12px;',
     '}',
-    '.axi-dot{',
-    '  width:10px;height:10px;border-radius:50%;',
-    '  background:rgba(56,189,248,1);',
-    '  box-shadow:0 0 8px rgba(56,189,248,0.8);',
-    '  animation:axi-pulse 2s ease-in-out infinite;',
-    '  flex-shrink:0;',
+
+    /* Avatar */
+    '.axi-avatar{',
+    '  width:42px;height:42px;border-radius:50%;flex-shrink:0;',
+    '  background:linear-gradient(135deg,#2563eb,#0ea5e9);',
+    '  display:flex;align-items:center;justify-content:center;',
+    '  font-family:Inter,sans-serif;font-size:11px;font-weight:800;color:#fff;letter-spacing:0.5px;',
+    '  box-shadow:0 0 20px rgba(56,189,248,0.35);',
+    '  position:relative;flex-shrink:0;',
     '}',
-    '@keyframes axi-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(0.85);}}',
+    '.axi-avatar-dot{',
+    '  position:absolute;bottom:1px;right:1px;',
+    '  width:11px;height:11px;border-radius:50%;',
+    '  background:#22c55e;border:2px solid #0c0c0c;',
+    '}',
     '.axi-header-text{flex:1;min-width:0;}',
-    '.axi-header-title{font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:#f9fafb;letter-spacing:-0.01em;}',
-    '.axi-header-sub{font-family:Inter,sans-serif;font-size:11px;color:rgba(156,163,175,0.8);margin-top:1px;}',
-    '#axi-chat-close{',
-    '  background:none;border:none;cursor:pointer;color:rgba(156,163,175,0.7);',
-    '  padding:4px;border-radius:6px;display:flex;align-items:center;',
-    '  transition:color 0.15s;',
+    '.axi-header-title{font-family:Inter,sans-serif;font-size:15px;font-weight:700;color:#f9fafb;letter-spacing:-0.02em;display:flex;align-items:center;gap:5px;}',
+    '.axi-header-brand{background:linear-gradient(90deg,#60a5fa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}',
+    '.axi-header-sub{',
+    '  font-family:Inter,sans-serif;font-size:11px;color:rgba(134,239,172,0.9);margin-top:3px;',
+    '  display:flex;align-items:center;gap:5px;',
     '}',
-    '#axi-chat-close:hover{color:#f9fafb;}',
-    '#axi-chat-close svg{width:18px;height:18px;}',
+    '.axi-header-sub::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,0.7);}',
+    '#axi-chat-close{',
+    '  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);cursor:pointer;color:rgba(156,163,175,0.7);',
+    '  width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;',
+    '  transition:all 0.15s;flex-shrink:0;',
+    '}',
+    '#axi-chat-close:hover{background:rgba(255,255,255,0.1);color:#f9fafb;border-color:rgba(255,255,255,0.15);}',
+    '#axi-chat-close svg{width:14px;height:14px;}',
+
+    /* ── Messages ── */
     '#axi-chat-messages{',
-    '  flex:1;overflow-y:auto;padding:16px;',
-    '  display:flex;flex-direction:column;gap:10px;',
+    '  flex:1;overflow-y:auto;padding:18px 16px;',
+    '  display:flex;flex-direction:column;gap:12px;',
     '  scroll-behavior:smooth;',
     '}',
-    '#axi-chat-messages::-webkit-scrollbar{width:4px;}',
+    '#axi-chat-messages::-webkit-scrollbar{width:3px;}',
     '#axi-chat-messages::-webkit-scrollbar-track{background:transparent;}',
-    '#axi-chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px;}',
-    '.axi-msg{display:flex;flex-direction:column;max-width:84%;}',
-    '.axi-msg.axi-user{align-self:flex-end;align-items:flex-end;}',
-    '.axi-msg.axi-bot{align-self:flex-start;align-items:flex-start;}',
+    '#axi-chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:4px;}',
+
+    /* Message row (bot: avatar + bubble) */
+    '.axi-msg-row{display:flex;align-items:flex-end;gap:8px;animation:axi-msg-in 0.25s cubic-bezier(0.16,1,0.3,1) both;}',
+    '.axi-msg-row.axi-user-row{flex-direction:row-reverse;}',
+    '@keyframes axi-msg-in{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}',
+
+    '.axi-mini-avatar{',
+    '  width:28px;height:28px;border-radius:50%;flex-shrink:0;',
+    '  background:linear-gradient(135deg,#1d4ed8,#0284c7);',
+    '  display:flex;align-items:center;justify-content:center;',
+    '  font-family:Inter,sans-serif;font-size:8px;font-weight:800;color:#fff;letter-spacing:0.3px;',
+    '  align-self:flex-end;margin-bottom:18px;',
+    '}',
+
+    '.axi-msg{display:flex;flex-direction:column;max-width:78%;}',
+    '.axi-msg.axi-user{align-items:flex-end;}',
+    '.axi-msg.axi-bot{align-items:flex-start;}',
+
     '.axi-bubble{',
-    '  font-family:Inter,sans-serif;font-size:14px;line-height:1.5;',
-    '  padding:10px 14px;border-radius:16px;word-break:break-word;',
+    '  font-family:Inter,sans-serif;font-size:14px;line-height:1.55;',
+    '  padding:11px 15px;word-break:break-word;',
     '}',
     '.axi-user .axi-bubble{',
-    '  background:#2563eb;color:#fff;',
-    '  border-radius:16px 16px 4px 16px;',
+    '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
+    '  border-radius:18px 18px 4px 18px;',
+    '  box-shadow:0 4px 16px rgba(37,99,235,0.35);',
     '}',
     '.axi-bot .axi-bubble{',
-    '  background:#181818;color:#f3f4f6;',
-    '  border:1px solid rgba(255,255,255,0.06);',
-    '  border-radius:16px 16px 16px 4px;',
+    '  background:#161616;color:#f3f4f6;',
+    '  border:1px solid rgba(255,255,255,0.07);',
+    '  border-radius:18px 18px 18px 4px;',
+    '  box-shadow:0 2px 8px rgba(0,0,0,0.3);',
     '}',
-    '.axi-time{font-family:Inter,sans-serif;font-size:10px;color:rgba(107,114,128,0.8);margin-top:4px;}',
-    '.axi-typing{display:flex;align-items:center;gap:5px;padding:12px 14px;}',
+    '.axi-time{font-family:Inter,sans-serif;font-size:10px;color:rgba(107,114,128,0.7);margin-top:5px;padding:0 2px;}',
+
+    /* Typing */
+    '.axi-typing{display:flex;align-items:center;gap:5px;padding:13px 16px;}',
     '.axi-typing span{',
-    '  width:7px;height:7px;border-radius:50%;background:rgba(156,163,175,0.6);',
-    '  animation:axi-bounce 1.1s ease-in-out infinite;',
+    '  width:7px;height:7px;border-radius:50%;background:rgba(156,163,175,0.5);',
+    '  animation:axi-bounce 1.2s ease-in-out infinite;',
     '}',
-    '.axi-typing span:nth-child(2){animation-delay:0.18s;}',
-    '.axi-typing span:nth-child(3){animation-delay:0.36s;}',
-    '@keyframes axi-bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-6px);}}',
+    '.axi-typing span:nth-child(2){animation-delay:0.2s;}',
+    '.axi-typing span:nth-child(3){animation-delay:0.4s;}',
+    '@keyframes axi-bounce{0%,80%,100%{transform:translateY(0);opacity:0.5;}40%{transform:translateY(-7px);opacity:1;}}',
+
+    /* ── Input area ── */
     '#axi-chat-input-area{',
     '  padding:12px;',
     '  border-top:1px solid rgba(255,255,255,0.06);',
-    '  display:flex;align-items:flex-end;gap:8px;',
+    '  display:flex;align-items:flex-end;gap:10px;',
+    '  background:#0f0f0f;',
     '  flex-shrink:0;',
     '}',
     '#axi-chat-textarea{',
-    '  flex:1;background:#181818;border:1px solid rgba(255,255,255,0.08);',
-    '  border-radius:12px;color:#f9fafb;',
+    '  flex:1;background:#1a1a1a;border:1px solid rgba(255,255,255,0.08);',
+    '  border-radius:14px;color:#f9fafb;',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.5;',
-    '  padding:10px 14px;resize:none;outline:none;',
-    '  min-height:42px;max-height:100px;overflow-y:auto;',
-    '  transition:border-color 0.2s;',
+    '  padding:11px 15px;resize:none;outline:none;',
+    '  min-height:44px;max-height:110px;overflow-y:auto;',
+    '  transition:border-color 0.2s,box-shadow 0.2s;',
     '}',
-    '#axi-chat-textarea:focus{border-color:rgba(56,189,248,0.4);}',
-    '#axi-chat-textarea::placeholder{color:rgba(107,114,128,0.7);}',
+    '#axi-chat-textarea:focus{border-color:rgba(56,189,248,0.4);box-shadow:0 0 0 3px rgba(56,189,248,0.06);}',
+    '#axi-chat-textarea::placeholder{color:rgba(107,114,128,0.6);}',
     '#axi-chat-send{',
-    '  width:38px;height:38px;border-radius:10px;border:none;cursor:pointer;',
-    '  background:#2563eb;color:#fff;',
-    '  display:flex;align-items:center;justify-content:center;',
-    '  transition:opacity 0.2s,background 0.2s;',
-    '  flex-shrink:0;',
+    '  width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;',
+    '  background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;',
+    '  display:flex;align-items:center;justify-content:center;flex-shrink:0;',
+    '  box-shadow:0 0 16px rgba(56,189,248,0.3);',
+    '  transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s;',
     '}',
-    '#axi-chat-send:disabled{opacity:0.35;cursor:not-allowed;}',
-    '#axi-chat-send:not(:disabled):hover{background:#1d4ed8;}',
-    '#axi-chat-send svg{width:16px;height:16px;}',
-    '@media(max-width:420px){',
-    '  #axi-chat-panel{width:calc(100vw - 16px);right:8px;bottom:80px;border-radius:16px;}',
-    '  #axi-chat-toggle{bottom:16px;right:16px;}',
+    '#axi-chat-send:disabled{opacity:0.3;cursor:not-allowed;box-shadow:none;}',
+    '#axi-chat-send:not(:disabled):hover{transform:scale(1.08);box-shadow:0 0 24px rgba(56,189,248,0.5);}',
+    '#axi-chat-send svg{width:17px;height:17px;}',
+
+    /* ── Branded footer ── */
+    '#axi-chat-footer{',
+    '  padding:8px 16px;text-align:center;flex-shrink:0;',
+    '  border-top:1px solid rgba(255,255,255,0.04);',
+    '}',
+    '#axi-chat-footer a{',
+    '  font-family:Inter,sans-serif;font-size:10px;font-weight:500;',
+    '  color:rgba(107,114,128,0.6);text-decoration:none;letter-spacing:0.02em;',
+    '  transition:color 0.15s;',
+    '}',
+    '#axi-chat-footer a:hover{color:rgba(96,165,250,0.8);}',
+    '#axi-chat-footer span{color:rgba(56,189,248,0.7);}',
+
+    /* ── Mobile ── */
+    '@media(max-width:440px){',
+    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;max-height:75vh;}',
+    '  #axi-chat-toggle{bottom:16px;right:16px;width:56px;height:56px;}',
     '}',
   ].join('');
 
@@ -214,12 +273,19 @@
 
   // ─── Message rendering ───────────────────────────────────────────────────────
   function renderMessage(role, text, ts) {
-    var wrap = el('div', { className: 'axi-msg axi-' + role });
+    var row = el('div', { className: 'axi-msg-row' + (role === 'user' ? ' axi-user-row' : '') });
+    var msgWrap = el('div', { className: 'axi-msg axi-' + role });
     var bubble = el('div', { className: 'axi-bubble', textContent: text });
     var time = el('div', { className: 'axi-time', textContent: formatTime(ts || Date.now()) });
-    wrap.appendChild(bubble);
-    wrap.appendChild(time);
-    return wrap;
+    msgWrap.appendChild(bubble);
+    msgWrap.appendChild(time);
+
+    if (role === 'bot') {
+      var avatar = el('div', { className: 'axi-mini-avatar', textContent: 'AXI' });
+      row.appendChild(avatar);
+    }
+    row.appendChild(msgWrap);
+    return row;
   }
 
   function appendMessage(role, text, ts) {
@@ -230,15 +296,19 @@
   }
 
   function showTyping() {
-    var wrap = el('div', { className: 'axi-msg axi-bot' });
+    var row = el('div', { className: 'axi-msg-row' });
+    var avatar = el('div', { className: 'axi-mini-avatar', textContent: 'AXI' });
+    var msgWrap = el('div', { className: 'axi-msg axi-bot' });
     var bubble = el('div', { className: 'axi-bubble' });
     var dots = el('div', { className: 'axi-typing' });
     [1, 2, 3].forEach(function () { dots.appendChild(el('span')); });
     bubble.appendChild(dots);
-    wrap.appendChild(bubble);
-    elements.messages.appendChild(wrap);
+    msgWrap.appendChild(bubble);
+    row.appendChild(avatar);
+    row.appendChild(msgWrap);
+    elements.messages.appendChild(row);
     scrollToBottom();
-    return wrap;
+    return row;
   }
 
   function scrollToBottom() {
@@ -249,12 +319,8 @@
     isLoading = state;
     elements.send.disabled = state;
     elements.textarea.disabled = state;
-    if (state) {
-      elements.textarea.style.opacity = '0.5';
-    } else {
-      elements.textarea.style.opacity = '1';
-      elements.textarea.focus();
-    }
+    elements.textarea.style.opacity = state ? '0.5' : '1';
+    if (!state) elements.textarea.focus();
   }
 
   // ─── API call ────────────────────────────────────────────────────────────────
@@ -264,7 +330,6 @@
     var sessionId = getSessionId();
     var ts = Date.now();
 
-    // Persist and render user message
     history.push({ role: 'user', text: text, ts: ts });
     saveHistory(history);
     appendMessage('user', text, ts);
@@ -311,7 +376,7 @@
   function autoResizeTextarea() {
     var ta = elements.textarea;
     ta.style.height = 'auto';
-    ta.style.height = Math.min(ta.scrollHeight, 100) + 'px';
+    ta.style.height = Math.min(ta.scrollHeight, 110) + 'px';
   }
 
   // ─── Panel toggle ─────────────────────────────────────────────────────────────
@@ -331,11 +396,9 @@
 
   // ─── Build DOM ───────────────────────────────────────────────────────────────
   function build() {
-    // Inject styles
     var style = el('style', { innerHTML: css });
     document.head.appendChild(style);
 
-    // Root
     var root = el('div', { id: 'axi-chat-root' });
 
     // Toggle button
@@ -347,15 +410,20 @@
     // Panel
     var panel = el('div', { id: 'axi-chat-panel', role: 'dialog', 'aria-label': 'AXI Chat' });
 
-    // Header
-    var dot = el('div', { className: 'axi-dot' });
+    // Header — avatar + name + status + close
+    var avatar = el('div', { className: 'axi-avatar' }, [
+      el('span', { textContent: 'AXI' }),
+      el('div', { className: 'axi-avatar-dot' }),
+    ]);
+    var titleEl = el('div', { className: 'axi-header-title' });
+    titleEl.innerHTML = '<span class="axi-header-brand">AXI</span> Agent';
     var headerText = el('div', { className: 'axi-header-text' }, [
-      el('div', { className: 'axi-header-title', textContent: t.header }),
+      titleEl,
       el('div', { className: 'axi-header-sub', textContent: t.subheader }),
     ]);
     var closeBtn = el('button', { id: 'axi-chat-close', 'aria-label': 'Close chat', innerHTML: iconClose });
     closeBtn.addEventListener('click', closePanel);
-    var header = el('div', { id: 'axi-chat-header' }, [dot, headerText, closeBtn]);
+    var header = el('div', { id: 'axi-chat-header' }, [avatar, headerText, closeBtn]);
 
     // Messages area
     var messages = el('div', { id: 'axi-chat-messages', 'aria-live': 'polite' });
@@ -376,33 +444,33 @@
     textarea.addEventListener('input', autoResizeTextarea);
 
     var sendBtn = el('button', { id: 'axi-chat-send', 'aria-label': t.send, innerHTML: iconSend });
-    sendBtn.addEventListener('click', function () {
-      sendMessage(textarea.value);
-    });
+    sendBtn.addEventListener('click', function () { sendMessage(textarea.value); });
 
     var inputArea = el('div', { id: 'axi-chat-input-area' }, [textarea, sendBtn]);
+
+    // Branded footer
+    var footer = el('div', { id: 'axi-chat-footer' });
+    footer.innerHTML = '<a href="https://axiagency.com" target="_blank">Powered by <span>AXI Agency</span></a>';
 
     panel.appendChild(header);
     panel.appendChild(messages);
     panel.appendChild(inputArea);
+    panel.appendChild(footer);
 
     root.appendChild(toggle);
     root.appendChild(panel);
     document.body.appendChild(root);
 
-    // Store refs
     elements = { root: root, toggle: toggle, panel: panel, messages: messages, textarea: textarea, send: sendBtn };
 
-    // Render welcome + history
+    // Render welcome message + history
     history = loadHistory();
     if (history.length === 0) {
       var welcomeTs = Date.now();
       history.push({ role: 'bot', text: t.welcome, ts: welcomeTs });
       saveHistory(history);
     }
-    history.forEach(function (msg) {
-      appendMessage(msg.role, msg.text, msg.ts);
-    });
+    history.forEach(function (msg) { appendMessage(msg.role, msg.text, msg.ts); });
   }
 
   // ─── Init ────────────────────────────────────────────────────────────────────
