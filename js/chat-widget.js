@@ -165,7 +165,7 @@
 
     '.axi-bubble{',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.6;',
-    '  padding:14px 20px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
+    '  padding:14px 24px;min-width:80px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
     '}',
     '.axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
@@ -251,7 +251,7 @@
     '  #axi-chat-messages{padding:16px 12px;gap:14px;}',
     '  .axi-mini-avatar{width:30px;height:30px;font-size:8px;}',
     '  .axi-msg{max-width:88%;}',
-    '  .axi-bubble{font-size:15px;padding:14px 20px;line-height:1.6;}',
+    '  .axi-bubble{font-size:15px;padding:14px 24px;min-width:80px;line-height:1.6;}',
     '  .axi-time{font-size:11px;}',
     '  #axi-chat-input-area{padding:12px 10px;gap:10px;}',
     '  #axi-chat-textarea{font-size:16px;padding:13px 15px;min-height:50px;}',
