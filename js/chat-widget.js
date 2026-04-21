@@ -160,13 +160,13 @@
     '  align-self:flex-end;margin-bottom:18px;',
     '}',
 
-    '.axi-msg{display:flex;flex-direction:column;max-width:78%;}',
+    '.axi-msg{display:flex;flex-direction:column;max-width:86%;}',
     '.axi-msg.axi-user{align-items:flex-end;}',
     '.axi-msg.axi-bot{align-items:flex-start;}',
 
     '.axi-bubble{',
-    '  font-family:Inter,sans-serif;font-size:14px;line-height:1.55;',
-    '  padding:11px 15px;word-break:break-word;',
+    '  font-family:Inter,sans-serif;font-size:14px;line-height:1.6;',
+    '  padding:13px 16px;word-break:break-word;white-space:pre-wrap;',
     '}',
     '.axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
@@ -233,10 +233,34 @@
     '#axi-chat-footer a:hover{color:rgba(96,165,250,0.8);}',
     '#axi-chat-footer span{color:rgba(56,189,248,0.7);}',
 
+    /* ── Reset button ── */
+    '#axi-chat-reset{',
+    '  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);cursor:pointer;',
+    '  color:rgba(156,163,175,0.7);',
+    '  width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;',
+    '  transition:all 0.15s;flex-shrink:0;margin-right:6px;',
+    '}',
+    '#axi-chat-reset:hover{background:rgba(239,68,68,0.12);color:#f87171;border-color:rgba(239,68,68,0.25);}',
+    '#axi-chat-reset svg{width:14px;height:14px;}',
+
     /* ── Mobile ── */
     '@media(max-width:440px){',
-    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;max-height:75vh;}',
-    '  #axi-chat-toggle{bottom:16px;right:16px;width:56px;height:56px;}',
+    '  #axi-chat-panel{width:calc(100vw - 12px);right:6px;bottom:84px;border-radius:20px;max-height:82vh;}',
+    '  #axi-chat-toggle{bottom:16px;right:16px;width:64px;height:64px;}',
+    '  #axi-chat-toggle svg{width:28px;height:28px;}',
+    '  #axi-chat-header{padding:18px 14px 16px;}',
+    '  .axi-avatar{width:46px;height:46px;}',
+    '  .axi-header-title{font-size:16px;}',
+    '  .axi-header-sub{font-size:12px;}',
+    '  #axi-chat-messages{padding:16px 12px;gap:14px;}',
+    '  .axi-mini-avatar{width:30px;height:30px;font-size:8px;}',
+    '  .axi-msg{max-width:88%;}',
+    '  .axi-bubble{font-size:15px;padding:13px 16px;line-height:1.6;}',
+    '  .axi-time{font-size:11px;}',
+    '  #axi-chat-input-area{padding:12px 10px;gap:10px;}',
+    '  #axi-chat-textarea{font-size:16px;padding:13px 15px;min-height:50px;}',
+    '  #axi-chat-send{width:50px;height:50px;}',
+    '  #axi-chat-send svg{width:20px;height:20px;}',
     '}',
   ].join('');
 
@@ -244,6 +268,7 @@
   var iconChat = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
   var iconClose = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
   var iconSend = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+  var iconReset = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>';
 
   // ─── State ───────────────────────────────────────────────────────────────────
   var isOpen = false;
@@ -313,6 +338,18 @@
 
   function scrollToBottom() {
     elements.messages.scrollTop = elements.messages.scrollHeight;
+  }
+
+  function resetChat() {
+    sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(HISTORY_KEY);
+    history = [];
+    elements.messages.innerHTML = '';
+    getSessionId();
+    var welcomeTs = Date.now();
+    history.push({ role: 'bot', text: t.welcome, ts: welcomeTs });
+    saveHistory(history);
+    appendMessage('bot', t.welcome, welcomeTs);
   }
 
   function setLoading(state) {
@@ -421,9 +458,11 @@
       titleEl,
       el('div', { className: 'axi-header-sub', textContent: t.subheader }),
     ]);
+    var resetBtn = el('button', { id: 'axi-chat-reset', 'aria-label': 'Reset chat', innerHTML: iconReset });
+    resetBtn.addEventListener('click', resetChat);
     var closeBtn = el('button', { id: 'axi-chat-close', 'aria-label': 'Close chat', innerHTML: iconClose });
     closeBtn.addEventListener('click', closePanel);
-    var header = el('div', { id: 'axi-chat-header' }, [avatar, headerText, closeBtn]);
+    var header = el('div', { id: 'axi-chat-header' }, [avatar, headerText, resetBtn, closeBtn]);
 
     // Messages area
     var messages = el('div', { id: 'axi-chat-messages', 'aria-live': 'polite' });
