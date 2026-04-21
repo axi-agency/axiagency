@@ -166,7 +166,7 @@
     '#axi-chat-panel .axi-bubble{',
     '  display:inline-block;box-sizing:content-box;',
     '  font-family:Inter,sans-serif;font-size:14px;line-height:1.5;',
-    '  padding:16px 28px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
+    '  padding:8px 14px;word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap;',
     '}',
     '#axi-chat-panel .axi-user .axi-bubble{',
     '  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;',
