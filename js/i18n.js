@@ -6,6 +6,7 @@ const translations = {
     nav_cases: "Case Studies",
     nav_contact: "Contact",
     nav_book: "Book a Call",
+    nav_login: "Log In",
 
     // Hero (index)
     hero_badge: "AI Agency &amp; Marketing",
@@ -265,6 +266,7 @@ const translations = {
     nav_cases: "\u041a\u0435\u0439\u0441\u044b",
     nav_contact: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442",
     nav_book: "\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f",
+    nav_login: "Войти",
 
     // Hero (index)
     hero_badge: "AI \u0410\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0438 \u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
@@ -524,6 +526,7 @@ const translations = {
     nav_cases: "Loyihalar",
     nav_contact: "Aloqa",
     nav_book: "Qo\u02bcng\u02bciroq",
+    nav_login: "Kirish",
 
     // Hero (index)
     hero_badge: "AI Agentlik va Marketing",
