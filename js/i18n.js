@@ -252,8 +252,8 @@ const translations = {
 
     // Services - Buttons and pricing labels
     btn_contact: "Contact Us",
+    btn_consult: "Consult with the AI Agent",
     btn_quote: "Get a Quote",
-    btn_consult: "Request Consultation",
     label_pricing: "Pricing",
     pricing_custom_desc: "Custom based on complexity",
     pricing_project_based: "Project-based"
@@ -512,8 +512,8 @@ const translations = {
 
     // Services - Buttons and pricing labels
     btn_contact: "Связаться",
+    btn_consult: "Проконсультироваться с ИИ-агентом",
     btn_quote: "Запросить цену",
-    btn_consult: "Запросить консультацию",
     label_pricing: "Стоимость",
     pricing_custom_desc: "Индивидуально",
     pricing_project_based: "Проектно"
@@ -772,8 +772,8 @@ const translations = {
 
     // Services - Buttons and pricing labels
     btn_contact: "Bog\u02bclanish",
+    btn_consult: "AI agent bilan maslahat oling",
     btn_quote: "Narx so\u02bcrash",
-    btn_consult: "Maslahat so\u02bcrash",
     label_pricing: "Narxi",
     pricing_custom_desc: "Murakkablikka qarab",
     pricing_project_based: "Loyiha asosida"
