@@ -90,7 +90,20 @@ linear-gradient(#fff 0 0);
 mask-composite: exclude;
 background: var(--border-gradient);
 pointer-events: none;
-}</style></head>
+}
+</style>
+<style>
+.card-ai{background-color:#0a1628;border:1px solid rgba(14,165,233,0.25);transition:border-color 0.3s,box-shadow 0.3s}
+.card-ai:hover{border-color:rgba(14,165,233,0.6);box-shadow:0 0 50px -6px rgba(14,165,233,0.35)}
+.card-ai .card-icon-bg{background-color:rgba(14,165,233,0.1)}
+.card-ai .card-top-line{background:linear-gradient(to right,transparent,rgba(14,165,233,0.5),transparent)}
+.card-crm{background-color:#10092a;border:1px solid rgba(139,92,246,0.25);transition:border-color 0.3s,box-shadow 0.3s}
+.card-crm:hover{border-color:rgba(139,92,246,0.6);box-shadow:0 0 50px -6px rgba(139,92,246,0.35)}
+.card-crm .card-icon-bg{background-color:rgba(139,92,246,0.1)}
+.card-crm .card-top-line{background:linear-gradient(to right,transparent,rgba(139,92,246,0.5),transparent)}
+.card-web:hover{border-color:rgba(20,184,166,0.3);box-shadow:0 0 30px -10px rgba(20,184,166,0.15)}
+.card-smm:hover{border-color:rgba(59,130,246,0.3);box-shadow:0 0 30px -10px rgba(59,130,246,0.15)}
+</style></head>
 <body class="antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200 text-white bg-[#020202] pb-10 relative">
 
 
@@ -330,109 +343,81 @@ pointer-events: none;
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- Card 1: AI Automations — Electric Blue -->
-                <div onclick="window.location.href='services.html#ai-automations'" role="button" class="cursor-pointer group/srv p-8 rounded-3xl bg-[#060e1c] border border-sky-500/[0.15] hover:border-sky-500/[0.45] transition-all duration-500 ease-out hover:shadow-[0_8px_60px_-12px_rgba(14,165,233,0.38)] hover:-translate-y-0.5 relative overflow-hidden">
-                    <!-- Top accent line -->
-                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent"></div>
-                    <!-- Ambient glow blobs -->
-                    <div class="absolute -bottom-14 -right-14 w-60 h-60 bg-sky-500/[0.06] blur-[65px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-sky-500/[0.13]"></div>
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-sky-600/[0.04] blur-[50px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-sky-600/[0.09]"></div>
-                    <!-- Background watermark icon -->
-                    <div class="absolute -bottom-1 -right-1 opacity-[0.032] group-hover/srv:opacity-[0.065] transition-opacity duration-500 text-sky-300 pointer-events-none select-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="135" height="135" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18A2.5 2.5 0 0 0 10 15.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"/></svg>
+                <!-- Card 1: AI Automations (Premium) -->
+                <div onclick="window.location.href='services.html#ai-automations'" role="button" class="card-ai cursor-pointer group/srv p-8 rounded-3xl transition-all duration-300 relative overflow-hidden">
+                    <div class="card-top-line absolute top-0 left-0 right-0 h-px"></div>
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18A2.5 2.5 0 0 0 10 15.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"></path></svg>
                     </div>
-                    <!-- Icon -->
-                    <div class="w-12 h-12 rounded-xl bg-sky-500/[0.08] border border-sky-500/[0.18] flex items-center justify-center text-sky-400 mb-6 transition-all duration-300 group-hover/srv:bg-sky-500/[0.14] group-hover/srv:border-sky-500/[0.30]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18A2.5 2.5 0 0 0 10 15.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"/></svg>
+                    <div class="card-icon-bg w-12 h-12 rounded-xl flex items-center justify-center text-sky-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18A2.5 2.5 0 0 0 10 15.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"></path></svg>
                     </div>
-                    <!-- Title + live ping -->
-                    <div class="flex items-center gap-2.5 mb-4">
-                        <span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-40"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span></span>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-50"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span></span>
                         <h3 class="text-xl font-semibold text-white font-geist" data-i18n="ai_card_title">AI Automations</h3>
                     </div>
-                    <ul class="space-y-2.5">
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-sky-400/80"></span><span data-i18n="ai_li1">AI sales agents &amp; chat systems</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-sky-400/80"></span><span data-i18n="ai_li2">AI voice agents — 24/7 call handling</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-sky-400/80"></span><span data-i18n="ai_li3">Lead qualification &amp; CRM automation</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-sky-400/80"></span><span data-i18n="ai_li4">Custom workflow automation</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-sky-400/80"></span><span data-i18n="ai_li5">AI integrations across your stack</span></li>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2 flex-shrink-0"></span><span data-i18n="ai_li1">AI sales agents &amp; chat systems</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2 flex-shrink-0"></span><span data-i18n="ai_li2">AI voice agents — 24/7 call handling</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2 flex-shrink-0"></span><span data-i18n="ai_li3">Lead qualification &amp; CRM automation</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2 flex-shrink-0"></span><span data-i18n="ai_li4">Custom workflow automation</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2 flex-shrink-0"></span><span data-i18n="ai_li5">AI integrations across your stack</span></li>
                     </ul>
                 </div>
 
-                <!-- Card 2: CRM & SaaS — Purple / Indigo -->
-                <div onclick="window.location.href='services.html#crm-saas'" role="button" class="cursor-pointer group/srv p-8 rounded-3xl bg-[#0d0621] border border-violet-500/[0.15] hover:border-violet-500/[0.45] transition-all duration-500 ease-out hover:shadow-[0_8px_60px_-12px_rgba(139,92,246,0.38)] hover:-translate-y-0.5 relative overflow-hidden">
-                    <!-- Top accent line -->
-                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent"></div>
-                    <!-- Dot grid pattern -->
-                    <div class="absolute inset-0 pointer-events-none opacity-[0.022] group-hover/srv:opacity-[0.048] transition-opacity duration-500" style="background-image: radial-gradient(circle, rgba(167,139,250,0.9) 1px, transparent 1px); background-size: 22px 22px;"></div>
-                    <!-- Ambient glow blobs -->
-                    <div class="absolute -bottom-14 -right-14 w-60 h-60 bg-violet-500/[0.06] blur-[65px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-violet-500/[0.13]"></div>
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-violet-700/[0.04] blur-[50px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-violet-700/[0.09]"></div>
-                    <!-- Background watermark icon -->
-                    <div class="absolute -bottom-1 -right-1 opacity-[0.032] group-hover/srv:opacity-[0.065] transition-opacity duration-500 text-violet-300 pointer-events-none select-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="135" height="135" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v3H4V5zm-9 5h9v4h-9zm0 6h9v3h-9zM4 10h5v9H4z"/></svg>
+                <!-- Card 2: CRM & SaaS Development (Premium) -->
+                <div onclick="window.location.href='services.html#crm-saas'" role="button" class="card-crm cursor-pointer group/srv p-8 rounded-3xl transition-all duration-300 relative overflow-hidden">
+                    <div class="card-top-line absolute top-0 left-0 right-0 h-px"></div>
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v3H4V5zm-9 5h9v4h-9zm0 6h9v3h-9zM4 10h5v9H4z"/></svg>
                     </div>
-                    <!-- Icon -->
-                    <div class="w-12 h-12 rounded-xl bg-violet-500/[0.08] border border-violet-500/[0.18] flex items-center justify-center text-violet-400 mb-6 transition-all duration-300 group-hover/srv:bg-violet-500/[0.14] group-hover/srv:border-violet-500/[0.30]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v3H4V5zm-9 5h9v4h-9zm0 6h9v3h-9zM4 10h5v9H4z"/></svg>
+                    <div class="card-icon-bg w-12 h-12 rounded-xl flex items-center justify-center text-violet-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v3H4V5zm-9 5h9v4h-9zm0 6h9v3h-9zM4 10h5v9H4z"/></svg>
                     </div>
-                    <!-- Title + live ping -->
-                    <div class="flex items-center gap-2.5 mb-4">
-                        <span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-40"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-violet-400"></span></span>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-50"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-violet-400"></span></span>
                         <h3 class="text-xl font-semibold text-white font-geist" data-i18n="crm_card_title">CRM &amp; SaaS Development</h3>
                     </div>
-                    <ul class="space-y-2.5">
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-violet-400/80"></span><span data-i18n="crm_li1">Custom CRM systems</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-violet-400/80"></span><span data-i18n="crm_li2">SaaS platforms &amp; client portals</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-violet-400/80"></span><span data-i18n="crm_li3">Internal dashboards &amp; admin panels</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-violet-400/80"></span><span data-i18n="crm_li4">Automation-first architecture</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-violet-400/80"></span><span data-i18n="crm_li5">Scalable business infrastructure</span></li>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 mr-2 flex-shrink-0"></span><span data-i18n="crm_li1">Custom CRM systems</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 mr-2 flex-shrink-0"></span><span data-i18n="crm_li2">SaaS platforms &amp; client portals</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 mr-2 flex-shrink-0"></span><span data-i18n="crm_li3">Internal dashboards &amp; admin panels</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 mr-2 flex-shrink-0"></span><span data-i18n="crm_li4">Automation-first architecture</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 mr-2 flex-shrink-0"></span><span data-i18n="crm_li5">Scalable business infrastructure</span></li>
                     </ul>
                 </div>
 
-                <!-- Card 3: Web & App Development — Cyan / Teal -->
-                <div onclick="window.location.href='services.html#web-app'" role="button" class="cursor-pointer group/srv p-8 rounded-3xl bg-[#040e0c] border border-teal-500/[0.12] hover:border-teal-500/[0.38] transition-all duration-500 ease-out hover:shadow-[0_8px_50px_-14px_rgba(20,184,166,0.32)] hover:-translate-y-0.5 relative overflow-hidden">
-                    <!-- Top accent line (fades in on hover) -->
-                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/35 to-transparent opacity-0 group-hover/srv:opacity-100 transition-opacity duration-500"></div>
-                    <!-- Ambient glow blob -->
-                    <div class="absolute -bottom-14 -right-14 w-52 h-52 bg-teal-500/[0.05] blur-[60px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-teal-500/[0.11]"></div>
-                    <!-- Background watermark icon -->
-                    <div class="absolute -bottom-1 -right-1 opacity-[0.028] group-hover/srv:opacity-[0.058] transition-opacity duration-500 text-teal-300 pointer-events-none select-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 24 24"><path fill="currentColor" d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                <!-- Card 3: Web & App Development (Standard) -->
+                <div onclick="window.location.href='services.html#web-app'" role="button" class="card-web cursor-pointer group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"></path></svg>
                     </div>
-                    <!-- Icon -->
-                    <div class="w-12 h-12 rounded-xl bg-teal-500/[0.08] border border-teal-500/[0.15] flex items-center justify-center text-teal-400 mb-6 transition-all duration-300 group-hover/srv:bg-teal-500/[0.14] group-hover/srv:border-teal-500/[0.28]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"/></svg>
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"></path></svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4 font-geist" data-i18n="web_card_title">Web &amp; App Development</h3>
-                    <ul class="space-y-2.5">
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-teal-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-teal-400/80"></span><span data-i18n="web_li1">Corporate websites &amp; landing pages</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-teal-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-teal-400/80"></span><span data-i18n="web_li2">Mobile apps (iOS &amp; Android)</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-teal-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-teal-400/80"></span><span data-i18n="web_li3">UI/UX design</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-teal-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-teal-400/80"></span><span data-i18n="web_li4">Conversion-focused interfaces</span></li>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span><span data-i18n="web_li1">Corporate websites &amp; landing pages</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span><span data-i18n="web_li2">Mobile apps (iOS &amp; Android)</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span><span data-i18n="web_li3">UI/UX design</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2"></span><span data-i18n="web_li4">Conversion-focused interfaces</span></li>
                     </ul>
                 </div>
 
-                <!-- Card 4: SMM & Marketing — Blue-Violet / Indigo -->
-                <div onclick="window.location.href='services.html#smm-marketing'" role="button" class="cursor-pointer group/srv p-8 rounded-3xl bg-[#050614] border border-indigo-500/[0.12] hover:border-indigo-500/[0.38] transition-all duration-500 ease-out hover:shadow-[0_8px_50px_-14px_rgba(99,102,241,0.32)] hover:-translate-y-0.5 relative overflow-hidden">
-                    <!-- Top accent line (fades in on hover) -->
-                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/35 to-transparent opacity-0 group-hover/srv:opacity-100 transition-opacity duration-500"></div>
-                    <!-- Ambient glow blob -->
-                    <div class="absolute -bottom-14 -right-14 w-52 h-52 bg-indigo-500/[0.05] blur-[60px] rounded-full pointer-events-none transition-all duration-700 group-hover/srv:bg-indigo-500/[0.11]"></div>
-                    <!-- Background watermark icon -->
-                    <div class="absolute -bottom-1 -right-1 opacity-[0.028] group-hover/srv:opacity-[0.058] transition-opacity duration-500 text-indigo-300 pointer-events-none select-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 24 24"><path fill="currentColor" d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z"/></svg>
+                <!-- Card 4: SMM & Marketing (Standard) -->
+                <div onclick="window.location.href='services.html#smm-marketing'" role="button" class="card-smm cursor-pointer group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgb(255, 255, 255);"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </div>
-                    <!-- Icon -->
-                    <div class="w-12 h-12 rounded-xl bg-indigo-500/[0.08] border border-indigo-500/[0.15] flex items-center justify-center text-indigo-400 mb-6 transition-all duration-300 group-hover/srv:bg-indigo-500/[0.14] group-hover/srv:border-indigo-500/[0.28]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10m4.685 4.093c.123.116.128.307.012.43a3.502 3.502 0 0 1-4.756-.05a.304.304 0 0 0-.442 0a.304.304 0 0 0 0 .438a4.11 4.11 0 0 0 5.617.062c.115-.123.11-.314-.012-.437a.305.305 0 0 0-.42-.043"/></svg>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10m4.685 4.093c.123.116.128.307.012.43a3.502 3.502 0 0 1-4.756-.05a.304.304 0 0 0-.442 0a.304.304 0 0 0 0 .438a4.11 4.11 0 0 0 5.617.062c.115-.123.11-.314-.012-.437a.305.305 0 0 0-.42-.043"></path></svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4 font-geist" data-i18n="smm_card_title">SMM &amp; Marketing</h3>
-                    <ul class="space-y-2.5">
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-indigo-400/80"></span><span data-i18n="smm_li1">Content strategy &amp; paid advertising</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-indigo-400/80"></span><span data-i18n="smm_li2">Social media management</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-indigo-400/80"></span><span data-i18n="smm_li3">Audience growth &amp; brand positioning</span></li>
-                        <li class="flex items-center text-sm text-gray-400 transition-colors duration-300 group-hover/srv:text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500/50 mr-2.5 flex-shrink-0 transition-colors duration-300 group-hover/srv:bg-indigo-400/80"></span><span data-i18n="smm_li4">Performance analytics &amp; reporting</span></li>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li1">Content strategy &amp; paid advertising</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li2">Social media management</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li3">Audience growth &amp; brand positioning</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li4">Performance analytics &amp; reporting</span></li>
                     </ul>
                 </div>
 
