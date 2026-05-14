@@ -93,19 +93,29 @@ pointer-events: none;
 }
 </style>
 <style>
-.card-ai{background-color:#0a1628;border:1px solid rgba(14,165,233,0.25);box-shadow:0 0 30px -12px rgba(14,165,233,0.18);transition:border-color 0.12s,box-shadow 0.12s}
-.card-ai:hover{border-color:rgba(14,165,233,0.58);box-shadow:0 0 55px -6px rgba(14,165,233,0.38)}
-.card-ai .card-icon-bg{background-color:rgba(14,165,233,0.1)}
-.card-ai .card-top-line{background:linear-gradient(to right,transparent,rgba(14,165,233,0.5),transparent)}
-.card-crm{background-color:#060e0b;border:1px solid rgba(20,184,166,0.22);box-shadow:0 0 28px -12px rgba(20,184,166,0.12);transition:border-color 0.12s,box-shadow 0.12s}
-.card-crm:hover{border-color:rgba(20,184,166,0.55);box-shadow:0 0 55px -6px rgba(20,184,166,0.3)}
-.card-crm .card-icon-bg{background-color:rgba(20,184,166,0.1)}
+/* shared card base — same spacing/radius handled by Tailwind, these handle color identity */
+.card-ai,.card-crm,.card-web,.card-smm{transition:border-color 0.12s,box-shadow 0.12s}
+.card-ai .card-icon-bg,.card-crm .card-icon-bg,.card-web .card-icon-bg,.card-smm .card-icon-bg{width:3rem;height:3rem;border-radius:0.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+/* AI — electric sky-blue */
+.card-ai{background-color:#050e1c;border:1px solid rgba(14,165,233,0.23);box-shadow:0 0 32px -10px rgba(14,165,233,0.2)}
+.card-ai:hover{border-color:rgba(14,165,233,0.56);box-shadow:0 0 55px -6px rgba(14,165,233,0.38)}
+.card-ai .card-icon-bg{background-color:rgba(14,165,233,0.1);color:#38bdf8}
+.card-ai .card-top-line{background:linear-gradient(to right,transparent,rgba(14,165,233,0.48),transparent)}
+/* CRM — teal/cyan */
+.card-crm{background-color:#060e0b;border:1px solid rgba(20,184,166,0.22);box-shadow:0 0 32px -10px rgba(20,184,166,0.16)}
+.card-crm:hover{border-color:rgba(20,184,166,0.54);box-shadow:0 0 55px -6px rgba(20,184,166,0.3)}
+.card-crm .card-icon-bg{background-color:rgba(20,184,166,0.1);color:#2dd4bf}
 .card-crm .card-top-line{background:linear-gradient(to right,transparent,rgba(20,184,166,0.42),transparent)}
-.card-web{background-color:#080e22;border:1px solid rgba(67,97,238,0.2);transition:border-color 0.12s,box-shadow 0.12s}
-.card-web .card-icon-bg{background-color:rgba(67,97,238,0.1)}
-.card-web:hover{border-color:rgba(67,97,238,0.48);box-shadow:0 0 42px -8px rgba(67,97,238,0.26)}
-.card-smm{transition:border-color 0.12s,box-shadow 0.12s}
-.card-smm:hover{border-color:rgba(59,130,246,0.28);box-shadow:0 0 40px -8px rgba(59,130,246,0.16)}
+/* Web — deep indigo-blue */
+.card-web{background-color:#080e22;border:1px solid rgba(67,97,238,0.22);box-shadow:0 0 32px -10px rgba(67,97,238,0.16)}
+.card-web:hover{border-color:rgba(67,97,238,0.52);box-shadow:0 0 55px -6px rgba(67,97,238,0.28)}
+.card-web .card-icon-bg{background-color:rgba(67,97,238,0.1);color:#818cf8}
+.card-web .card-top-line{background:linear-gradient(to right,transparent,rgba(67,97,238,0.42),transparent)}
+/* SMM — soft blue */
+.card-smm{background-color:#060810;border:1px solid rgba(59,130,246,0.22);box-shadow:0 0 32px -10px rgba(59,130,246,0.14)}
+.card-smm:hover{border-color:rgba(59,130,246,0.5);box-shadow:0 0 55px -6px rgba(59,130,246,0.24)}
+.card-smm .card-icon-bg{background-color:rgba(59,130,246,0.1);color:#60a5fa}
+.card-smm .card-top-line{background:linear-gradient(to right,transparent,rgba(59,130,246,0.4),transparent)}
 </style></head>
 <body class="antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-blue-200 text-white bg-[#020202] pb-10 relative">
 
@@ -390,39 +400,47 @@ pointer-events: none;
                     </ul>
                 </div>
 
-                <!-- Card 3: Web & App Development (Standard) -->
-                <div onclick="window.location.href='services.html#web-app'" role="button" class="card-web cursor-pointer group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 transition-all duration-300 relative overflow-hidden">
+                <!-- Card 3: Web & App Development -->
+                <div onclick="window.location.href='services.html#web-app'" role="button" class="card-web cursor-pointer group/srv p-8 rounded-3xl transition-all duration-300 relative overflow-hidden">
+                    <div class="card-top-line absolute top-0 left-0 right-0 h-px"></div>
                     <div style="position:absolute;width:240px;height:240px;bottom:-70px;right:-70px;border-radius:50%;background:rgba(67,97,238,0.07);filter:blur(55px);pointer-events:none"></div>
                     <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"></path></svg>
                     </div>
-                    <div class="card-icon-bg w-12 h-12 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
+                    <div class="card-icon-bg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.89 3l1.96.37l-6.83 17.67l-1.96-.37L12.89 3m5.07 3l-1.42 1.41L20.13 11l-3.59 3.59L17.96 16l4.95-4.95L17.96 6M6.04 6L1.09 11.05l4.95 4.95l1.41-1.41L3.91 11.05l3.54-3.59L6.04 6z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-4 font-geist" data-i18n="web_card_title">Web &amp; App Development</h3>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-500 opacity-50"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span>
+                        <h3 class="text-xl font-semibold text-white font-geist" data-i18n="web_card_title">Web &amp; App Development</h3>
+                    </div>
                     <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span><span data-i18n="web_li1">Corporate websites &amp; landing pages</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span><span data-i18n="web_li2">Mobile apps (iOS &amp; Android)</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span><span data-i18n="web_li3">UI/UX design</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span><span data-i18n="web_li4">Conversion-focused interfaces</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 flex-shrink-0"></span><span data-i18n="web_li1">Corporate websites &amp; landing pages</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 flex-shrink-0"></span><span data-i18n="web_li2">Mobile apps (iOS &amp; Android)</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 flex-shrink-0"></span><span data-i18n="web_li3">UI/UX design</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 flex-shrink-0"></span><span data-i18n="web_li4">Conversion-focused interfaces</span></li>
                     </ul>
                 </div>
 
-                <!-- Card 4: SMM & Marketing (Standard) -->
-                <div onclick="window.location.href='services.html#smm-marketing'" role="button" class="card-smm cursor-pointer group/srv p-8 rounded-3xl bg-[#181818] border border-white/10 transition-all duration-300 relative overflow-hidden">
-                    <div style="position:absolute;width:240px;height:240px;bottom:-70px;right:-70px;border-radius:50%;background:rgba(59,130,246,0.06);filter:blur(55px);pointer-events:none"></div>
+                <!-- Card 4: SMM & Marketing -->
+                <div onclick="window.location.href='services.html#smm-marketing'" role="button" class="card-smm cursor-pointer group/srv p-8 rounded-3xl transition-all duration-300 relative overflow-hidden">
+                    <div class="card-top-line absolute top-0 left-0 right-0 h-px"></div>
+                    <div style="position:absolute;width:240px;height:240px;bottom:-70px;right:-70px;border-radius:50%;background:rgba(59,130,246,0.07);filter:blur(55px);pointer-events:none"></div>
                     <div class="absolute top-0 right-0 p-6 opacity-10 group-hover/srv:opacity-20 transition-opacity">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgb(255, 255, 255);"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     </div>
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+                    <div class="card-icon-bg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10m4.685 4.093c.123.116.128.307.012.43a3.502 3.502 0 0 1-4.756-.05a.304.304 0 0 0-.442 0a.304.304 0 0 0 0 .438a4.11 4.11 0 0 0 5.617.062c.115-.123.11-.314-.012-.437a.305.305 0 0 0-.42-.043"></path></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-4 font-geist" data-i18n="smm_card_title">SMM &amp; Marketing</h3>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-50"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span></span>
+                        <h3 class="text-xl font-semibold text-white font-geist" data-i18n="smm_card_title">SMM &amp; Marketing</h3>
+                    </div>
                     <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li1">Content strategy &amp; paid advertising</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li2">Social media management</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li3">Audience growth &amp; brand positioning</span></li>
-                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span><span data-i18n="smm_li4">Performance analytics &amp; reporting</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span><span data-i18n="smm_li1">Content strategy &amp; paid advertising</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span><span data-i18n="smm_li2">Social media management</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span><span data-i18n="smm_li3">Audience growth &amp; brand positioning</span></li>
+                        <li class="flex items-center text-sm text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span><span data-i18n="smm_li4">Performance analytics &amp; reporting</span></li>
                     </ul>
                 </div>
 
