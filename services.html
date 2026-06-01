@@ -123,8 +123,8 @@ display: flex; align-items: center; justify-content: center;
 
             <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-400 gap-x-8 gap-y-8 items-center">
                 <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_home">Home</a><a href="services.html" class="transition-colors text-blue-500 font-geist" data-i18n="nav_services">Services</a>
+                <a href="ai-agents.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_ai_agents">AI Agents</a>
                 <a href="cases.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_cases">Case Studies</a>
-                
                 <a href="contact-us.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_contact">Contact</a>
             </div>
 
@@ -140,7 +140,7 @@ display: flex; align-items: center; justify-content: center;
                     <button onclick="setLang('en')" id="lang-en" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">EN</button>
                   </div>
                 </div>
-                <button class="inline-flex hover:bg-white/10 transition-all cursor-pointer text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]" onclick="window.location.href='https://agent-dashboard-production-b49b.up.railway.app/'" role="button" data-i18n="nav_login">
+                <button class="inline-flex hover:bg-white/10 transition-all cursor-pointer text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)]" onclick="window.location.href='#contact'" role="button" data-i18n="nav_login">
                     Log In
                 </button>
             </div>
@@ -192,6 +192,7 @@ display: flex; align-items: center; justify-content: center;
                                 </div>
                                 <h3 class="text-sm font-semibold text-white mb-2 font-geist" data-i18n="ai_chat_h">AI Sales Managers (Chat Agents)</h3>
                                 <p class="text-gray-400 text-sm font-geist leading-relaxed" data-i18n="ai_chat_p">Works across WhatsApp, Telegram, Instagram, and your website. Handles first contact, answers questions, qualifies leads, books appointments, and routes to the right person — in Uzbek, Russian, or English. Never misses a message.</p>
+                                <a href="ai-agents.html" class="inline-flex items-center gap-1 text-sky-400 text-xs font-semibold font-geist mt-3 hover:text-sky-300 transition-colors">Learn more <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
                             </div>
                             <div class="bg-[#151515] rounded-2xl p-5 border border-white/5 relative overflow-hidden">
                                 <div class="absolute top-3 right-3 w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/15 flex items-center justify-center text-sky-400/70">
@@ -238,7 +239,7 @@ display: flex; align-items: center; justify-content: center;
                                 <span class="text-white font-medium font-geist" data-i18n="pricing_custom_desc">Custom based on complexity</span>
                             </div>
                             <button class="group/btn inline-flex overflow-hidden transition-all duration-300 hover:bg-sky-600 hover:border-sky-500 hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] font-medium text-white font-geist bg-white/5 h-12 border-sky-500/40 border rounded-full pr-8 pl-8 relative items-center justify-center" onclick="window.location.href='contact-us.html'" role="button">
-                                <span class="relative z-10" data-i18n="btn_consult">Request Consultation</span>
+                                <span class="relative z-10" data-i18n="btn_request_consult">Request Consultation</span>
                             </button>
                         </div>
                     </div>
