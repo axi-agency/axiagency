@@ -1824,7 +1824,9 @@ document.addEventListener('click', function(e) {
       detected = 'en';
     }
   }
-  document.addEventListener('DOMContentLoaded', function() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyLang(detected); });
+  } else {
     applyLang(detected);
-  });
+  }
 })();
