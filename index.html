@@ -756,7 +756,7 @@
       <a class="nav-link active" href="#services" data-i18n="home_nav_services">Услуги</a>
       <a class="nav-link" href="#cases" data-i18n="home_nav_cases">Кейсы</a>
       <a class="nav-link" href="#about" data-i18n="home_nav_about">О нас</a>
-      <a class="nav-link" href="#contact" data-i18n="home_nav_contact">Контакты</a>
+      <a class="nav-link" href="contact-us.html" data-i18n="home_nav_contact">Контакты</a>
     </div>
     <div class="flex items-center gap-3">
       <div id="lang-switcher" style="position:relative">
@@ -804,7 +804,7 @@
         <p class="fade-up delay-200 mt-8 text-[17px] md:text-[19px] text-gray-300 font-light max-w-2xl leading-[1.6]" data-i18n="home_hero_sub">AXI создаёт AI-системы, которые отвечают клиентам, обрабатывают заявки и автоматизируют процессы бизнеса, освобождая ваше время для роста и масштабирования.</p>
 
         <div class="fade-up delay-300 mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
-          <a href="#contact" class="btn-primary" data-i18n="home_hero_btn_primary">Связаться</a>
+          <a href="contact-us.html" class="btn-primary" data-i18n="home_hero_btn_primary">Связаться</a>
           <a href="#services" class="btn-ghost btn-ghost-lit">
             <span data-i18n="home_hero_btn_secondary">Наши услуги</span>
             <svg class="bg-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -1381,7 +1381,7 @@
         <p class="mt-6 max-w-xl mx-auto text-[#9aa3b2] text-[16px] sm:text-[17px] leading-relaxed font-light" data-i18n="home_cta_desc">Покажем, как AI может помочь именно вашему бизнесу - от обработки заявок до полной автоматизации процессов.</p>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
-          <a class="btn-primary" href="#" data-i18n="home_cta_btn_primary">ОСТАВИТЬ ЗАЯВКУ</a>
+          <a class="btn-primary" href="contact-us.html" data-i18n="home_cta_btn_primary">ОСТАВИТЬ ЗАЯВКУ</a>
           <a class="btn-ghost" href="#cases" data-i18n="home_cta_btn_secondary">Посмотреть кейсы</a>
         </div>
 
@@ -1451,7 +1451,7 @@
       <ul class="space-y-4">
         <li><a href="#about" class="text-[15px] text-gray-200 hover:text-white transition" data-i18n="home_nav_about">О нас</a></li>
         <li><a href="#cases" class="text-[15px] text-gray-200 hover:text-white transition" data-i18n="home_nav_cases">Кейсы</a></li>
-        <li><a href="#contact" class="text-[15px] text-gray-200 hover:text-white transition" data-i18n="home_nav_contact">Контакты</a></li>
+        <li><a href="contact-us.html" class="text-[15px] text-gray-200 hover:text-white transition" data-i18n="home_nav_contact">Контакты</a></li>
       </ul>
     </div>
 
@@ -1690,7 +1690,7 @@
         if (withCta) {
           const r = row('bot', 'Нажмите, чтобы оставить заявку:');
           const a = document.createElement('a');
-          a.href = '#contact'; a.className = 'axi-chip'; a.style.marginTop = '8px'; a.style.display = 'inline-flex';
+          a.href = 'contact-us.html'; a.className = 'axi-chip'; a.style.marginTop = '8px'; a.style.display = 'inline-flex';
           a.textContent = '📅 Записаться на консультацию';
           a.addEventListener('click', () => closePanel());
           r.querySelector('.axi-bubble').appendChild(document.createElement('br'));
