@@ -93,7 +93,7 @@ const translations = {
     // Footer
     footer_h2: "\u201cAutomation is the new leverage.\u201d",
     footer_btn: "Contact Us",
-    footer_copy: "\u00a9 2024 AXI Agency. All rights reserved.",
+    footer_copy: "\u00a9 2026 AXI Agency. All rights reserved.",
 
     // Services page
     svc_badge: "Our Expertise",
@@ -670,7 +670,7 @@ const translations = {
     // Footer
     footer_h2: "\u00ab\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u2014 \u044d\u0442\u043e \u043d\u043e\u0432\u044b\u0439 \u0440\u044b\u0447\u0430\u0433.\u00bb",
     footer_btn: "\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f",
-    footer_copy: "\u00a9 2024 AXI Agency. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.",
+    footer_copy: "\u00a9 2026 AXI Agency. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.",
 
     // Services page
     svc_badge: "\u041d\u0430\u0448\u0430 \u044d\u043a\u0441\u043f\u0435\u0440\u0442\u0438\u0437\u0430",
@@ -1245,7 +1245,7 @@ const translations = {
     // Footer
     footer_h2: "\u201cAvtomatizatsiya \u2014 bu yangi imkoniyat.\u201d",
     footer_btn: "Bog\u02bclanish",
-    footer_copy: "\u00a9 2024 AXI Agency. Barcha huquqlar himoyalangan.",
+    footer_copy: "\u00a9 2026 AXI Agency. Barcha huquqlar himoyalangan.",
 
     // Services page
     svc_badge: "Bizning tajribamiz",
