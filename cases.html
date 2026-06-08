@@ -82,7 +82,7 @@ opacity: 0; /* Start hidden */
 
     <!-- Navigation -->
     <div style="position:fixed;top:20px;left:0;right:0;display:flex;justify-content:center;z-index:50;padding-left:1rem;padding-right:1rem;pointer-events:none;">
-  <nav class="glass-nav pointer-events-auto w-full max-w-6xl rounded-full pl-6 pr-3 py-3 flex items-center justify-between shadow-2xl">
+  <nav class="glass-nav pointer-events-auto w-full max-w-6xl rounded-full pl-6 pr-3 py-3 shadow-2xl" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;">
     <a href="index.html" class="flex items-center gap-2.5 shrink-0">
       <div class="logo-mark" style="width:55px"></div>
     </a>
@@ -92,7 +92,7 @@ opacity: 0; /* Start hidden */
       <a class="nav-link active" href="cases.html" data-i18n="home_nav_cases">Cases</a>
       <a class="nav-link" href="contact-us.html" data-i18n="home_nav_contact">Contact</a>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3" style="justify-self:end">
       <div id="lang-switcher" style="position:relative">
         <button id="lang-toggle" onclick="toggleLangMenu(event)" style="display:flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:#fff;font-family:inherit;background:rgba(255,255,255,0.05);border:1px solid #3b82f6;border-radius:9999px;padding:8px 14px;box-shadow:0 0 15px rgba(56,189,248,0.1);cursor:pointer;transition:background 0.2s;user-select:none;line-height:1.25" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
           <span id="lang-label">RU</span>
