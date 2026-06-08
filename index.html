@@ -1346,7 +1346,7 @@
         <span class="eyebrow mx-auto"><span class="dot"></span><span data-i18n="home_about_eyebrow">О нас</span></span>
         <h2 class="headline grad-headline text-[34px] md:text-[44px] mt-5" data-i18n="home_about_h2">О <span class="grad-sky">AXI</span></h2>
         <p class="mt-7 text-[#cfd5e0]" data-i18n="home_about_p1" text-[17px] sm:text-[18px] leading-[1.7] font-light">AXI создаёт AI-системы и автоматизации для бизнесов в Узбекистане и Центральной Азии. Мы помогаем компаниям автоматизировать процессы, быстрее обрабатывать клиентов и масштабировать операции с помощью современных технологий.</p>
-        <p class="mt-5 text-[#9aa3b2] text-[16px] sm:text-[17px] data-i18n="home_about_p2" leading-[1.7] font-light">Наша цель - создавать системы, которые помогают бизнесу расти быстрее, работать эффективнее и использовать AI как реальный инструмент роста.</p>
+        <p class="mt-5 text-[#9aa3b2] text-[16px] sm:text-[17px] leading-[1.7] font-light" data-i18n="home_about_p2">Наша цель - создавать системы, которые помогают бизнесу расти быстрее, работать эффективнее и использовать AI как реальный инструмент роста.</p>
       </div>
 
     </div>
@@ -1385,9 +1385,15 @@
           <a class="btn-ghost" href="#cases" data-i18n="home_cta_btn_secondary">Посмотреть кейсы</a>
         </div>
 
-        <div class="mt-8 flex items-center justify-center gap-2 text-[12px] text-gray-500">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          <span data-i18n="home_cta_trust">Бесплатная консультация · 20 минут · без презентации</span>
+        <div class="mt-8 flex items-center justify-center gap-4 text-[12px] text-gray-500 flex-wrap">
+          <div class="flex items-center gap-2">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span data-i18n="home_cta_trust">Бесплатная консультация</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span data-i18n="home_cta_support">Поддержка 24/7</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1605,10 +1611,11 @@
   (function () {
     const el = document.getElementById('liveNow');
     if (!el) return;
-    let n = 14;
+    let n = Math.floor(Math.random() * 8) + 18;
+    el.textContent = n;
     setInterval(() => {
       const delta = Math.random() > 0.5 ? 1 : -1;
-      n = Math.max(11, Math.min(19, n + delta));
+      n = Math.max(18, Math.min(25, n + delta));
       el.textContent = n;
     }, 4200);
   })();
