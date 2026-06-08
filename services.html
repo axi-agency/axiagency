@@ -629,6 +629,26 @@
     .axi-toggle{ position: fixed; bottom: 16px; right: 16px; }
     .axi-chat.open .axi-toggle{ display:none; }
    
+
+  /* ── Hero entrance animation ── */
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero-el {
+    animation: hero-in .8s cubic-bezier(.22,.61,.36,1) both;
+  }
+  .hero-el.d0 { animation-delay: .08s; }
+  .hero-el.d1 { animation-delay: .20s; }
+  .hero-el.d2 { animation-delay: .32s; }
+  .hero-el.d3 { animation-delay: .44s; }
+  .hero-el.d4 { animation-delay: .58s; }
+  /* Safety: end state is always fully visible */
+  .hero-shown { opacity:1 !important; transform:none !important; animation:none !important; }
+  @media print, (prefers-reduced-motion: reduce) {
+    .hero-el { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
 </style>
 </head>
 <body class="overflow-x-hidden">
@@ -685,7 +705,7 @@
       <div class="grid lg:grid-cols-[1.05fr,1fr] gap-10 lg:gap-16 items-center">
 
         <div class="relative">
-          <div class="fade-up visible flex items-center gap-3 mb-7">
+          <div class="hero-el d0 flex items-center gap-3 mb-7">
             <span class="eyebrow"><span class="dot"></span><span data-i18n="aip_hero_eyebrow">AI Sales Infrastructure</span></span>
             <span class="hidden sm:flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest text-gray-500">
               <span class="live-dot"></span>
@@ -693,16 +713,16 @@
             </span>
           </div>
 
-          <h1 class="fade-up delay-100 visible text-[44px] md:text-[58px] lg:text-[64px] leading-[1.02] tracking-[-0.035em] font-semibold mb-6" data-i18n="aip_hero_h1">
+          <h1 class="hero-el d1 text-[44px] md:text-[58px] lg:text-[64px] leading-[1.02] tracking-[-0.035em] font-semibold mb-6" data-i18n="aip_hero_h1">
             Manage your business,<br>
             <span class="text-gray-500">not your </span><span class="grad-sky">processes.</span>
           </h1>
 
-          <p class="fade-up delay-200 visible text-[17px] md:text-[18px] text-gray-300 font-light max-w-[34rem] mb-7 leading-[1.55]" data-i18n="aip_hero_p">
+          <p class="hero-el d2 text-[17px] md:text-[18px] text-gray-300 font-light max-w-[34rem] mb-7 leading-[1.55]" data-i18n="aip_hero_p">
             We build AI chat <span class="text-white">and voice</span> agents that run sales for your clinic, store or company - across Instagram, Telegram, website chat and inbound calls. <span class="text-white font-normal">24/7. In any language. No tired hours. No days off.</span>
           </p>
 
-          <div class="fade-up delay-300 visible flex flex-col sm:flex-row gap-3 mb-8">
+          <div class="hero-el d3 flex flex-col sm:flex-row gap-3 mb-8">
             <a href="contact-us.html" class="btn-primary" data-i18n="aip_cta_book">
               Book a Demo
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -713,7 +733,7 @@
             </a>
           </div>
 
-          <div class="fade-up delay-400 visible">
+          <div class="hero-el d4">
             <p class="text-[13px] text-gray-500 mb-4" data-i18n="aip_hero_proof">
               Built for <span class="text-gray-300 font-medium">28+ clinics, retail stores, hotels and service businesses</span> across Tashkent.
             </p>
@@ -736,7 +756,7 @@
         </div>
 
         <!-- HERO DEMO CARD -->
-        <div id="demo" class="fade-up delay-200 visible relative">
+        <div id="demo" class="hero-el d2 relative">
           <div class="absolute -inset-6 bg-sky-500/10 rounded-3xl blur-3xl -z-10"></div>
 
           <div class="demo-card relative overflow-hidden">

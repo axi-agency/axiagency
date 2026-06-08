@@ -1198,7 +1198,7 @@ aip_partners_label: "Our partners",
     aip_hero_h1: "Управляйте бизнесом,<br><span class=\"text-gray-500\">а не </span><span class=\"grad-sky\">процессами.</span>",
     aip_hero_p: "Мы создаём AI-агентов, которые отвечают на каждое сообщение в Instagram, Telegram и на сайте за секунды — квалифицируют лиды, бронируют встречи и закрывают продажи для вашей клиники, магазина или сервиса. <span class=\"text-white font-normal\">24/7, на узбекском, русском и английском.</span>",
     aip_cta_book: "Заказать демо",
-    aip_nav_cta: "Записаться",
+    aip_nav_cta: "Подробнее",
     aip_cta_see_live: "Посмотреть вживую",
     aip_hero_proof: "Создано для <span class=\"text-gray-300 font-medium\">20+ клиник, магазинов, отелей и сервисных бизнесов</span> в Ташкенте.",
 
