@@ -635,18 +635,25 @@
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: none; }
   }
+  /* Initial state — invisible until JS fires the animation */
   .hero-el {
-    animation: hero-in .8s cubic-bezier(.22,.61,.36,1) both;
+    opacity: 0;
+    transform: translateY(22px);
   }
-  .hero-el.d0 { animation-delay: .08s; }
-  .hero-el.d1 { animation-delay: .20s; }
-  .hero-el.d2 { animation-delay: .32s; }
-  .hero-el.d3 { animation-delay: .44s; }
-  .hero-el.d4 { animation-delay: .58s; }
-  /* Safety: end state is always fully visible */
-  .hero-shown { opacity:1 !important; transform:none !important; animation:none !important; }
+  /* JS adds .hero-run to kick off the cascade */
+  .hero-el.hero-run {
+    animation: hero-in .8s cubic-bezier(.22,.61,.36,1) forwards;
+  }
+  .hero-el.d0.hero-run { animation-delay: .00s; }
+  .hero-el.d1.hero-run { animation-delay: .12s; }
+  .hero-el.d2.hero-run { animation-delay: .24s; }
+  .hero-el.d3.hero-run { animation-delay: .36s; }
+  .hero-el.d4.hero-run { animation-delay: .50s; }
+  /* Safety / reduced-motion: always fully visible */
+  .hero-shown,
+  .hero-el.hero-shown { opacity:1 !important; transform:none !important; animation:none !important; }
   @media print, (prefers-reduced-motion: reduce) {
-    .hero-el { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .hero-el { opacity:1 !important; transform:none !important; animation:none !important; }
   }
 
 </style>
@@ -2269,6 +2276,25 @@ In the first 30 days.</h3>
       card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
+
+  // ── Hero entrance animation (JS-triggered, bypasses browser animation pause) ──
+  (function() {
+    function runHero() {
+      document.querySelectorAll('.hero-el').forEach(function(el) {
+        el.classList.add('hero-run');
+      });
+      // Safety net: force final state after all animations finish
+      setTimeout(function() {
+        document.querySelectorAll('.hero-el').forEach(function(el) {
+          el.classList.add('hero-shown');
+        });
+      }, 1600);
+    }
+    // Double rAF ensures the initial opacity:0 is painted before animation starts
+    requestAnimationFrame(function() {
+      requestAnimationFrame(runHero);
+    });
+  })();
 
   // ── Fade-up on scroll ──
   const obs = new IntersectionObserver((entries) => {
