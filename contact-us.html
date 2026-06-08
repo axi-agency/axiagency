@@ -64,6 +64,17 @@ color: #60a5fa;
 border-color: rgba(96, 165, 250, 0.5);
 box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
 }
+
+  .glass-nav{background:rgba(8,8,8,0.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(255,255,255,0.08);}
+  .nav-link{color:#a4adbb;transition:color .2s ease;font-size:14px;position:relative;padding:6px 2px;text-decoration:none;}
+  .nav-link:hover{color:#7dd3fc;}
+  .nav-link.active{color:#fff;}
+  .nav-link::after{content:"";position:absolute;left:50%;bottom:-2px;width:0;height:1.5px;border-radius:2px;background:linear-gradient(90deg,#38bdf8,#2563eb);transform:translateX(-50%);transition:width .3s ease;}
+  .nav-link:hover::after{width:100%;}
+  .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:9999px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,0.05);border:1px solid #3b82f6;box-shadow:0 0 15px rgba(56,189,248,0.1);transition:background .2s ease;text-decoration:none;}
+  .nav-cta:hover{background:rgba(255,255,255,0.10);}
+  .logo-mark{display:block;width:60px;height:26px;background-image:url('images/axi-icon-transparent.png');background-size:contain;background-position:left center;background-repeat:no-repeat;filter:drop-shadow(0 0 12px rgba(56,189,248,0.35));transition:filter .25s ease;}
+  .logo-mark:hover{filter:drop-shadow(0 0 18px rgba(56,189,248,0.6));}
 </style>
 <meta name="disabled-font-classes" content="font-roboto">
 <link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
@@ -88,33 +99,32 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
 
     <!-- Navigation -->
     <div class="fixed top-5 left-0 right-0 flex justify-center z-50 px-4 pointer-events-none">
-        <nav class="glass-nav flex pointer-events-auto w-full max-w-6xl rounded-full pt-3 pr-3 pb-3 pl-6 shadow-2xl items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2.5 shrink-0"><div style="width:55px;height:26px;background-image:url('images/axi-icon-transparent.png');background-size:contain;background-position:left center;background-repeat:no-repeat;filter:drop-shadow(0 0 12px rgba(56,189,248,0.35))"></div></a>
-
-            <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-400 gap-x-8 gap-y-8 items-center">
-                <a href="index.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_home">Home</a><a href="services.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_services">Services</a>
-                <a href="cases.html" class="transition-colors hover:text-blue-400 text-white font-geist" data-i18n="nav_cases">Case Studies</a>
-                <a href="contact-us.html" class="transition-colors text-blue-500 font-geist" data-i18n="nav_contact">Contact</a>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <div id="lang-switcher" style="position:relative">
-                  <button id="lang-toggle" onclick="toggleLangMenu(event)" style="display:flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:#fff;font-family:inherit;background:rgba(255,255,255,0.05);border:1px solid #3b82f6;border-radius:9999px;padding:8px 14px;box-shadow:0 0 15px rgba(56,189,248,0.1);cursor:pointer;transition:background 0.2s;user-select:none;line-height:1.25" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                    <span id="lang-label">EN</span>
-                    <svg id="lang-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" style="transition:transform 0.2s;flex-shrink:0"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-                  </button>
-                  <div id="lang-dropdown" style="display:none;position:absolute;right:0;top:calc(100% + 8px);background:#0d0d0d;border:1px solid rgba(59,130,246,0.4);border-radius:12px;overflow:hidden;min-width:72px;box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 20px rgba(56,189,248,0.08);opacity:0;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;z-index:60">
-                    <button onclick="setLang('ru')" id="lang-ru" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">RU</button>
-                    <button onclick="setLang('uz')" id="lang-uz" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">UZ</button>
-                    <button onclick="setLang('en')" id="lang-en" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">EN</button>
-                  </div>
-                </div>
-                <button class="inline-flex hover:bg-white/10 transition-all text-sm font-medium text-white font-geist bg-white/5 border-[#3b82f6] border rounded-full pt-2 pr-5 pb-2 pl-5 shadow-[0_0_15px_rgba(56,189,248,0.1)] cursor-pointer" onclick="window.location.href='#contact'" role="button" data-i18n="nav_login">
-                    Log In
-                </button>
-            </div>
-        </nav>
+  <nav class="glass-nav pointer-events-auto w-full max-w-6xl rounded-full pl-6 pr-3 py-3 flex items-center justify-between shadow-2xl">
+    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+      <div class="logo-mark" style="width:55px"></div>
+    </a>
+    <div class="hidden lg:flex gap-10 items-center">
+      <a class="nav-link" href="index.html" data-i18n="home_nav_home">Home</a>
+      <a class="nav-link" href="services.html" data-i18n="home_nav_services">Services</a>
+      <a class="nav-link" href="cases.html" data-i18n="home_nav_cases">Cases</a>
+      <a class="nav-link active" href="contact-us.html" data-i18n="home_nav_contact">Contact</a>
     </div>
+    <div class="flex items-center gap-3">
+      <div id="lang-switcher" style="position:relative">
+        <button id="lang-toggle" onclick="toggleLangMenu(event)" style="display:flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:#fff;font-family:inherit;background:rgba(255,255,255,0.05);border:1px solid #3b82f6;border-radius:9999px;padding:8px 14px;box-shadow:0 0 15px rgba(56,189,248,0.1);cursor:pointer;transition:background 0.2s;user-select:none;line-height:1.25" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <span id="lang-label">RU</span>
+          <svg id="lang-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" style="transition:transform 0.2s;flex-shrink:0"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div id="lang-dropdown" style="display:none;position:absolute;right:0;top:calc(100% + 8px);background:#0d0d0d;border:1px solid rgba(59,130,246,0.4);border-radius:12px;overflow:hidden;min-width:72px;box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 20px rgba(56,189,248,0.08);opacity:0;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;z-index:60">
+          <button onclick="setLang('ru')" id="lang-ru" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">RU</button>
+          <button onclick="setLang('uz')" id="lang-uz" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">UZ</button>
+          <button onclick="setLang('en')" id="lang-en" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">EN</button>
+        </div>
+      </div>
+      <a href="contact-us.html" class="nav-cta" data-i18n="aip_cta_book">Book a Demo</a>
+    </div>
+  </nav>
+</div>
 
     <!-- HERO SECTION -->
     <div class="relative z-10 pt-40 pb-16 px-6 text-center max-w-4xl mx-auto">
