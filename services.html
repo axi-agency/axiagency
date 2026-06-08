@@ -504,6 +504,131 @@
     background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
     color:#d1d5db; font-size:10.5px; font-weight:500; font-family:'Geist Mono', monospace; letter-spacing:.02em;
   }
+
+  /* ── Chat widget ── */
+  .axi-chat{ position: fixed; bottom: 24px; right: 24px; z-index: 70; font-family:'Geist', sans-serif; }
+
+  /* Launcher */
+  .axi-toggle{
+    position: relative; width: 62px; height: 62px; border-radius: 50%; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9); color: #fff;
+    box-shadow: 0 0 30px rgba(56,189,248,0.45), 0 8px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+    margin-left: auto;
+  }
+  .axi-toggle:hover{ transform: scale(1.07); box-shadow: 0 0 40px rgba(56,189,248,0.65), 0 10px 32px rgba(0,0,0,0.55); }
+  .axi-toggle-pulse{ position:absolute; inset:0; border-radius:50%; border:2px solid rgba(56,189,248,0.55); animation: axi-ring 2.4s ease-out infinite; }
+  @keyframes axi-ring{ 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.75); opacity:0; } }
+  .axi-toggle-ico{ position:absolute; display:flex; align-items:center; justify-content:center; transition: opacity .25s ease, transform .25s ease; }
+  .axi-ico-close{ opacity:0; transform: rotate(-90deg) scale(.6); }
+  .axi-chat.open .axi-ico-chat{ opacity:0; transform: rotate(90deg) scale(.6); }
+  .axi-chat.open .axi-ico-close{ opacity:1; transform: rotate(0) scale(1); }
+
+  /* Nudge bubble */
+  .axi-nudge{
+    position:absolute; bottom: 12px; right: 78px; white-space: nowrap;
+    display:flex; align-items:center; gap:10px;
+    padding: 11px 12px 11px 16px; border-radius: 14px;
+    background: #0f1216; border: 1px solid rgba(56,189,248,0.25);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 24px rgba(56,189,248,0.12);
+    color: #e8ecf2; font-size: 13.5px; font-weight: 500;
+    opacity: 0; transform: translateX(8px) scale(.96); pointer-events: none; transform-origin: right center;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .axi-nudge.show{ opacity:1; transform: translateX(0) scale(1); pointer-events:auto; }
+  .axi-nudge::after{
+    content:""; position:absolute; right:-6px; top:50%; transform: translateY(-50%) rotate(45deg);
+    width:11px; height:11px; background:#0f1216; border-right:1px solid rgba(56,189,248,0.25); border-top:1px solid rgba(56,189,248,0.25);
+  }
+  .axi-nudge button{ background: rgba(255,255,255,0.06); border:none; color:#7d8696; cursor:pointer; width:20px; height:20px; border-radius:6px; display:flex; align-items:center; justify-content:center; transition: background .15s, color .15s; }
+  .axi-nudge button:hover{ background: rgba(255,255,255,0.12); color:#fff; }
+  .axi-chat.open .axi-nudge{ opacity:0 !important; pointer-events:none !important; }
+
+  /* Panel */
+  .axi-panel{
+    position: absolute; bottom: 78px; right: 0;
+    width: 384px; height: min(620px, calc(100vh - 130px));
+    background: #0a0c0f;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px; overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 32px 90px rgba(0,0,0,0.85), 0 0 0 1px rgba(56,189,248,0.05), 0 0 70px rgba(37,99,235,0.10);
+    opacity: 0; transform: translateY(20px) scale(.96); pointer-events: none; transform-origin: bottom right;
+    transition: opacity .32s cubic-bezier(.16,1,.3,1), transform .32s cubic-bezier(.16,1,.3,1);
+  }
+  .axi-chat.open .axi-panel{ opacity:1; transform: translateY(0) scale(1); pointer-events:auto; }
+
+  /* Header */
+  .axi-head{
+    flex-shrink:0; padding: 16px 16px 15px;
+    background: linear-gradient(160deg, rgba(37,99,235,0.20) 0%, rgba(14,165,233,0.05) 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .axi-head-id{ display:flex; align-items:center; gap:12px; min-width:0; }
+  .axi-avatar{
+    position:relative; width:44px; height:44px; border-radius:13px; flex-shrink:0; overflow:hidden;
+    background:#000; box-shadow: 0 0 22px rgba(56,189,248,0.35), inset 0 0 0 1px rgba(56,189,248,0.3);
+  }
+  .axi-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .axi-avatar-dot{ position:absolute; bottom:2px; right:2px; width:11px; height:11px; border-radius:50%; background:#22c55e; border:2px solid #0a0c0f; box-shadow:0 0 8px #22c55e; }
+  .axi-title{ font-size:15px; font-weight:600; color:#f9fafb; letter-spacing:-.01em; }
+  .axi-status{ font-size:11.5px; color:rgba(134,239,172,0.9); margin-top:3px; display:flex; align-items:center; gap:6px; }
+  .axi-status::before{ content:""; width:6px; height:6px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e; animation: pulse-live 1.8s ease-in-out infinite; }
+  .axi-icon-btn{ flex-shrink:0; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:rgba(156,163,175,0.8); cursor:pointer; width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; transition: all .15s; }
+  .axi-icon-btn:hover{ background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.16); }
+
+  /* Messages */
+  .axi-msgs{ flex:1; min-height:0; overflow-y:auto; padding: 18px 16px; display:flex; flex-direction:column; gap:12px; scroll-behavior:smooth; }
+  .axi-msgs::-webkit-scrollbar{ width:3px; }
+  .axi-msgs::-webkit-scrollbar-thumb{ background:rgba(255,255,255,0.1); border-radius:4px; }
+  .axi-row{ display:flex; align-items:flex-end; gap:8px; animation: msgIn .3s cubic-bezier(.16,1,.3,1) both; max-width: 86%; }
+  .axi-row.user{ flex-direction: row-reverse; align-self:flex-end; }
+  .axi-mini{ width:26px; height:26px; border-radius:8px; flex-shrink:0; overflow:hidden; background:#000; box-shadow: inset 0 0 0 1px rgba(56,189,248,0.3); margin-bottom: 2px; }
+  .axi-mini img{ width:100%; height:100%; object-fit:cover; }
+  .axi-bubble{ font-size:14px; line-height:1.55; padding: 9px 14px; word-break:break-word; }
+  .axi-row.bot .axi-bubble{ background:#15181d; color:#eef1f5; border:1px solid rgba(255,255,255,0.11); border-radius: 16px 16px 16px 5px; }
+  .axi-row.user .axi-bubble{ background: linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border-radius: 16px 16px 5px 16px; box-shadow: 0 4px 18px rgba(37,99,235,0.35); }
+  .axi-bubble a{ color:#7dd3fc; text-decoration: underline; }
+
+  /* Typing */
+  .axi-typing{ display:flex; gap:5px; padding: 4px 2px; }
+  .axi-typing span{ width:7px; height:7px; border-radius:50%; background:rgba(156,163,175,0.55); animation: axi-bounce 1.2s ease-in-out infinite; }
+  .axi-typing span:nth-child(2){ animation-delay:.2s; }
+  .axi-typing span:nth-child(3){ animation-delay:.4s; }
+  @keyframes axi-bounce{ 0%,80%,100%{ transform:translateY(0); opacity:.5; } 40%{ transform:translateY(-6px); opacity:1; } }
+
+  /* Quick reply chips */
+  .axi-chips{ flex-shrink:0; display:flex; flex-wrap:wrap; gap:7px; padding: 0 16px 12px; }
+  .axi-chip{
+    font-size:12.5px; font-weight:500; color:#cfe0ff; cursor:pointer;
+    padding: 7px 13px; border-radius: 9999px;
+    background: rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25);
+    transition: background .18s, border-color .18s, transform .18s;
+  }
+  .axi-chip:hover{ background: rgba(56,189,248,0.16); border-color: rgba(56,189,248,0.5); transform: translateY(-1px); }
+
+  /* Input */
+  .axi-input{ flex-shrink:0; padding: 12px; border-top: 1px solid rgba(255,255,255,0.06); display:flex; align-items:flex-end; gap:10px; background:#0c0e12; }
+  #axiTextarea{
+    flex:1; background:#16191e; border:1px solid rgba(255,255,255,0.08); border-radius:14px; color:#f9fafb;
+    font-family:'Geist', sans-serif; font-size:14px; line-height:1.5; padding: 11px 15px; resize:none; outline:none;
+    min-height:44px; max-height:110px; overflow-y:auto; transition: border-color .2s, box-shadow .2s;
+  }
+  #axiTextarea:focus{ border-color: rgba(56,189,248,0.45); box-shadow: 0 0 0 3px rgba(56,189,248,0.07); }
+  #axiTextarea::placeholder{ color: rgba(107,114,128,0.65); }
+  .axi-send{ width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; background: linear-gradient(135deg,#2563eb,#0ea5e9); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: 0 0 18px rgba(56,189,248,0.3); transition: transform .15s, box-shadow .2s, opacity .2s; }
+  .axi-send:disabled{ opacity:.35; cursor:not-allowed; box-shadow:none; }
+  .axi-send:not(:disabled):hover{ transform: scale(1.08); box-shadow: 0 0 26px rgba(56,189,248,0.5); }
+  .axi-foot{ flex-shrink:0; text-align:center; padding: 8px 16px 10px; font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:.04em; background:#0c0e12; }
+
+  @media (max-width: 440px){
+    .axi-chat{ bottom: 16px; right: 16px; left: 16px; }
+    .axi-panel{ position: fixed; inset: 12px; width:auto; height:auto; }
+    .axi-toggle{ position: fixed; bottom: 16px; right: 16px; }
+    .axi-chat.open .axi-toggle{ display:none; }
+   
 </style>
 </head>
 <body class="overflow-x-hidden">
@@ -546,7 +671,10 @@
           <button onclick="setLang('en')" id="lang-en" class="lang-option" style="display:none;width:100%;padding:10px 16px;font-size:13px;font-family:inherit;font-weight:500;text-align:left;color:#aaa;background:transparent;border:none;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.07)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">EN</button>
         </div>
       </div>
-      <a href="contact-us.html" class="nav-cta" data-i18n="aip_cta_book">Book a Demo</a>
+      <button class="nav-cta" style="cursor:pointer;border:none;" onclick="document.getElementById('axiToggle').click()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span data-i18n="home_chat_nudge_short">Chat with AI</span>
+    </button>
     </div>
   </nav>
 </div>
@@ -2271,6 +2399,211 @@ In the first 30 days.</h3>
   })();
 </script>
 
+
+<div id="axiChat" class="axi-chat">
+  <!-- Panel -->
+  <div id="axiPanel" class="axi-panel" role="dialog" aria-label="AXI AI ассистент">
+    <!-- Header -->
+    <div class="axi-head">
+      <div class="axi-head-id">
+        <div class="axi-avatar">
+          <img src="images/axi-icon.png" alt="AXI">
+        </div>
+        <div>
+          <div class="axi-title">AXI <span class="grad-sky">Ассистент</span></div>
+          <div class="axi-status">AI на связи · отвечает за секунды</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <button id="axiReset" class="axi-icon-btn" aria-label="Сбросить чат" title="Новый чат" style="color:rgba(248,113,113,0.8);border-color:rgba(248,113,113,0.2);" onmouseover="this.style.background='rgba(239,68,68,0.15)';this.style.color='#f87171';this.style.borderColor='rgba(248,113,113,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='rgba(248,113,113,0.8)';this.style.borderColor='rgba(248,113,113,0.2)'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+        </button>
+        <button id="axiClose" class="axi-icon-btn" aria-label="Закрыть">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="axiMsgs" class="axi-msgs" aria-live="polite"></div>
+
+    <!-- Quick replies -->
+    <div id="axiChips" class="axi-chips">
+      <button class="axi-chip" data-q="Хочу AI чат-агента для Instagram">AI чат-агенты</button>
+      <button class="axi-chip" data-q="Сколько стоит внедрение?">Стоимость</button>
+      <button class="axi-chip" data-q="Хочу записаться на консультацию">Консультация</button>
+    </div>
+
+    <!-- Input -->
+    <div class="axi-input">
+      <textarea id="axiTextarea" rows="1" placeholder="Напишите сообщение..." aria-label="Сообщение"></textarea>
+      <button id="axiSend" class="axi-send" aria-label="Отправить">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="axi-foot">Powered by AXI Agency</div>
+  </div>
+
+  <!-- Launcher -->
+  <button id="axiToggle" class="axi-toggle" aria-label="Открыть AI чат">
+    <span class="axi-toggle-pulse"></span>
+    <span class="axi-toggle-ico axi-ico-chat">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </span>
+    <span class="axi-toggle-ico axi-ico-close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </span>
+  </button>
+  <div id="axiNudge" class="axi-nudge">
+    <span data-i18n="home_chat_nudge">👋 Чем можем помочь? Спросите AI</span>
+    <button id="axiNudgeClose" aria-label="Скрыть">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+<script>
+  // ── AI Chat Agent widget ──
+  (function () {
+    const chat = document.getElementById('axiChat');
+    const toggle = document.getElementById('axiToggle');
+    const closeBtn = document.getElementById('axiClose');
+    const panel = document.getElementById('axiPanel');
+    const msgs = document.getElementById('axiMsgs');
+    const chips = document.getElementById('axiChips');
+    const ta = document.getElementById('axiTextarea');
+    const send = document.getElementById('axiSend');
+    const nudge = document.getElementById('axiNudge');
+    const nudgeClose = document.getElementById('axiNudgeClose');
+    const resetBtn = document.getElementById('axiReset');
+    if (!chat) return;
+
+    let opened = false;
+    let busy = false;
+    let greeted = false;
+
+    const AVATAR = "images/axi-icon.png";
+    const time = () => { const d = new Date(); return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); };
+
+    // Scripted AI responses (demo). Keyword → reply.
+    const RULES = [
+      { k: ['чат', 'instagram', 'инстаграм', 'telegram', 'телеграм', 'агент', 'сообщен'], a: 'AI чат-агент отвечает клиентам 24/7 в Instagram, Telegram и на сайте, обрабатывает заявки и сохраняет лиды в CRM. Внедрение обычно занимает 1–2 недели. Хотите, подберём сценарий под вашу нишу?' },
+      { k: ['голос', 'звон', 'voice', 'call'], a: 'AI голосовой агент сам принимает звонки, записывает клиентов и подтверждает заказы — на русском, узбекском и английском. Расскажите, сколько звонков в день у вас сейчас?' },
+      { k: ['автоматиз', 'crm', 'процесс', 'отчёт', 'отчет', 'n8n'], a: 'Автоматизируем заявки, CRM, документы, отчёты и уведомления. Опишите процесс, который отнимает больше всего времени — предложим решение.' },
+      { k: ['цен', 'стоит', 'стоимость', 'сколько', 'price', 'бюджет'], a: 'Стоимость зависит от задач. Базовый AI чат-агент — от $500, комплексная автоматизация считается индивидуально. Лучший способ — 20-минутная бесплатная консультация, где мы оценим ваш кейс. Записать вас?' },
+      { k: ['кейс', 'результат', 'пример', 'case'], a: 'Несколько цифр: World Online Clinic — $200k+ за 6 месяцев, Lahim by HMA — 1M+ просмотров, Butcher Uz — $100k+ за год. Хотите похожий результат для вашего бизнеса?' },
+      { k: ['запис', 'консульт', 'связ', 'демо', 'встреч', 'позвон'], a: 'Отлично! Оставьте, пожалуйста, имя и удобный способ связи (Telegram или телефон) — наш специалист свяжется с вами в течение дня. Или нажмите «Записаться» вверху страницы.', cta: true },
+    ];
+    const FALLBACK = 'Спасибо! Я передам это нашему специалисту. Чтобы ответить точнее — расскажите про ваш бизнес и задачу, либо запишитесь на бесплатную консультацию.';
+
+    function reply(text) {
+      const low = text.toLowerCase();
+      for (const r of RULES) { if (r.k.some(k => low.includes(k))) return r; }
+      return { a: FALLBACK };
+    }
+
+    function row(role, html) {
+      const r = document.createElement('div');
+      r.className = 'axi-row ' + role;
+      if (role === 'bot') {
+        const mini = document.createElement('div');
+        mini.className = 'axi-mini';
+        mini.innerHTML = '<img src="' + AVATAR + '" alt="AXI">';
+        r.appendChild(mini);
+      }
+      const b = document.createElement('div');
+      b.className = 'axi-bubble';
+      b.innerHTML = html;
+      r.appendChild(b);
+      msgs.appendChild(r);
+      msgs.scrollTop = msgs.scrollHeight;
+      return r;
+    }
+
+    function typing() {
+      const r = document.createElement('div');
+      r.className = 'axi-row bot';
+      r.innerHTML = '<div class="axi-mini"><img src="' + AVATAR + '" alt="AXI"></div><div class="axi-bubble"><div class="axi-typing"><span></span><span></span><span></span></div></div>';
+      msgs.appendChild(r);
+      msgs.scrollTop = msgs.scrollHeight;
+      return r;
+    }
+
+    function botSay(text, withCta) {
+      busy = true; send.disabled = true;
+      const t = typing();
+      const delay = 700 + Math.min(1600, text.length * 14);
+      setTimeout(() => {
+        t.remove();
+        let html = text.replace(/</g, '&lt;');
+        row('bot', html);
+        if (withCta) {
+          const r = row('bot', 'Нажмите, чтобы оставить заявку:');
+          const a = document.createElement('a');
+          a.href = 'contact-us.html'; a.className = 'axi-chip'; a.style.marginTop = '8px'; a.style.display = 'inline-flex';
+          a.textContent = '📅 Записаться на консультацию';
+          a.addEventListener('click', () => closePanel());
+          r.querySelector('.axi-bubble').appendChild(document.createElement('br'));
+          r.querySelector('.axi-bubble').appendChild(a);
+        }
+        busy = false; send.disabled = false;
+      }, delay);
+    }
+
+    function userSend(text) {
+      if (!text.trim() || busy) return;
+      row('user', text.replace(/</g, '&lt;'));
+      ta.value = ''; autoResize();
+      if (chips) chips.style.display = 'none';
+      const r = reply(text);
+      botSay(r.a, r.cta);
+    }
+
+    function greet() {
+      if (greeted) return; greeted = true;
+      botSay('Здравствуйте 👋 Я AI-ассистент AXI. Помогу подобрать решение для вашего бизнеса — чат-агенты, голосовые агенты или автоматизация. О чём расскажу подробнее?');
+    }
+
+    function openPanel() {
+      opened = true; chat.classList.add('open'); greet();
+      if (window.matchMedia('(max-width:440px)').matches) document.body.style.overflow = 'hidden';
+      setTimeout(() => { if (!window.matchMedia('(max-width:440px)').matches) ta.focus(); }, 350);
+    }
+    function closePanel() {
+      opened = false; chat.classList.remove('open'); document.body.style.overflow = '';
+    }
+
+    function autoResize() { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 110) + 'px'; }
+
+    function resetPanel() {
+      msgs.innerHTML = '';
+      greeted = false;
+      busy = false;
+      send.disabled = false;
+      ta.value = '';
+      if (chips) chips.style.display = '';
+      greet();
+    }
+
+    toggle.addEventListener('click', () => opened ? closePanel() : openPanel());
+    closeBtn.addEventListener('click', closePanel);
+    if (resetBtn) resetBtn.addEventListener('click', resetPanel);
+    send.addEventListener('click', () => userSend(ta.value));
+    ta.addEventListener('input', autoResize);
+    ta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); userSend(ta.value); } });
+    chips.querySelectorAll('.axi-chip').forEach(c => c.addEventListener('click', () => userSend(c.dataset.q)));
+
+    // Nudge bubble appears after scrolling, dismissible
+    let nudgeDismissed = false;
+    if (nudgeClose) nudgeClose.addEventListener('click', e => { e.stopPropagation(); nudge.classList.remove('show'); nudgeDismissed = true; });
+    if (nudge) nudge.addEventListener('click', openPanel);
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if (!nudgeDismissed && !opened && y > 700) nudge.classList.add('show');
+      else if (opened || y <= 700) nudge.classList.remove('show');
+    }, { passive: true });
+  })();
+
+</script>
 <script src="js/i18n.js"></script>
 </body>
 </html>

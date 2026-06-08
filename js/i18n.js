@@ -771,6 +771,8 @@ aip_partners_label: "Our partners",
     home_footer_copy: "© 2026 AXI Agency. All rights reserved.",
     home_footer_privacy: "Privacy Policy",
     home_footer_terms: "Terms",
+    home_chat_nudge_short: "Chat with AI",
+    home_chat_nudge_short: "Написать в чат",
     home_chat_nudge: "👋 How can we help? Ask AI"
 
   },
@@ -2317,6 +2319,7 @@ aip_partners_label: "Bizning hamkorlar",
     home_footer_copy: "© 2026 AXI Agency. Barcha huquqlar himoyalangan.",
     home_footer_privacy: "Maxfiylik siyosati",
     home_footer_terms: "Shartlar",
+    home_chat_nudge_short: "AI bilan chat",
     home_chat_nudge: "👋 Qanday yordam bera olamiz? AI dan so'rang"
 
   }
