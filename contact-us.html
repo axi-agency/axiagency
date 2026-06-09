@@ -474,4 +474,25 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
     });
   })();
 </script>
+<script>
+/* Prefetch internal pages on hover/touch for instant navigation */
+(function(){
+  var done = {};
+  function prefetch(url){
+    if(done[url]) return; done[url]=1;
+    var l=document.createElement('link');
+    l.rel='prefetch'; l.href=url; l.as='document';
+    document.head.appendChild(l);
+  }
+  function onIntent(e){
+    var a=e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var href=a.getAttribute('href');
+    if(!href||href[0]==='#'||href.indexOf('http')===0||href.indexOf('mailto')===0||href.indexOf('tel')===0) return;
+    if(/\.html$/.test(href)) prefetch(href);
+  }
+  document.addEventListener('mouseover', onIntent, {passive:true});
+  document.addEventListener('touchstart', onIntent, {passive:true});
+})();
+</script>
 </body></html>
