@@ -92,6 +92,17 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
   .nav-mobile-menu { font-family: 'Geist', 'Inter', system-ui, sans-serif; }
   .nav-mobile-close { position:absolute;top:24px;right:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;cursor:pointer;color:#fff;font-size:20px;line-height:1; }
   .nav-mobile-close:hover { background:rgba(255,255,255,0.12); }
+  /* Mobile: hide lang switcher in nav bar, show hamburger on right */
+  @media(max-width:1023px){
+    #lang-switcher{display:none!important;}
+    .nav-hamburger{display:flex!important;}
+  }
+  /* Hamburger — blue border like CTA */
+  .nav-hamburger{border-color:#3b82f6!important;box-shadow:0 0 15px rgba(56,189,248,0.15);}
+  /* Mobile lang switcher inside overlay */
+  .m-lang{display:flex;gap:10px;margin-top:8px;}
+  .m-lang button{padding:10px 22px;border-radius:9999px;font-size:14px;font-weight:600;color:#9ca3af;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);cursor:pointer;transition:all .2s;font-family:inherit;}
+  .m-lang button.active,.m-lang button:hover{color:#fff;border-color:#3b82f6;background:rgba(56,189,248,0.08);}
 
   .nav-mobile-menu a{font-size:26px;font-weight:600;color:#9ca3af;text-decoration:none;transition:color .2s;letter-spacing:-.02em;}
   .nav-mobile-menu a:hover,.nav-mobile-menu a.m-active{color:#fff;}
@@ -434,6 +445,11 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
   </div>
 <script>
   // ── Mobile nav toggle ──
+  function closeMobileNav(){
+    document.body.classList.remove('nav-mobile-open');
+    var m=document.getElementById('navMobileMenu');
+    if(m) m.classList.remove('show');
+  }
   (function(){
     var btn = document.getElementById('navHamburger');
     var menu = document.getElementById('navMobileMenu');
@@ -441,12 +457,14 @@ box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2);
     btn.addEventListener('click', function(){
       document.body.classList.toggle('nav-mobile-open');
       menu.classList.toggle('show');
+      // Highlight current lang
+      var cur = localStorage.getItem('axi_lang')||'ru';
+      menu.querySelectorAll('.m-lang button').forEach(function(b){
+        b.classList.toggle('active', b.textContent.trim().toLowerCase()===cur);
+      });
     });
     menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        document.body.classList.remove('nav-mobile-open');
-        menu.classList.remove('show');
-      });
+      a.addEventListener('click', function(){ closeMobileNav(); });
     });
   })();
 </script>
