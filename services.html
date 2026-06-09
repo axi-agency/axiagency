@@ -641,6 +641,13 @@
   @media(max-width:1023px){.nav-hamburger{display:flex;}}
   .nav-mobile-menu{display:none;position:fixed;inset:0;z-index:49;background:rgba(2,2,2,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;}
   .nav-mobile-menu.show{display:flex;}
+
+  /* Mobile overlay improvements */
+  .nav-mobile-open { overflow: hidden; }
+  .nav-mobile-menu { font-family: 'Geist', 'Inter', system-ui, sans-serif; }
+  .nav-mobile-close { position:absolute;top:24px;right:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;cursor:pointer;color:#fff;font-size:20px;line-height:1; }
+  .nav-mobile-close:hover { background:rgba(255,255,255,0.12); }
+
   .nav-mobile-menu a{font-size:26px;font-weight:600;color:#9ca3af;text-decoration:none;transition:color .2s;letter-spacing:-.02em;}
   .nav-mobile-menu a:hover,.nav-mobile-menu a.m-active{color:#fff;}
   .nav-mobile-menu .m-cta{margin-top:8px;padding:14px 36px;border-radius:9999px;background:rgba(255,255,255,0.05);border:1px solid #3b82f6;color:#fff;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 0 20px rgba(56,189,248,0.15);}
@@ -2415,6 +2422,7 @@ In the first 30 days.</h3>
 
 
 <div id="navMobileMenu" class="nav-mobile-menu">
+    <button class="nav-mobile-close" onclick="document.body.classList.remove('nav-mobile-open');document.getElementById('navMobileMenu').classList.remove('show')" aria-label="Close">✕</button>
     <a href="index.html" data-i18n="home_nav_home">Home</a>
     <a href="services.html" class="m-active" data-i18n="home_nav_services">Services</a>
     <a href="cases.html" data-i18n="home_nav_cases">Cases</a>
