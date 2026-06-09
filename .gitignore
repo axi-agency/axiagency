@@ -3,3 +3,9 @@ package.json
 package-lock.json
 tailwind.config.js
 css/input.css
+
+# Image backups & dev artifacts
+images/.orig/
+*.bak
+.DS_Store
+.playwright-mcp/
