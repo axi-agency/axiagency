@@ -6,4 +6,4 @@ Disallow: /index.new.html
 Disallow: /motion-background.html
 Disallow: /*.bak$
 
-Sitemap: https://www.axiagency.uz/sitemap.xml
+Sitemap: https://axiagency.uz/sitemap.xml

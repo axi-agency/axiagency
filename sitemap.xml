@@ -2,29 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.axiagency.uz/</loc>
+    <loc>https://axiagency.uz/</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.axiagency.uz/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.axiagency.uz/"/>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://www.axiagency.uz/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axiagency.uz/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://axiagency.uz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiagency.uz/"/>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://axiagency.uz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiagency.uz/"/>
   </url>
   <url>
-    <loc>https://www.axiagency.uz/services.html</loc>
+    <loc>https://axiagency.uz/services.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.axiagency.uz/cases.html</loc>
+    <loc>https://axiagency.uz/cases.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.axiagency.uz/contact-us.html</loc>
+    <loc>https://axiagency.uz/contact-us.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
