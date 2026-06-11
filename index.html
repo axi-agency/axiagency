@@ -632,7 +632,7 @@
 
   /* Nudge bubble */
   .axi-nudge{
-    position:absolute; bottom: 12px; right: 78px; white-space: nowrap;
+    position:absolute; bottom: 12px; right: 78px; white-space: normal; max-width: min(260px, calc(100vw - 110px));
     display:flex; align-items:center; gap:10px;
     padding: 11px 12px 11px 16px; border-radius: 14px;
     background: #0f1216; border: 1px solid rgba(56,189,248,0.25);
@@ -728,7 +728,7 @@
   .axi-send:not(:disabled):hover{ transform: scale(1.08); box-shadow: 0 0 26px rgba(56,189,248,0.5); }
   .axi-foot{ flex-shrink:0; text-align:center; padding: 8px 16px 10px; font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:.04em; background:#0c0e12; }
 
-  @media (max-width: 440px){
+  @media (max-width: 600px){
     .axi-chat{ bottom: 16px; right: 16px; left: 16px; }
     .axi-panel{ position: fixed; inset: 12px; width:auto; height:auto; }
     .axi-toggle{ position: fixed; bottom: 16px; right: 16px; }
@@ -1625,7 +1625,7 @@
   </div>
 <div id="axiChat" class="axi-chat">
   <!-- Panel -->
-  <div id="axiPanel" class="axi-panel" role="dialog" aria-label="AXI AI ассистент">
+  <div id="axiPanel" class="axi-panel" role="dialog" aria-label="Manager Muhammad">
     <!-- Header -->
     <div class="axi-head">
       <div class="axi-head-id">
@@ -1633,8 +1633,8 @@
           <img src="images/axi-icon.png" alt="AXI">
         </div>
         <div>
-          <div class="axi-title">AXI <span class="grad-sky">Ассистент</span></div>
-          <div class="axi-status">AI на связи · отвечает за секунды</div>
+          <div class="axi-title">Manager <span class="grad-sky">Muhammad</span></div>
+          <div class="axi-status" data-i18n="chat_status">На связи · отвечает за секунды</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;">
@@ -1651,15 +1651,11 @@
     <div id="axiMsgs" class="axi-msgs" aria-live="polite"></div>
 
     <!-- Quick replies -->
-    <div id="axiChips" class="axi-chips">
-      <button class="axi-chip" data-q="Хочу AI чат-агента для Instagram">AI чат-агенты</button>
-      <button class="axi-chip" data-q="Сколько стоит внедрение?">Стоимость</button>
-      <button class="axi-chip" data-q="Хочу записаться на консультацию">Консультация</button>
-    </div>
+    <div id="axiChips" class="axi-chips"></div>
 
     <!-- Input -->
     <div class="axi-input">
-      <textarea id="axiTextarea" rows="1" placeholder="Напишите сообщение..." aria-label="Сообщение"></textarea>
+      <textarea id="axiTextarea" rows="1" placeholder="Напишите сообщение..." data-i18n-placeholder="chat_placeholder" aria-label="Сообщение"></textarea>
       <button id="axiSend" class="axi-send" aria-label="Отправить">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
@@ -1668,7 +1664,7 @@
   </div>
 
   <!-- Launcher -->
-  <button id="axiToggle" class="axi-toggle" aria-label="Открыть AI чат">
+  <button id="axiToggle" class="axi-toggle" aria-label="Открыть чат">
     <span class="axi-toggle-pulse"></span>
     <span class="axi-toggle-ico axi-ico-chat">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -1779,21 +1775,81 @@
     const AVATAR = "images/axi-icon.png";
     const time = () => { const d = new Date(); return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); };
 
-    // Scripted AI responses (demo). Keyword → reply.
-    const RULES = [
-      { k: ['чат', 'instagram', 'инстаграм', 'telegram', 'телеграм', 'агент', 'сообщен'], a: 'AI чат-агент отвечает клиентам 24/7 в Instagram, Telegram и на сайте, обрабатывает заявки и сохраняет лиды в CRM. Внедрение обычно занимает 1–2 недели. Хотите, подберём сценарий под вашу нишу?' },
-      { k: ['голос', 'звон', 'voice', 'call'], a: 'AI голосовой агент сам принимает звонки, записывает клиентов и подтверждает заказы — на русском, узбекском и английском. Расскажите, сколько звонков в день у вас сейчас?' },
-      { k: ['автоматиз', 'crm', 'процесс', 'отчёт', 'отчет', 'n8n'], a: 'Автоматизируем заявки, CRM, документы, отчёты и уведомления. Опишите процесс, который отнимает больше всего времени — предложим решение.' },
-      { k: ['цен', 'стоит', 'стоимость', 'сколько', 'price', 'бюджет'], a: 'Стоимость зависит от задач. Базовый AI чат-агент — от $500, комплексная автоматизация считается индивидуально. Лучший способ — 20-минутная бесплатная консультация, где мы оценим ваш кейс. Записать вас?' },
-      { k: ['кейс', 'результат', 'пример', 'case'], a: 'Несколько цифр: World Online Clinic — $200k+ за 6 месяцев, Lahim by HMA — 1M+ просмотров, Butcher Uz — $100k+ за год. Хотите похожий результат для вашего бизнеса?' },
-      { k: ['запис', 'консульт', 'связ', 'демо', 'встреч', 'позвон'], a: 'Отлично! Оставьте, пожалуйста, имя и удобный способ связи (Telegram или телефон) — наш специалист свяжется с вами в течение дня. Или нажмите «Записаться» вверху страницы.', cta: true },
+    // ── Multilingual chat content (persona: Muhammad, a human manager) ──
+    const CHAT_I18N = {
+      uz: {
+        greet: "Assalomu alaykum! 👋 Men Muhammad, AXI menejeri. Biznesingiz uchun mos yechimni tanlashga yordam beraman. Sizni nima qiziqtiradi?",
+        chips: [
+          { l: "Chat-agentlar", q: "Instagram uchun chat-agent kerak" },
+          { l: "Narxlar", q: "Joriy etish qancha turadi?" },
+          { l: "Konsultatsiya", q: "Konsultatsiyaga yozilmoqchiman" }
+        ],
+        rules: {
+          chat: "Chat-agent mijozlarga 24/7 javob beradi. Instagram, Telegram va saytda ishlaydi. Arizalarni qayta ishlaydi va CRM ga saqlaydi. Joriy etish 1\u20132 hafta. Sohangizga moslab beraymi?",
+          voice: "Ovozli agent qo'ng'iroqlarga o'zi javob beradi. Mijozni yozib oladi va buyurtmani tasdiqlaydi. O'zbek, rus va ingliz tilida. Kuniga nechta qo'ng'iroq olasiz?",
+          auto: "Arizalar, CRM, hujjat va hisobotlarni avtomatlashtiramiz. Eng ko'p vaqt oladigan jarayonni ayting. Yechim taklif qilamiz.",
+          price: "Narx vazifaga bog'liq. Oddiy chat-agent \u2014 $500 dan. Murakkab avtomatizatsiya alohida hisoblanadi. Eng yaxshisi \u2014 bepul 20 daqiqalik konsultatsiya. Yozib qo'yaymi?",
+          case: "Bir nechta raqam: World Online Clinic \u2014 6 oyda $214k+. Lahim by HMA \u2014 1M+ ko'rish. Butcher Uz \u2014 yiliga $100k+. Sizga ham shunday natija kerakmi?",
+          book: "Ajoyib! Ismingiz va aloqa usulingizni qoldiring (Telegram yoki telefon). Kun davomida bog'lanamiz. Yoki \u00abBoshlash\u00bb tugmasini bosing."
+        },
+        fallback: "Rahmat! Buni jamoaga yetkazaman. Aniqroq javob uchun biznesingiz haqida ayting yoki bepul konsultatsiyaga yoziling.",
+        ctaIntro: "Ariza qoldirish uchun bosing:",
+        ctaBtn: "\ud83d\udcc5 Konsultatsiyaga yozilish"
+      },
+      ru: {
+        greet: "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435! 👋 \u041c\u0435\u043d\u044f \u0437\u043e\u0432\u0443\u0442 \u041c\u0443\u0445\u0430\u043c\u043c\u0430\u0434, \u044f \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 AXI. \u041f\u043e\u043c\u043e\u0433\u0443 \u043f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0433\u043e \u0431\u0438\u0437\u043d\u0435\u0441\u0430. \u0427\u0442\u043e \u0432\u0430\u0441 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u0435\u0442?",
+        chips: [
+          { l: "\u0427\u0430\u0442-\u0430\u0433\u0435\u043d\u0442\u044b", q: "\u041d\u0443\u0436\u0435\u043d \u0447\u0430\u0442-\u0430\u0433\u0435\u043d\u0442 \u0434\u043b\u044f Instagram" },
+          { l: "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c", q: "\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u0442\u043e\u0438\u0442 \u0432\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u0435?" },
+          { l: "\u041a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044f", q: "\u0425\u043e\u0447\u0443 \u0437\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044e" }
+        ],
+        rules: {
+          chat: "AI \u0447\u0430\u0442-\u0430\u0433\u0435\u043d\u0442 \u043e\u0442\u0432\u0435\u0447\u0430\u0435\u0442 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c 24/7 \u0432 Instagram, Telegram \u0438 \u043d\u0430 \u0441\u0430\u0439\u0442\u0435, \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0435\u0442 \u0437\u0430\u044f\u0432\u043a\u0438 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u0435\u0442 \u043b\u0438\u0434\u044b \u0432 CRM. \u0412\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u0435 1\u20132 \u043d\u0435\u0434\u0435\u043b\u0438. \u041f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u043f\u043e\u0434 \u0432\u0430\u0448\u0443 \u043d\u0438\u0448\u0443?",
+          voice: "AI \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0439 \u0430\u0433\u0435\u043d\u0442 \u0441\u0430\u043c \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442 \u0437\u0432\u043e\u043d\u043a\u0438, \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u0435\u0442 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u0438 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0435\u0442 \u0437\u0430\u043a\u0430\u0437\u044b \u2014 \u043d\u0430 \u0440\u0443\u0441\u0441\u043a\u043e\u043c, \u0443\u0437\u0431\u0435\u043a\u0441\u043a\u043e\u043c \u0438 \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u043c. \u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0437\u0432\u043e\u043d\u043a\u043e\u0432 \u0432 \u0434\u0435\u043d\u044c \u0443 \u0432\u0430\u0441?",
+          auto: "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u0443\u0435\u043c \u0437\u0430\u044f\u0432\u043a\u0438, CRM, \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b \u0438 \u043e\u0442\u0447\u0451\u0442\u044b. \u041e\u043f\u0438\u0448\u0438\u0442\u0435 \u043f\u0440\u043e\u0446\u0435\u0441\u0441, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043e\u0442\u043d\u0438\u043c\u0430\u0435\u0442 \u0431\u043e\u043b\u044c\u0448\u0435 \u0432\u0441\u0435\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u2014 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0438\u043c \u0440\u0435\u0448\u0435\u043d\u0438\u0435.",
+          price: "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043e\u0442 \u0437\u0430\u0434\u0430\u0447. \u0411\u0430\u0437\u043e\u0432\u044b\u0439 AI \u0447\u0430\u0442-\u0430\u0433\u0435\u043d\u0442 \u2014 \u043e\u0442 $500. \u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441\u043d\u0430\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u2014 \u0438\u043d\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043b\u044c\u043d\u043e. \u041b\u0443\u0447\u0448\u0435 \u0432\u0441\u0435\u0433\u043e \u2014 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u0430\u044f 20-\u043c\u0438\u043d\u0443\u0442\u043d\u0430\u044f \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044f. \u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c?",
+          case: "\u041d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0446\u0438\u0444\u0440: World Online Clinic \u2014 $214k+ \u0437\u0430 6 \u043c\u0435\u0441\u044f\u0446\u0435\u0432. Lahim by HMA \u2014 1M+ \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u043e\u0432. Butcher Uz \u2014 $100k+ \u0437\u0430 \u0433\u043e\u0434. \u0425\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u0445\u043e\u0436\u0438\u0439 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442?",
+          book: "\u041e\u0442\u043b\u0438\u0447\u043d\u043e! \u041e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0438\u043c\u044f \u0438 \u0443\u0434\u043e\u0431\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u0441\u0432\u044f\u0437\u0438 (Telegram \u0438\u043b\u0438 \u0442\u0435\u043b\u0435\u0444\u043e\u043d). \u0421\u0432\u044f\u0436\u0435\u043c\u0441\u044f \u0432 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u043d\u044f. \u0418\u043b\u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u00ab\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0435\u0435\u00bb \u0432\u0432\u0435\u0440\u0445\u0443."
+        },
+        fallback: "\u0421\u043f\u0430\u0441\u0438\u0431\u043e! \u041f\u0435\u0440\u0435\u0434\u0430\u043c \u044d\u0442\u043e \u043a\u043e\u043c\u0430\u043d\u0434\u0435. \u0414\u043b\u044f \u0442\u043e\u0447\u043d\u043e\u0433\u043e \u043e\u0442\u0432\u0435\u0442\u0430 \u0440\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0431\u0438\u0437\u043d\u0435\u0441\u0435 \u0438\u043b\u0438 \u0437\u0430\u043f\u0438\u0448\u0438\u0442\u0435\u0441\u044c \u043d\u0430 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u0443\u044e \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044e.",
+        ctaIntro: "\u041d\u0430\u0436\u043c\u0438\u0442\u0435, \u0447\u0442\u043e\u0431\u044b \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u044f\u0432\u043a\u0443:",
+        ctaBtn: "\ud83d\udcc5 \u0417\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044e"
+      },
+      en: {
+        greet: "Hello! 👋 I'm Muhammad, a manager at AXI. I'll help you find the right solution for your business. What are you interested in?",
+        chips: [
+          { l: "Chat agents", q: "I need a chat agent for Instagram" },
+          { l: "Pricing", q: "How much does it cost?" },
+          { l: "Consultation", q: "I'd like to book a consultation" }
+        ],
+        rules: {
+          chat: "Our AI chat agent replies to customers 24/7 on Instagram, Telegram and your website, handles requests and saves leads to CRM. Setup takes 1\u20132 weeks. Want me to tailor it to your niche?",
+          voice: "Our AI voice agent answers calls itself, books customers and confirms orders \u2014 in Uzbek, Russian and English. How many calls do you get per day?",
+          auto: "We automate requests, CRM, documents and reports. Tell me the process that eats the most time \u2014 we'll propose a solution.",
+          price: "Pricing depends on the scope. A basic AI chat agent starts at $500. Complex automation is quoted individually. Best is a free 20-minute consultation. Shall I book you in?",
+          case: "A few numbers: World Online Clinic \u2014 $214k+ in 6 months. Lahim by HMA \u2014 1M+ views. Butcher Uz \u2014 $100k+ a year. Want similar results?",
+          book: "Great! Leave your name and preferred contact (Telegram or phone). We'll reach out during the day. Or tap \u201cContact\u201d above."
+        },
+        fallback: "Thanks! I'll pass this to the team. For a precise answer, tell me about your business or book a free consultation.",
+        ctaIntro: "Tap to leave a request:",
+        ctaBtn: "\ud83d\udcc5 Book a consultation"
+      }
+    };
+    const CHAT_TOPICS = [
+      { id: 'chat',  k: ['\u0447\u0430\u0442','chat','instagram','\u0438\u043d\u0441\u0442\u0430\u0433\u0440\u0430\u043c','telegram','\u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c','\u0430\u0433\u0435\u043d\u0442','agent','\u0441\u043e\u043e\u0431\u0449\u0435\u043d','xabar'] },
+      { id: 'voice', k: ['\u0433\u043e\u043b\u043e\u0441','ovoz','\u0437\u0432\u043e\u043d','call','voice','qo\'ng','qng'] },
+      { id: 'auto',  k: ['\u0430\u0432\u0442\u043e\u043c\u0430\u0442','avtomat','crm','\u043f\u0440\u043e\u0446\u0435\u0441\u0441','jarayon','\u043e\u0442\u0447','hisobot','n8n'] },
+      { id: 'price', k: ['\u0446\u0435\u043d','narx','\u0441\u0442\u043e\u0438','\u0441\u043a\u043e\u043b\u044c\u043a\u043e','qancha','turadi','price','\u0431\u044e\u0434\u0436\u0435\u0442','byudjet'] },
+      { id: 'case',  k: ['\u043a\u0435\u0439\u0441','keys','\u0440\u0435\u0437\u0443\u043b\u044c\u0442','natija','\u043f\u0440\u0438\u043c\u0435\u0440','misol','case'] },
+      { id: 'book',  k: ['\u0437\u0430\u043f\u0438\u0441','yozil','\u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442','konsult','\u0441\u0432\u044f\u0437','aloqa','\u0434\u0435\u043c\u043e','demo','\u0432\u0441\u0442\u0440\u0435\u0447','uchrash','\u043f\u043e\u0437\u0432\u043e\u043d'], cta: true }
     ];
-    const FALLBACK = 'Спасибо! Я передам это нашему специалисту. Чтобы ответить точнее — расскажите про ваш бизнес и задачу, либо запишитесь на бесплатную консультацию.';
+    function chatLang() { var l = localStorage.getItem('axi_lang'); return (l && CHAT_I18N[l]) ? l : 'uz'; }
 
     function reply(text) {
       const low = text.toLowerCase();
-      for (const r of RULES) { if (r.k.some(k => low.includes(k))) return r; }
-      return { a: FALLBACK };
+      const L = CHAT_I18N[chatLang()];
+      for (const t of CHAT_TOPICS) { if (t.k.some(k => low.includes(k))) return { a: L.rules[t.id], cta: t.cta }; }
+      return { a: L.fallback };
     }
 
     function row(role, html) {
@@ -1832,10 +1888,11 @@
         let html = text.replace(/</g, '&lt;');
         row('bot', html);
         if (withCta) {
-          const r = row('bot', 'Нажмите, чтобы оставить заявку:');
+          const L = CHAT_I18N[chatLang()];
+          const r = row('bot', L.ctaIntro);
           const a = document.createElement('a');
           a.href = 'contact-us.html'; a.className = 'axi-chip'; a.style.marginTop = '8px'; a.style.display = 'inline-flex';
-          a.textContent = '📅 Записаться на консультацию';
+          a.textContent = L.ctaBtn;
           a.addEventListener('click', () => closePanel());
           r.querySelector('.axi-bubble').appendChild(document.createElement('br'));
           r.querySelector('.axi-bubble').appendChild(a);
@@ -1855,13 +1912,13 @@
 
     function greet() {
       if (greeted) return; greeted = true;
-      botSay('Здравствуйте 👋 Я AI-ассистент AXI. Помогу подобрать решение для вашего бизнеса — чат-агенты, голосовые агенты или автоматизация. О чём расскажу подробнее?');
+      botSay(CHAT_I18N[chatLang()].greet);
     }
 
     function openPanel() {
-      opened = true; chat.classList.add('open'); greet();
-      if (window.matchMedia('(max-width:440px)').matches) document.body.style.overflow = 'hidden';
-      setTimeout(() => { if (!window.matchMedia('(max-width:440px)').matches) ta.focus(); }, 350);
+      opened = true; renderChips(); chat.classList.add('open'); greet();
+      if (window.matchMedia('(max-width:600px)').matches) document.body.style.overflow = 'hidden';
+      setTimeout(() => { if (!window.matchMedia('(max-width:600px)').matches) ta.focus(); }, 350);
     }
     function closePanel() {
       opened = false; chat.classList.remove('open'); document.body.style.overflow = '';
@@ -1885,7 +1942,8 @@
     send.addEventListener('click', () => userSend(ta.value));
     ta.addEventListener('input', autoResize);
     ta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); userSend(ta.value); } });
-    chips.querySelectorAll('.axi-chip').forEach(c => c.addEventListener('click', () => userSend(c.dataset.q)));
+    function renderChips(){ if(!chips) return; var L=CHAT_I18N[chatLang()]; chips.innerHTML=''; L.chips.forEach(function(cp){ var b=document.createElement('button'); b.className='axi-chip'; b.textContent=cp.l; b.addEventListener('click', function(){ userSend(cp.q); }); chips.appendChild(b); }); }
+    renderChips();
 
     // Nudge bubble appears after scrolling, dismissible
     let nudgeDismissed = false;
