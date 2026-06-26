@@ -666,9 +666,8 @@
     .axi-panel{ position: fixed; inset: 12px; width:auto; height:auto; }
     .axi-toggle{ position: fixed; bottom: 16px; right: 16px; }
     .axi-chat.open .axi-toggle{ display:none; }
-   
-
-
+    .axi-nudge{ right: 74px; bottom: 14px; font-size: 12.5px; padding: 9px 10px 9px 13px; }
+  }
 
   /* ── Mobile nav ── */
   .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:7px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);width:36px;height:36px;flex-shrink:0;}
@@ -688,7 +687,7 @@
   /* Mobile: hide lang switcher in nav bar, show hamburger on right */
   @media(max-width:1023px){
     #lang-switcher{display:none!important;}
-  @media(max-width:1023px){nav.glass-nav{display:flex!important;justify-content:space-between;align-items:center;}}
+    nav.glass-nav{display:flex!important;justify-content:space-between;align-items:center;}
     .nav-hamburger{display:flex!important;}
   }
   /* Hamburger — blue border like CTA */
