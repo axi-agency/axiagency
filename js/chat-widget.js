@@ -2,9 +2,10 @@
   'use strict';
 
   // ─── Config ─────────────────────────────────────────────────────────────────
-  var WEBHOOK_URL = 'https://axiagency.app.n8n.cloud/webhook/axi-website-chat';
+  var WEBHOOK_URL = 'https://n8n-production-40bc8.up.railway.app/webhook/axi-website-chat';
   var SESSION_KEY = 'axi_chat_session_id';
-  var HISTORY_KEY = 'axi_chat_history';
+  // _v2: bumped 2026-07-13 so stale histories from the dead cloud-n8n era don't replay
+  var HISTORY_KEY = 'axi_chat_history_v2';
   var REQUEST_TIMEOUT_MS = 30000;
 
   // ─── i18n labels ────────────────────────────────────────────────────────────
